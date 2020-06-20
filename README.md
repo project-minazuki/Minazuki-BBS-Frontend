@@ -1,25 +1,29 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 水无月论坛系统 - 前端部分
 
-## Available Scripts
+这个项目是作者的 2020 工程实训完成的任务。
 
-In the project directory, you can run:
+这个工程使用 [Create React App](https://github.com/facebook/create-react-app) 创建。
+
+## 可用脚本
+
+在项目的根目录下，您可以执行以下的脚本；在这之前，您要保证已经安装了 `nodejs` 和 `yarn`。
 
 ### `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+在开发模式下运行程序：<br />
+在浏览器中打开 [http://localhost:3000](http://localhost:3000) 来查看。
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+当你修改了源文件之后，网页将会重新加载；<br />
+你也可以在控制台中看到所有的 Lint 错误的提示。
 
 ### `yarn test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+在交互监视下启动 test runner.<br />
+从 [running tests](https://facebook.github.io/create-react-app/docs/running-tests) 页面上获得更多信息。
 
 ### `yarn build`
 
-Builds the app for production to the `build` folder.<br />
+在 `build` 文件夹中构建生产环境中使用的版本<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br />
@@ -29,7 +33,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**注意：这是一个不可逆行为，当您 `eject` 后将不能再返回之前的状态！**
 
 If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
@@ -37,8 +41,8 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## 关于更多
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+您可以从 [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started) 中学到更多。
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+如果您要学习 React，可以去阅读 [React documentation](https://reactjs.org/) 。
