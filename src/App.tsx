@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './image/logo.svg';
-import './style/App.css';
+import React, {useEffect} from 'react';
+import {Route} from 'react-router';
+import {HashRouter} from "react-router-dom";
+import {Provider} from "react-redux";
+import {createStore} from "redux";
+import {reducers} from "./redux/reducers";
+
+export const store = createStore(reducers);
 
 function App() {
+
+    useEffect(() => {
+        import('./utils/statement').then(({statement}) => statement());
+    }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <HashRouter>
+
+      </HashRouter>
+    </Provider>
   );
 }
 
