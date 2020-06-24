@@ -15,7 +15,7 @@ const apiHead = dirPath + $url.prefix;
 glob.sync(resolve('./mock/api', "**/*.json")).forEach((item, i) => {
     const jsonPath = item && item.split(apiHead)[1];
     const apiPath = jsonPath.replace('.json', '');
-    map[jsonPath] = $url.prefix + apiPath;
+    map[jsonPath] = apiPath;
 
     router.get(apiPath, (ctx, next) => {
         try {

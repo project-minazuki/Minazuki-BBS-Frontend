@@ -1,7 +1,8 @@
 import React, {FC, memo} from "react";
+import {PageFrameProps} from "../containers/PageFrame";
 
 
-const PageFrame: FC<any> = memo((props) => {
+const PageFrame: FC<PageFrameProps> = memo((props: PageFrameProps) => {
 
     return (
         <>

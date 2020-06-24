@@ -23,3 +23,5 @@ export interface Logout {
 export function logout(): Logout {
     return {type: LOGOUT};
 }
+
+

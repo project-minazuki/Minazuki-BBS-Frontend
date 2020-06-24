@@ -1,13 +1,20 @@
-import React, {useEffect} from 'react';
+import React, {FC, memo, useEffect} from 'react';
+import {createBrowserHistory as createHistory} from 'history';
 import {Route} from 'react-router';
-import {HashRouter} from "react-router-dom";
+import thunk, {ThunkAction} from 'redux-thunk';
+import {composeWithDevTools} from 'redux-devtools-extension';
+import {HashRouter as MainRouter} from "react-router-dom";
 import {Provider} from "react-redux";
-import {createStore} from "redux";
+import {createStore, applyMiddleware} from "redux";
 import {reducers} from "./redux/reducers";
 
-export const store = createStore(reducers);
+createHistory();
 
-function App() {
+const middleWares = [thunk];
+
+export const store = createStore(reducers, composeWithDevTools(applyMiddleware(...middleWares)));
+
+const App: FC = memo(() => {
 
     useEffect(() => {
         import('./utils/statement').then(({statement}) => statement());
@@ -15,11 +22,11 @@ function App() {
 
   return (
     <Provider store={store}>
-      <HashRouter>
+      <MainRouter>
 
-      </HashRouter>
+      </MainRouter>
     </Provider>
   );
-}
+});
 
 export default App;
