@@ -25,3 +25,14 @@ export function logout(): Logout {
 }
 
 
+export const PROCESS_HANDLED = 'PROCESS_HANDLED';
+export type PROCESS_HANDLED = typeof PROCESS_HANDLED;
+
+export interface ProcessHandled {
+    type: PROCESS_HANDLED;
+}
+
+export function processHandled(): ProcessHandled {
+    return {type: PROCESS_HANDLED};
+}
+

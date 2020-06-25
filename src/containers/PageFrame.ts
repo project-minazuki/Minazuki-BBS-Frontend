@@ -4,7 +4,6 @@ import {bindActionCreators, Dispatch} from 'redux';
 import PageFrame from "../components/PageFrame";
 
 import {StoreState} from "../redux/reducers";
-import {getUserInfoStart} from "../redux/actions/async";
 
 const mapStateToProps = ({
     user: {token, info},
@@ -15,7 +14,7 @@ const mapStateToProps = ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
-    getUserInfo: getUserInfoStart,
+
 }, dispatch)
 
 type StateProps = ReturnType<typeof mapStateToProps>;

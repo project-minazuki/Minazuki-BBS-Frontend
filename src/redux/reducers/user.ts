@@ -1,14 +1,10 @@
 import * as actions from '../actions';
-import * as asyncActions from '../actions/async';
 import storage from "../../configs/storages";
 import {User} from "../../configs/types";
 
 type Action =
     | actions.Login
     | actions.Logout
-    | asyncActions.GetUserInfoStart
-    | asyncActions.GetUserInfoFailed
-    | asyncActions.GetUserInfoSuccess
 
 export interface UserStore {
     token: string;
@@ -36,13 +32,6 @@ export function userReducer(state = userInit, action: Action): UserStore {
         case actions.LOGOUT:
             localStorage.removeItem(storage.token);
             return {...state, token: ''};
-        case asyncActions.GET_USER_INFO_START:
-            return {...state, isLoading: true};
-        case asyncActions.GET_USER_INFO_FAILED:
-            return {...state};
-        case asyncActions.GET_USER_INFO_SUCCESS:
-            const {info} = action;
-            return {...state, info: {...state.info, ...info}};
     }
     return state;
 }

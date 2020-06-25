@@ -1,5 +1,6 @@
 
 export type ReportType = 'theme' | 'post';
+export type LoginMethod = 'phone' | 'email' | 'username';
 
 export interface User {
     _id: number;
