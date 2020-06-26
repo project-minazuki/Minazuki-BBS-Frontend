@@ -1,3 +1,4 @@
 {
-    "/user/login.json": "/api/user/login"
+    "/test/testGetMethod.json": "/test/testGetMethod",
+    "/user/getInfo.json": "/user/getInfo"
 }

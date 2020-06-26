@@ -28,6 +28,7 @@ glob.sync(resolve('./mock/api', "**/*.json")).forEach((item, i) => {
         } catch (err) {
             ctx.throw('Server Error', 500);
         }
+        next();
     });
 });
 
@@ -37,7 +38,18 @@ fs.writeFile('./mock/map.json', JSON.stringify(map, null, 4),
         else console.log('route map generate failed.');
     });
 
-App.use(router.routes()).use(router.allowedMethods()).use(logger());
+App.use(router.routes()).use(router.allowedMethods()).use(logger())
+    .use(async (ctx, next) => {
+    ctx.set('Access-Control-Allow-Origin', '*');
+    ctx.set('Access-Control-Allow-Headers',
+        'Content-Type, Content-Length, Authorization, Accept, X-Requested-With, yourHeaderField');
+    ctx.set('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+    if (ctx.method === 'OPTIONS') {
+        ctx.body = 200;
+    } else {
+        await next();
+    }
+})
 
 App.listen('1919', () => {
     console.log('Mock server is listening port 1919.');
