@@ -40,10 +40,11 @@ fs.writeFile('./mock/map.json', JSON.stringify(map, null, 4),
 
 App.use(router.routes()).use(router.allowedMethods()).use(logger())
     .use(async (ctx, next) => {
-    ctx.set('Access-Control-Allow-Origin', '*');
+    ctx.set('Access-Control-Allow-Origin', 'http://localhost:3000');
     ctx.set('Access-Control-Allow-Headers',
         'Content-Type, Content-Length, Authorization, Accept, X-Requested-With, yourHeaderField');
     ctx.set('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+    ctx.set('Access-Control-Allow-Credentials', 'true');
     if (ctx.method === 'OPTIONS') {
         ctx.body = 200;
     } else {

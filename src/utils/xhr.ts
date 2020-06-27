@@ -1,7 +1,12 @@
+import * as api from '../configs/api';
+import axios from 'axios';
 
-export interface Request {
-    queries?: object;
-    params?: object;
-    success?: Function;
-    failed?: Function;
+
+
+export function $fetchMyInfo() {
+    return axios.get(api.fetchMyInfo);
+}
+
+export function $testGetMethod() {
+    return axios.get(api.testGetMethod);
 }
