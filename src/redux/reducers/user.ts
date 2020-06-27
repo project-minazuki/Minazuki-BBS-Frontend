@@ -1,10 +1,11 @@
 import * as actions from '../actions';
-import storage from "../../configs/storages";
-import {User} from "../../configs/types";
+import {User, Notification} from "../../configs/types";
+import {storage} from "../../configs/consts";
 
 type Action =
     | actions.Login
     | actions.Logout
+    | actions.MyInfoFetched
 
 export interface UserStore {
     token: string;
@@ -32,6 +33,9 @@ export function userReducer(state = userInit, action: Action): UserStore {
         case actions.LOGOUT:
             localStorage.removeItem(storage.token);
             return {...state, token: ''};
+        case actions.MY_INFO_FETCHED:
+            const info = action.data;
+            return {...state, info};
     }
     return state;
 }

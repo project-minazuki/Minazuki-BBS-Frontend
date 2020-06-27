@@ -16,14 +16,17 @@ createHistory();
 
 const saga = createSagaMiddleware();
 const middleWares = [saga];
-export const store = createStore(reducers, composeWithDevTools(applyMiddleware(...middleWares)));
+const middlewareEnhancer = applyMiddleware(...middleWares);
+const isDev = process.env.NODE_ENV === 'development';
+const enhancer = isDev ? composeWithDevTools(middlewareEnhancer) : middlewareEnhancer;
+export const store = createStore(reducers, enhancer);
 saga.run(Sagas);
 
-axios.interceptors.request.use((config) => {
+store.subscribe(() => axios.interceptors.request.use((config) => {
     const token = store.getState().user.token ?? '';
     config.headers.Authorization = "Bearer " + token;
     return config;
-}, (error: any) => Promise.reject(error));
+}, (error: any) => Promise.reject(error)))
 axios.defaults.withCredentials = true;
 
 const App: FC = memo(() => {

@@ -1,3 +1,5 @@
+import {User} from "../../configs/types";
+import {defaultAvatar} from "../../configs/consts";
 
 
 export const LOGIN = 'LOGIN';
@@ -23,6 +25,56 @@ export interface Logout {
 export function logout(): Logout {
     return {type: LOGOUT};
 }
+
+
+export const TOGGLE_USER_LOADING = 'TOGGLE_USER_LOADING';
+export type TOGGLE_USER_LOADING = typeof TOGGLE_USER_LOADING;
+
+export interface ToggleUserLoading {
+    type: TOGGLE_USER_LOADING;
+    on: boolean;
+}
+
+export function toggleUserLoading(on: boolean = false): ToggleUserLoading {
+    return {type: TOGGLE_USER_LOADING, on};
+}
+
+
+export const MY_INFO_FETCHED = 'MY_INFO_FETCHED';
+export type MY_INFO_FETCHED = typeof MY_INFO_FETCHED;
+
+export interface MyInfoFetched {
+    type: MY_INFO_FETCHED;
+    data: User;
+}
+
+export function myInfoFetched(data: Partial<User>): MyInfoFetched {
+    const init = {
+        isAdmin: false,
+        avatar: defaultAvatar,
+    } as User;
+    return {
+        type: MY_INFO_FETCHED,
+        data: {
+            ...init,
+            ...data
+        }
+    };
+}
+
+
+export const MY_MESSAGE_FETCHED = 'MY_MESSAGE_FETCHED';
+export type MY_MESSAGE_FETCHED = typeof MY_MESSAGE_FETCHED;
+
+export interface MyMessageFetched {
+    type: MY_MESSAGE_FETCHED;
+    msg: Notification[];
+}
+
+export function myMessageFetched(msg: Notification[]): MyMessageFetched {
+    return {type: MY_MESSAGE_FETCHED, msg};
+}
+
 
 
 export const PROCESS_HANDLED = 'PROCESS_HANDLED';

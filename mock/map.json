@@ -1,4 +1,5 @@
 {
     "/test/testGetMethod.json": "/test/testGetMethod",
-    "/user/getInfo.json": "/user/getInfo"
+    "/user/getInfo.json": "/user/getInfo",
+    "/user/me.json": "/user/me"
 }
