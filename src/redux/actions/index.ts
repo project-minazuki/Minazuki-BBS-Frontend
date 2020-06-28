@@ -1,4 +1,4 @@
-import {User} from "../../configs/types";
+import {Theme, User} from "../../configs/types";
 import {defaultAvatar} from "../../configs/consts";
 
 
@@ -88,3 +88,22 @@ export function processHandled(): ProcessHandled {
     return {type: PROCESS_HANDLED};
 }
 
+
+export const RECOMMEND_FETCHED = 'RECOMMEND_FETCHED';
+export type RECOMMEND_FETCHED = typeof RECOMMEND_FETCHED;
+
+export interface RecommendFetched {
+    type: RECOMMEND_FETCHED;
+    newTheme: Theme[];
+    newReply: Theme[];
+}
+
+export function recommendFetched(
+    newTheme: Theme[],
+    newReply: Theme[]
+): RecommendFetched {
+    return {
+        type: RECOMMEND_FETCHED,
+        newTheme, newReply,
+    };
+}
