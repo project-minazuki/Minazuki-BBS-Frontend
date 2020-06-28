@@ -7,12 +7,17 @@ import * as xhr from "../utils/xhr";
 import {TestAppProps} from "./container";
 import './style/index.scss';
 
-const TestApp: FC<TestAppProps> = memo(({fetchInfo, loggedIn, token, userInfo}) => {
+const TestApp: FC<TestAppProps> = memo(({fetchInfo, loggedIn, token, userInfo, setToken}) => {
 
     const [data, setData] = useState({});
 
     const send = () => {
         xhr.$testGetMethod().then(res => setData(res)).catch(e => console.log(e));
+    }
+
+    const newToken = () => {
+        const token = Math.random() * 1000000000;
+        setToken(token.toString(16));
     }
 
     return (
@@ -36,8 +41,14 @@ const TestApp: FC<TestAppProps> = memo(({fetchInfo, loggedIn, token, userInfo}) 
                         I'm YJSNPI !!
                     </Button>
                 </Col>
-                <Col span={8}>
-
+                <Col span={8} className="token-test">
+                    <div className="text-field">
+                        Check console and make sure store.subscribe is working. <br />
+                        Maybe you should add a console.log first.
+                    </div>
+                    <Button title="Random a new token" onClick={newToken}>
+                        Try a new login
+                    </Button>
                 </Col>
             </Row>
         </div>

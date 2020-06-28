@@ -4,6 +4,7 @@ import TestApp from "../index";
 import {StoreState} from "../../redux/reducers";
 import {Dispatch, bindActionCreators} from "redux";
 import {fetchMyInfoStart} from "../../redux/actions/async";
+import {login} from '../../redux/actions';
 
 
 const mapStateToProps = ({user: {token, isLoading, info}}: StoreState) => ({
@@ -14,6 +15,7 @@ const mapStateToProps = ({user: {token, isLoading, info}}: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
     fetchInfo: fetchMyInfoStart,
+    setToken: login,
 }, dispatch);
 
 type StateProps = ReturnType<typeof mapStateToProps>;
