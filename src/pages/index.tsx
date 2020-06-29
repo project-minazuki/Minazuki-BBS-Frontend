@@ -5,9 +5,10 @@ import {Suspense} from 'react';
 import PageFrame from "../containers/PageFrame";
 import Loading from "../components/Loading";
 
-import {Button} from 'antd';
 import * as xhr from '../utils/xhr';
 import * as api from '../configs/api';
+import * as url from '../configs/url';
+import Login from "../containers/views/Login";
 
 const Index: FC = memo(() => {
 
@@ -20,9 +21,12 @@ const Index: FC = memo(() => {
     );
 
     return (
-        <>
+      <>
+        <Switch>
+          <Route path={url.login} component={Login} />
 
-        </>
+        </Switch>
+      </>
     );
 })
 

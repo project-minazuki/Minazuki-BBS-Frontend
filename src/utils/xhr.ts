@@ -7,3 +7,10 @@ export function $fetchMyInfo() {
 export function $testGetMethod() {
     return api.test.testGetMethod().exec();
 }
+
+export function $login(param: {
+    username: string;
+    password: string;
+}) {
+    return api.user.login(param).exec();
+}
