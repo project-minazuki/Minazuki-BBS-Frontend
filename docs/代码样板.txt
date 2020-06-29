@@ -1,0 +1,83 @@
+对于任何一个有状态的组件，按照以下格式构建：
+
+/// container 组件
+/// src/containers/<component.ts>
+import {connect} from "react-redux";
+import {bindActionCreators, Dispatch} from 'redux';
+import {StoreState} from "../../redux/reducers";
+import * as $actions from '../../redux/actions/async';
+
+/// 从视图组件中导入组件组件
+import Component from "../../components/<component>";
+
+const mapStateToProps = ({
+
+}: StoreState) => ({
+
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
+
+}, dispatch);
+
+type StateProps = ReturnType<typeof mapStateToProps>;
+type DispatchProps = ReturnType<typeof mapDispatchToProps>;
+
+/// 类型名：<组件名>Props
+export type ComponentProps = StateProps & DispatchProps;				// 导出给视图组件使用
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
+
+=======================================================================================================================
+
+/// View 组件
+/// src/components/<component.tsx>
+import React, {FC, memo} from 'react';
+import {ComponentProps} from "../../containers/<component>";
+import "<path>/<component.scss>";
+
+import {useHistory} from "react-router";
+
+const Component: FC<ComponentProps> = memo((props) => {
+
+    return (
+        <div id="page-component">
+
+        </div>
+    )
+});
+
+export default Component;										// 导出给容器组件使用
+
+=======================================================================================================================
+
+/// SASS 文件
+/// src/styles/<component.scss>
+
+#comp-component {						// 命名：view-xxx / page-xxx
+
+}
+
+=======================================================================================================================
+
+/// 无状态组件
+/// src/components/<PureComponent.tsx>
+
+import React, {FC, memo} from "react";
+
+import '../styles/<PureComponent.scss>';
+
+interface IProps {
+    children?: JSX.Element;					// 不包含子元素，则彻底删去
+};
+
+const PureComponent: FC<IProps> = memo(({
+    title, children, favicon
+}: IProps) => {
+    return (
+        <div id="comp-pure-component">
+
+        </div>
+    )
+});
+
+export default PureComponent;
