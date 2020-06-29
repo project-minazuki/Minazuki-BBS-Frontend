@@ -1,11 +1,11 @@
 import React, {FC, memo, useState} from "react";
 
 import {Button, Row, Col} from 'antd';
-import * as api from "../configs/api";
 import * as xhr from "../utils/xhr";
 
 import {TestAppProps} from "./container";
 import './style/index.scss';
+import {MockServer} from "../configs/consts";
 
 const TestApp: FC<TestAppProps> = memo(({fetchInfo, loggedIn, token, userInfo, setToken}) => {
 
@@ -28,7 +28,7 @@ const TestApp: FC<TestAppProps> = memo(({fetchInfo, loggedIn, token, userInfo, s
                         {JSON.stringify(data)}
                     </div>
                     <Button title="Send a Request" onClick={send} type={"primary"}>
-                        {api.testGetMethod}
+                        {`${MockServer}/test/testGetMethod`}
                     </Button>
                 </Col>
                 <Col span={8} className="saga-test">

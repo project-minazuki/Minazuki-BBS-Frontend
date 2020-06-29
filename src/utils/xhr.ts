@@ -1,12 +1,9 @@
 import * as api from '../configs/api';
-import axios from 'axios';
-
-
 
 export function $fetchMyInfo() {
-    return axios.get(api.fetchMyInfo);
+    return api.test.fetchMyInfo().exec();
 }
 
 export function $testGetMethod() {
-    return axios.get(api.testGetMethod);
+    return api.test.testGetMethod().exec();
 }
