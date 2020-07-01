@@ -172,7 +172,7 @@ export namespace user {
 }
 
 export namespace notice {
-    export const allNotice = (id: string) => new Request({
+    export const all = (id: string) => new Request({
         method: "GET", url: `${noticeHeader}/${id}/all`
     })
 
@@ -180,11 +180,11 @@ export namespace notice {
         method: "DELETE", url: `${noticeHeader}/${id}/delete`
     });
 
-    export const getNoticeById = (id: string) => new Request({
+    export const getById = (id: string) => new Request({
         method: "GET", url: `${noticeHeader}/${id}/getNoticeById`
     });
 
-    export const creatNotice = (param: {
+    export const creat = (param: {
 
         categoryId: number,
         content: string,
@@ -196,7 +196,7 @@ export namespace notice {
         url: `${noticeHeader}/create`,
         data: param
     });
-    export const updateNotice = (param: {
+    export const update = (param: {
         allNull: boolean,
         content: string,
         id: number,
@@ -214,7 +214,7 @@ export namespace theme {
             url: `${themeHeader}/`,
         })*/
 
-    export const allTheme = (id: string) => new Request({
+    export const all= (id: string) => new Request({
         method: "GET",
         url: `${themeHeader}/${id}/all`,
     })
@@ -237,7 +237,7 @@ export namespace theme {
     /*
     *查看主题帖详情
     */
-    export const viewThemeDetails = (id: string) => new Request({
+    export const viewDetails = (id: string) => new Request({
         method: "GET",
         url: `${themeHeader}/${id}`,
     })
@@ -303,7 +303,7 @@ export namespace theme {
         url: `${themeHeader}/tag`,
     })
 
-    export const addTagToTheme = (param: {
+    export const addTag = (param: {
         tagId: number,
         themeId: number
     }) => new Request({
@@ -312,7 +312,7 @@ export namespace theme {
         data: param
     })
 
-    export const removeTagFromTheme = (param: {
+    export const removeTag = (param: {
         tagId: number,
         themeId: number
 
@@ -370,7 +370,7 @@ export namespace history {
 }
 
 export namespace favorite {
-    export const _ = (id: string) => new Request({
+    export const deleteFavorite = (id: string) => new Request({
         method: "DELETE",
         url: `${favoriteHeader}/${id}/delete`,
     })
@@ -398,7 +398,7 @@ export namespace favorite {
 }
 
 export namespace post {
-    export const viewPostDetails = (id: string) => new Request({
+    export const viewDetails = (id: string) => new Request({
         method: "GET",
         url: `${postHeader}/${id}`,
     })
@@ -418,7 +418,7 @@ export namespace post {
         url: `${postHeader}/unlike`,
     })
 
-    export const createPost = (param: {
+    export const create = (param: {
         content: string,
         creatorId: number,
         number: number,
@@ -468,7 +468,7 @@ export namespace inbox {
         url: `${inboxHeader}/${id}/delete`,
     })
 
-    export const getInbox = (id: string) => new Request({
+    export const get = (id: string) => new Request({
         method: "GET",
         url: `${inboxHeader}/${id}/get`,
     })
