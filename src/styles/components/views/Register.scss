@@ -1,0 +1,90 @@
+#view-register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  $content: 300px;
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: $content;
+
+    .input-item {
+      width: 360px;
+    }
+
+    .pwd-strength {
+      display: flex;
+      flex-direction: row;
+
+      .label {
+        margin-right: 18px;
+        display: flex;
+        font-size: 16px;
+      }
+
+      .progress {
+        display: flex;
+      }
+    }
+
+    .success-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: $content;
+      $icon-size: 80px;
+
+      .success-icon {
+        font-size: $icon-size;
+        margin: 16px;
+      }
+
+      .success-title {
+        font-size: 24px;
+        color: black;
+        margin: 20px 0;
+      }
+
+      .success-content {
+        font-size: 16px;
+        color: black;
+        margin-bottom: 80px;
+      }
+    }
+
+  }
+
+  .navigator {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+
+    width: 100%;
+
+    .nav-button {
+      margin: 10px 12px;
+      width: 130px;
+    }
+
+    .now-step {
+      margin: 0 12px;
+      color: #707070;
+    }
+  }
+
+  .guide {
+    display: flex;
+    font-size: 16px;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+  }
+}

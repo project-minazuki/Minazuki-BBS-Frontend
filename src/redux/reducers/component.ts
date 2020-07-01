@@ -2,10 +2,10 @@ import * as actions from '../actions';
 
 type Action =
     | actions.ProcessHandled
+    | actions.ProcessStarted
 
 export interface ComponentStore {
     inProcess: boolean;
-
 }
 
 export const componentInit: ComponentStore = {
@@ -16,6 +16,8 @@ export function componentReducer(state = componentInit, action: Action): Compone
     switch (action.type) {
         case actions.PROCESS_HANDLED:
             return {...state, inProcess: false};
+        case actions.PROCESS_STARTED:
+            return {...state, inProcess: true};
 
     }
     return state;

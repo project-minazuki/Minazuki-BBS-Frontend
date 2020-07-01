@@ -1,8 +1,7 @@
-import * as asyncs from '../../redux/actions/async';
+import * as $actions from '../../redux/actions/async';
 import {put, takeLatest, select} from 'redux-saga/effects';
 import * as xhr from '../../utils/xhr';
 import * as actions from '../../redux/actions';
-import {toggleUserLoading} from "../../redux/actions";
 
 function* worker() {
     try {
@@ -14,12 +13,12 @@ function* worker() {
     } catch (err) {
         console.log(err);
     } finally {
-        put(toggleUserLoading(false));
+        put(actions.toggleUserLoading(false));
     }
 }
 
 function* watcher() {
-    yield takeLatest(asyncs.FETCH_MY_INFO_START, worker);
+    yield takeLatest($actions.FETCH_MY_INFO_START, worker);
 };
 
 export default watcher;

@@ -4,13 +4,13 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import {BrowserRouter as MainRouter, Route} from "react-router-dom";
 import {Provider} from "react-redux";
 import {createStore, applyMiddleware} from "redux";
-import {reducers} from "./redux/reducers";
 import createSagaMiddleware from 'redux-saga';
 import axios from 'axios';
 
 import Index from './pages/index';
 import Sagas from "./sagas";
 import TestApp from './test/container';
+import {reducers} from "./redux/reducers";
 
 createHistory();
 

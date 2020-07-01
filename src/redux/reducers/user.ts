@@ -1,6 +1,6 @@
 import * as actions from '../actions';
 import {User, Notification} from "../../configs/types";
-import {storage} from "../../configs/consts";
+import {getToken, setToken, removeToken} from "../../utils/useStorage";
 
 type Action =
     | actions.Login
@@ -15,7 +15,7 @@ export interface UserStore {
 
 }
 
-const existingToken = localStorage.getItem(storage.token) ?? '';
+const existingToken = getToken() ?? '';
 
 export const userInit: UserStore = {
     token: existingToken,
@@ -28,10 +28,10 @@ export function userReducer(state = userInit, action: Action): UserStore {
     switch (action.type) {
         case actions.LOGIN:
             const {token} = action;
-            localStorage.setItem(storage.token, token);
+            setToken(token);
             return {...state, token};
         case actions.LOGOUT:
-            localStorage.removeItem(storage.token);
+            removeToken();
             return {...state, token: ''};
         case actions.MY_INFO_FETCHED:
             const info = action.data;

@@ -55,6 +55,16 @@ export interface HistoryViewed {
 export interface Theme {
     _id: number;
     status: boolean;
+    title: string;
+    pinned: boolean;
+    highQuality: boolean;
+    authorId: number;
+    cateId: number;
+    visits: number;
+    replies: number;
+    updateTime: string;
+    latestReplyTime: string;
+    createdTime: string;
 }
 
 export interface Post {
