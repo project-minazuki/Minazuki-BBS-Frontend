@@ -4,6 +4,12 @@ import axios from 'axios';
 const header = (!!0 ? ApiServer : MockServer);
 const userHeader = `${header}/user`;
 const cateHeader = `${header}/category`;
+const inboxHeader = `${header}/inbox`;
+const postHeader = `${header}/post`;
+const favoriteHeader = `${header}/favorite`;
+const historyHeader = `${header}/historyViewed`;
+const themeHeader = `${header}/theme`;
+const noticeHeader = `${header}/notice`;
 
 interface AxiosRequest {
     method: RequestMethod;
@@ -162,5 +168,29 @@ export namespace user {
             privacyShow: param.privacyShow ? 1 : 0
         }
     });
+
+}
+
+export namespace notice {
+
+}
+
+export namespace theme {
+
+}
+
+export namespace history {
+
+}
+
+export namespace favorite {
+
+}
+
+export namespace post {
+
+}
+
+export namespace inbox {
 
 }
