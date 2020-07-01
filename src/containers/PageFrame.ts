@@ -7,6 +7,7 @@ import {StoreState} from "../redux/reducers";
 
 const mapStateToProps = ({
     user: {token, info},
+    component: {inProcess}
 }: StoreState) => ({
     loggedIn: !!token,
     userInfo: info,
@@ -19,8 +20,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
 
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = ReturnType<typeof mapDispatchToProps>;
-export type PageFrameProps = StateProps & DispatchProps;
 
-export default connect<StateProps, DispatchProps, {}, StoreState>(
-    mapStateToProps, mapDispatchToProps
-)(PageFrame);
+export type PageFrameProps = StateProps & DispatchProps;
+export default connect(mapStateToProps, mapDispatchToProps)(PageFrame);
