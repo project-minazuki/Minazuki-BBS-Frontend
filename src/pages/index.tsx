@@ -5,13 +5,13 @@ import {Suspense} from 'react';
 import PageFrame from "../containers/PageFrame";
 import Loading from "../components/Loading";
 
-import * as xhr from '../utils/xhr';
-import * as api from '../configs/api';
 import * as url from '../configs/url';
 
 import Login from "../containers/views/Login";
 import Register from "../containers/views/Register";
-import Homepage from "../containers/pages/homepage";
+import TestApp from "../test/container";
+
+const Homepage = lazy(() => import("../containers/pages/homepage"));
 
 const Index: FC = memo(() => {
 
@@ -28,7 +28,8 @@ const Index: FC = memo(() => {
         <Switch>
           <Route path={url.login} component={Login} />
           <Route path={url.register} component={Register} />
-          <Route path={url.root} render={routerRender(<Homepage />)} />
+          <Route path={url.root} exact render={routerRender(<Homepage />)} />
+          <Route path="/testApp" component={TestApp} />
         </Switch>
       </>
     );

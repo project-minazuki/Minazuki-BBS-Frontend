@@ -3,12 +3,15 @@ import React, {FC, HTMLProps, memo} from "react";
 import '../styles/components/TopBar.scss';
 import logo from '../images/favicon.svg';
 
-import {Input, message} from 'antd';
+import {Input, message, Tooltip} from 'antd';
 import {SearchOutlined} from '@ant-design/icons';
 import IconFont from "./IconFont";
+import {User} from "../configs/types";
+import {useHistory} from "react-router";
 
 interface IProps {
-
+    userInfo: User;
+    loggedIn: boolean;
 }
 
 const SearchBar: FC<{} & HTMLProps<any>> = memo((props) => {
@@ -23,17 +26,25 @@ const SearchBar: FC<{} & HTMLProps<any>> = memo((props) => {
     </div>
 })
 
-const TopBar: FC<IProps> = memo(({}) => {
+const TopBar: FC<IProps> = memo((props) => {
+
+    const {loggedIn, userInfo} = props;
+    const text = loggedIn ? `当前登录：${userInfo.nickname}` : `未登录`;
+    const history = useHistory();
+
+    const backToHome = () => history.push('/')
 
     return <div id='comp-top-bar'>
       <div className='container'>
-        <div className='logo-title'>
+        <span className='logo-title' onClick={backToHome}>
           <img src={logo} alt='いいね！' className='favicon'/>
           <div className='title'>Minazuki BBS</div>
-        </div>
+        </span>
         <SearchBar className='search-bar'/>
         <div className='entry-groups'>
-          <IconFont type='if-user' className='user-entry' />
+          <Tooltip placement="bottomRight" title={text}>
+            <IconFont type='if-user' className='user-entry' />
+          </Tooltip>
         </div>
       </div>
     </div>;

@@ -7,12 +7,18 @@ import BgImg from "./BgImg";
 
 import atri_2 from '../images/bg-atri-2.png';
 
-const PageFrame: FC<PageFrameProps> = memo((props: PageFrameProps) => {
+const PageFrame: FC<PageFrameProps> = memo((props) => {
+
+    const toTopBar = {
+        userInfo: props.userInfo,
+        loggedIn: props.loggedIn,
+    }
 
     return (
         <div id='comp-page-frame'>
             <BgImg src={atri_2} />
-            <TopBar />
+            <TopBar {...toTopBar}/>
+            {props.children}
         </div>
     );
 });

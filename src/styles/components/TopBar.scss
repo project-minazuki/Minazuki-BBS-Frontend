@@ -1,6 +1,8 @@
 #comp-top-bar {
 
-  z-index: 1919;
+  z-index: 10;
+  position: fixed;
+  top: 0;
 
   .container {
     display: flex;
@@ -65,6 +67,10 @@
 
   .ant-input {
     background-color: transparent;
+  }
+
+  .ant-tooltip-open {
+    z-index: 1020;
   }
 
 }
