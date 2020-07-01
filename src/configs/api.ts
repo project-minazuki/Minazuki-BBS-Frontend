@@ -56,7 +56,7 @@ export namespace category {
     export namespace moderator {
 
         export const getByCateId = (id: string) => new Request({
-            method: 'GET', url: `${cateHeader}/$${id}/moderator`
+            method: 'GET', url: `${cateHeader}/${id}/moderator`
         });
 
         export const dismissById = (cid: string, mid: string) => new Request({
@@ -173,15 +173,15 @@ export namespace user {
 
 export namespace notice {
     export const allNotice = (id: string) => new Request({
-        method: "GET", url: `${noticeHeader}/{id}/all`
+        method: "GET", url: `${noticeHeader}/${id}/all`
     })
 
     export const deleteNotice = (id: string) => new Request({
-        method: "DELETE", url: `${noticeHeader}/{id}/delete`
+        method: "DELETE", url: `${noticeHeader}/${id}/delete`
     });
 
     export const getNoticeById = (id: string) => new Request({
-        method: "GET", url: `${noticeHeader}/{id}/getNoticeById`
+        method: "GET", url: `${noticeHeader}/${id}/getNoticeById`
     });
 
     export const creatNotice = (param: {
@@ -216,22 +216,22 @@ export namespace theme {
 
     export const allTheme = (id: string) => new Request({
         method: "GET",
-        url: `${themeHeader}/{id}/all`,
+        url: `${themeHeader}/${id}/all`,
     })
 
     export const highQuality = (id: string) => new Request({
         method: "GET",
-        url: `${themeHeader}/{id}/highQuality`,
+        url: `${themeHeader}/${id}/highQuality`,
     })
 
     export const selectByTag = (id: string) => new Request({
         method: "GET",
-        url: `${themeHeader}/{id}/selectByTag`,
+        url: `${themeHeader}/${id}/selectByTag`,
     })
 
     export const top = (id: string) => new Request({
         method: "GET",
-        url: `${themeHeader}/{id}/top`,
+        url: `${themeHeader}/${id}/top`,
     })
 
     /*
@@ -239,32 +239,32 @@ export namespace theme {
     */
     export const viewThemeDetails = (id: string) => new Request({
         method: "GET",
-        url: `${themeHeader}/{id}`,
+        url: `${themeHeader}/${id}`,
     })
 
     export const deleteTheme = (id: string) => new Request({
         method: "DELETE",
-        url: `${themeHeader}/{id}`,
+        url: `${themeHeader}/${id}`,
     })
 
     export const cancelSetHighQuality = (id: string) => new Request({
         method: "GET",
-        url: `${themeHeader}/{id}/cancelSetHighQuality`,
+        url: `${themeHeader}/${id}/cancelSetHighQuality`,
     })
 
     export const cancelSetTop = (id: string) => new Request({
         method: "GET",
-        url: `${themeHeader}/{id}`,
+        url: `${themeHeader}/${id}`,
     })
 
     export const setHighQuality = (id: string) => new Request({
         method: "GET",
-        url: `${themeHeader}/{id}/setHighQuality`,
+        url: `${themeHeader}/${id}/setHighQuality`,
     })
 
     export const setTop = (id: string) => new Request({
         method: "GET",
-        url: `${themeHeader}/{id}/setTop`,
+        url: `${themeHeader}/${id}/setTop`,
     })
 
     export const create = (param: {
@@ -346,12 +346,12 @@ export namespace theme {
 export namespace history {
     export const deleteHistory = (id: string) => new Request({
         method: "DELETE",
-        url: `${historyHeader}/{id}/delete`,
+        url: `${historyHeader}/${id}/delete`,
     })
 
     export const getHistoryViewed = (id: string) => new Request({
         method: "GET",
-        url: `${historyHeader}/{id}/getHistoryViewed`,
+        url: `${historyHeader}/${id}/getHistoryViewed`,
     })
 
     export const _ = (param: {
@@ -372,12 +372,12 @@ export namespace history {
 export namespace favorite {
     export const _ = (id: string) => new Request({
         method: "DELETE",
-        url: `${favoriteHeader}/{id}/delete`,
+        url: `${favoriteHeader}/${id}/delete`,
     })
 
     export const getAndUpdate = (id: string) => new Request({
         method: "GET",
-        url: `${favoriteHeader}/{id}/getAndUpdate`,
+        url: `${favoriteHeader}/${id}/getAndUpdate`,
     })
 
     export const create = (param: {
@@ -400,12 +400,12 @@ export namespace favorite {
 export namespace post {
     export const viewPostDetails = (id: string) => new Request({
         method: "GET",
-        url: `${postHeader}/{id}`,
+        url: `${postHeader}/${id}`,
     })
 
     export const deletePost = (id: string) => new Request({
         method: "DELETE",
-        url: `${postHeader}/{id}`,
+        url: `${postHeader}/${id}`,
     })
 
     export const like = (id: string) => new Request({
@@ -431,7 +431,7 @@ export namespace post {
 
     export const deleteReply = (id: string) => new Request({
         method: "DELETE",
-        url: `${postHeader}/reply/{id}/delete`,
+        url: `${postHeader}/reply/${id}/delete`,
     })
 
     export const createReply = (param: {
@@ -465,27 +465,27 @@ export namespace post {
 export namespace inbox {
     export const deleteInbox = (id: string) => new Request({
         method: "DELETE",
-        url: `${inboxHeader}/{id}/delete`,
+        url: `${inboxHeader}/${id}/delete`,
     })
 
     export const getInbox = (id: string) => new Request({
         method: "GET",
-        url: `${inboxHeader}/{id}/get`,
+        url: `${inboxHeader}/${id}/get`,
     })
 
     export const myInbox = (id: string) => new Request({
         method: "GET",
-        url: `${inboxHeader}/{id}/myInbox`,
+        url: `${inboxHeader}/${id}/myInbox`,
     })
 
     export const countAllUnchecked = (id: string) => new Request({
         method: "GET",
-        url: `${inboxHeader}/{id}/myInbox/countAllUnchecked`,
+        url: `${inboxHeader}/${id}/myInbox/countAllUnchecked`,
     })
 
     export const myOutbox = (id: string) => new Request({
         method: "GET",
-        url: `${inboxHeader}/{id}/myOutbox`,
+        url: `${inboxHeader}/${id}/myOutbox`,
     })
 
     export const create = (param: {
