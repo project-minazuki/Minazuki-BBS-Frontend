@@ -56,7 +56,7 @@ export namespace category {
     export namespace moderator {
 
         export const getByCateId = (id: string) => new Request({
-            method: 'GET', url: `${cateHeader}/${id}/moderator`
+            method: 'GET', url: `${cateHeader}/$${id}/moderator`
         });
 
         export const dismissById = (cid: string, mid: string) => new Request({
