@@ -1,5 +1,6 @@
 import {store} from "../App";
-import {pwdMinLength} from "../configs/consts";
+import {developerName, pwdMinLength} from "../configs/consts";
+import {User} from "../configs/types";
 
 /**
  *
@@ -48,3 +49,13 @@ export function analyzePassWord(res: pwdTestResult): pwsStrength {
 
 export const checkPassWord = (pwd: string) =>
     analyzePassWord(testPassWord(pwd));
+
+type UserType = 0 | 1 | 2 | 3 | 4;
+
+export function getUserGroup(user: User): UserType {
+    if (user._id === undefined) return 0;
+    if (!!developerName.find(value => value === user.username)) return 4;
+    if (user.isAdmin) return 3;
+    if (user.manageCateId === null) return 1;
+    else return 2;
+}

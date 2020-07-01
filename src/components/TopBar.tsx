@@ -1,13 +1,14 @@
 import React, {FC, HTMLProps, memo} from "react";
+import {User} from "../configs/types";
+import {useHistory} from "react-router";
 
 import '../styles/components/TopBar.scss';
 import logo from '../images/favicon.svg';
 
-import {Input, message, Tooltip} from 'antd';
+import {Input, message, Tooltip, Popover} from 'antd';
 import {SearchOutlined} from '@ant-design/icons';
 import IconFont from "./IconFont";
-import {User} from "../configs/types";
-import {useHistory} from "react-router";
+import UserInfoCard from "./UserInfoCard";
 
 interface IProps {
     userInfo: User;
@@ -29,7 +30,6 @@ const SearchBar: FC<{} & HTMLProps<any>> = memo((props) => {
 const TopBar: FC<IProps> = memo((props) => {
 
     const {loggedIn, userInfo} = props;
-    const text = loggedIn ? `当前登录：${userInfo.nickname}` : `未登录`;
     const history = useHistory();
 
     const backToHome = () => history.push('/')
@@ -42,9 +42,10 @@ const TopBar: FC<IProps> = memo((props) => {
         </span>
         <SearchBar className='search-bar'/>
         <div className='entry-groups'>
-          <Tooltip placement="bottomRight" title={text}>
+          <Popover trigger='click' placement="bottomRight" className='user-card'
+                   content={<UserInfoCard info={userInfo} />}>
             <IconFont type='if-user' className='user-entry' />
-          </Tooltip>
+          </Popover>
         </div>
       </div>
     </div>;
