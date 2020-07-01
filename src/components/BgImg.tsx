@@ -1,0 +1,21 @@
+import React, {FC, memo} from "react";
+
+import '../styles/components/BgImg.scss';
+
+interface IProps {
+    src: string;
+    zIndex?: number;
+}
+
+const BgImg: FC<IProps> = memo((props) => {
+
+    console.log(props.src)
+
+    return (
+        <div id='comp-bg-img' style={{
+            backgroundImage: `url(${props.src})`,
+            zIndex: props.zIndex ?? 0,}} />
+    );
+});
+
+export default BgImg;

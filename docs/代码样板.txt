@@ -70,9 +70,7 @@ interface IProps {
     children?: JSX.Element;					// 不包含子元素，则彻底删去
 };
 
-const PureComponent: FC<IProps> = memo(({
-    title, children, favicon
-}: IProps) => {
+const PureComponent: FC<IProps> = memo((props: IProps) => {
     return (
         <div id="comp-pure-component">
 
