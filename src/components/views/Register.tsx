@@ -3,7 +3,7 @@ import {RegisterProps} from "../../containers/views/Register";
 import '../../styles/components/views/Register.scss';
 
 import {useHistory} from "react-router";
-import {Form, Input, Button, Progress} from 'antd';
+import {Form, Input, Button, Progress, message} from 'antd';
 import {
     LeftOutlined, RightOutlined,
     CheckOutlined, LoadingOutlined,
@@ -15,7 +15,7 @@ import atri from '../../images/bg-atri.png';
 import * as url from '../../configs/url';
 import SignCard from "../SignCard";
 import {checkPassWord} from "../../utils/tools";
-import {toASCII} from "punycode";
+import {pwdMinLength} from "../../configs/consts";
 
 const regSteps: number = 3;
 
@@ -32,30 +32,46 @@ const NowForm: FC<{step: number, alia?: string}> = memo(({step, alia}) => {
     }
 
     if (step <= 0) return <>
-        <Form.Item name='username' className='input-item'>
+        <Form.Item name='username' className='input-item'
+                   rules={[{required: true, message: '用户名不能为空'},
+                       {pattern: /^[a-z0-9A-Z_]+$/, message: '用户名仅可包含字母、数字以及下划线'},
+                       {pattern: /^[a-zA-Z].*$/, message: '用户名的第一个字符必须是字母'}]}>
             <Input placeholder='用户名' />
         </Form.Item>
-        <Form.Item name='password' className='input-item'>
+        <Form.Item name='password' className='input-item'
+                   rules={[{required: true, message: '新密码不能为空'},
+                       {type: 'string', min: pwdMinLength, message: `密码长度不能小于 ${pwdMinLength} 位`}]}>
             <Input.Password placeholder='新密码' onChange={testPwd}/>
         </Form.Item>
-        <Form.Item name='passwordConfirm' className='input-item'>
+        <Form.Item name='passwordConfirm' className='input-item'
+                   rules={[{required: true, message: '请确认您的密码'},
+                       ({ getFieldValue }) => ({
+                           validator(rule, value) {
+                               if (!value || getFieldValue('password') === value) {
+                                   return Promise.resolve();
+                               } else return Promise.reject('两次输入的密码不匹配，请重试！');
+                           },
+                       }),]}>
             <Input.Password placeholder='确认密码' />
         </Form.Item>
         <Form.Item><div className='pwd-strength'>
             <div className='label'>密码强度：</div>
             <Progress type='line' steps={5} percent={strength * 20} className='progress'
                       strokeWidth={14}
-                      format={(percent, success) => {
+                      format={(percent) => {
                           const v = (percent ?? 0) / 20;
                           return <div style={{color:'black'}}> {text[Math.ceil(v)]}</div>;
                       }} strokeColor={color[strength]} size={'small'}/></div>
         </Form.Item>
     </>;
     else if (step == 1) return <>
-        <Form.Item name='phone' className='input-item'>
+        <Form.Item name='phone' className='input-item'
+                   rules={[{required: true, message: '电话号码不能为空！'}]}>
             <Input placeholder='移动电话号码' />
         </Form.Item>
-        <Form.Item name='email' className='input-item'>
+        <Form.Item name='email' className='input-item'
+                   rules={[{type: 'email', message: '请输入合法的电子邮件地址！'},
+                       {required: true, message: '电子邮件地址不能为空！'}]}>
             <Input placeholder='电子邮箱地址' />
         </Form.Item>
     </>;
@@ -85,25 +101,19 @@ const Register: FC<RegisterProps> = memo(({
         else setStep(step - 1);
     }
 
-    const stepNext = () => {
+    const stepNext = (values: {}) => {
         if (isLastStep()) history.push(url.login);
         else switch (step) {
             case regSteps - 2:
-                handleSubmit();
+                handleSubmit(values);
                 break;
             default: setStep(step + 1);
         }
 
     }
 
-    const handleSubmit = () => {    // TODO: 尝试使用 ref 触发原生 finish 事件来取代
-        const value = {
-            username: form.getFieldValue('username'),
-            password: form.getFieldValue('password'),
-            phone: form.getFieldValue('phone'),
-            email: form.getFieldValue('email'),
-        }
-        console.log(value);
+    const handleSubmit = (values: {}) => {
+        console.log(values);
         tryRegister(2000, () => setStep(step + 1));
     }
 
@@ -115,7 +125,8 @@ const Register: FC<RegisterProps> = memo(({
               {guides[step]}
             </div>
             <div className='form'>
-              <Form form={form} size='large'>
+              <Form form={form} size='large' onFinish={stepNext}
+                    onFinishFailed={() => message.warn('请检查表单内容合法性！')}>
                 <NowForm step={step} alia={form.getFieldValue('username')}/>
               </Form>
             </div>
@@ -129,7 +140,7 @@ const Register: FC<RegisterProps> = memo(({
                 {`第 ${step + 1} 步，共 ${regSteps} 步`}
               </div>
               <Button title={''} type='text' shape="round" size='large'
-                      onClick={stepNext} className='nav-button'>
+                      onClick={() => form.submit()} className='nav-button'>
                 {isLastStep() ? '现在登陆' : '下一步'}
                 {waiting ? <LoadingOutlined /> : <RightOutlined />}
               </Button>
