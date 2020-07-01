@@ -22,3 +22,19 @@ export interface LoginStart {
 export function loginStart(username: string, password: string): LoginStart {
     return {type: LOGIN_START, username, password}
 }
+
+export const WAIT_PROCESS = 'WAIT_PROCESS';
+export type WAIT_PROCESS = typeof WAIT_PROCESS;
+
+export interface WaitProcess {
+    type: WAIT_PROCESS;
+    time: number;
+    handler?: Function;
+}
+
+export function waitProcess(
+    time: number,
+    handler?: Function
+): WaitProcess {
+    return {type: WAIT_PROCESS, time, handler};
+}

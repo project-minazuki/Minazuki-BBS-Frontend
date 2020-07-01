@@ -8,7 +8,7 @@ import {useHistory} from 'react-router-dom';
 import SignCard from "../SignCard";
 
 import shiroha from '../../images/bg-shiroha.png';
-
+import * as url from '../../configs/url';
 
 const styles = {
     input: {width: '360px'} as any,
@@ -29,7 +29,7 @@ const Login: FC<LoginProps> = memo(({handleLogin, loggedIn}) => {
     };
 
     const navToReg = () => {
-        console.log(shiroha)
+        history.push(url.register);
     };
 
     const tryLogin = (values: any) => {
@@ -41,15 +41,15 @@ const Login: FC<LoginProps> = memo(({handleLogin, loggedIn}) => {
         <div id="view-login" className='bg-frame'>
             <div className='bg-shiroha' style={styles.bg} />
             <SignCard title={'登录'} favicon={true}>
-                {loggedIn ? (<>
+                {loggedIn ? (<div className='logged-in-fallback'>
                     <div className='text-field'>
                         似乎您已经登陆过了…… 要回到主页吗
                     </div>
                     <Button type="primary" shape="round" icon={<HomeOutlined />}
-                            size='large' onClick={backToHome}>
+                            size='large' onClick={backToHome} className='back'>
                         回到主页
                     </Button>
-                </>) : (<>
+                </div>) : (<>
                     <Form form={form} className='login-form' onFinish={tryLogin} size='large'>
                         <Form.Item name='username' style={styles.input}>
                             <Input placeholder='用户名'/>

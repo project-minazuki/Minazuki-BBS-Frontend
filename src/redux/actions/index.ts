@@ -88,6 +88,17 @@ export function processHandled(): ProcessHandled {
     return {type: PROCESS_HANDLED};
 }
 
+export const PROCESS_STARTED = 'PROCESS_STARTED';
+export type PROCESS_STARTED = typeof PROCESS_STARTED;
+
+export interface ProcessStarted {
+    type: PROCESS_STARTED;
+}
+
+export function processStarted(): ProcessStarted {
+    return {type: PROCESS_STARTED};
+}
+
 
 export const RECOMMEND_FETCHED = 'RECOMMEND_FETCHED';
 export type RECOMMEND_FETCHED = typeof RECOMMEND_FETCHED;
@@ -106,4 +117,16 @@ export function recommendFetched(
         type: RECOMMEND_FETCHED,
         newTheme, newReply,
     };
+}
+
+export const REGISTER_FORM_FILLED = 'REGISTER_FORM_FILLED';
+export type REGISTER_FORM_FILLED = typeof REGISTER_FORM_FILLED;
+
+export interface RegisterFormFilled {
+    type: REGISTER_FORM_FILLED;
+    value: object;
+}
+
+export function registerFormFilled(value: object): RegisterFormFilled {
+    return {type: REGISTER_FORM_FILLED, value}
 }

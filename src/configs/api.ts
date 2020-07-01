@@ -25,7 +25,7 @@ export class Request {
 
 }
 
-export module test {
+export namespace test {
 
     export const testGetMethod = () => new Request({
         method: 'GET', url: `${MockServer}/test/testGetMethod`

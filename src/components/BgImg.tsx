@@ -8,9 +8,6 @@ interface IProps {
 }
 
 const BgImg: FC<IProps> = memo((props) => {
-
-    console.log(props.src)
-
     return (
         <div id='comp-bg-img' style={{
             backgroundImage: `url(${props.src})`,

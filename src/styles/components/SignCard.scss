@@ -15,7 +15,7 @@
     height: 560px;
     box-sizing: border-box;
     background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(40px) saturate(100%);
+    backdrop-filter: blur(15px) saturate(150%);
   }
 
   .card-title {
@@ -26,7 +26,7 @@
   }
 
   $favicon_size: 100px;
-  .favicon {
+  .card-favicon {
     width: $favicon_size;
     height: $favicon_size;
     margin: 4px 20px;

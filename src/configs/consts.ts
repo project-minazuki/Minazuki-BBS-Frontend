@@ -14,3 +14,5 @@ export const storage = {
 export const defaultFavicon = '';
 
 export const tokenExpireTime = 604800000;
+
+export const pwdMinLength = 6;

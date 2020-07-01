@@ -5,7 +5,7 @@ import logo from '../images/favicon.svg';
 
 interface IProps {
     title: string;
-    children: JSX.Element;
+    children: JSX.Element | JSX.Element[];
     favicon: boolean;
 };
 
@@ -14,7 +14,7 @@ const SignCard: FC<IProps> = memo(({
 }: IProps) => {
     return (
         <div id="comp-sign-card"><div className='bg-frame-container'>
-            {favicon && <img src={logo} alt='いいね！' className='favicon'/>}
+            {favicon && <img src={logo} alt='いいね！' className='card-favicon'/>}
             <div className='card-title'>{title}</div>
             <div>{children}</div>
         </div></div>

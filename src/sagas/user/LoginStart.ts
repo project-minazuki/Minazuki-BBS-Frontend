@@ -1,11 +1,11 @@
-import * as asyncs from '../../redux/actions/async';
+import * as $actions from '../../redux/actions/async';
 import {put, takeLatest, select} from 'redux-saga/effects';
 import * as xhr from '../../utils/xhr';
 import * as actions from '../../redux/actions';
 
 import {message} from 'antd';
 
-function* worker(action: asyncs.LoginStart) {
+function* worker(action: $actions.LoginStart) {
     try {
         const {username, password} = action;
         const res = yield xhr.$login({username, password});
@@ -22,7 +22,7 @@ function* worker(action: asyncs.LoginStart) {
 }
 
 function* watcher() {
-    yield takeLatest(asyncs.LOGIN_START, worker);
+    yield takeLatest($actions.LOGIN_START, worker);
 }
 
 export default watcher;
