@@ -7,6 +7,7 @@ import {RouteComponentProps} from "react-router";
 
 import {LoadingOutlined} from '@ant-design/icons';
 import {Spin} from 'antd';
+import Footer from "./Footer";
 
 export const RouteContext = createContext({} as RouteComponentProps<any>);
 
@@ -51,6 +52,7 @@ const PageFrame: FC<PageFrameProps> = memo((props) => {
             <RouteContext.Provider value={route}>
                 {unload ? loading : props.children}
             </RouteContext.Provider>
+            <Footer />
         </div>
     );
 });
