@@ -3,14 +3,17 @@ import {bindActionCreators, Dispatch} from 'redux';
 import {StoreState} from "../../redux/reducers";
 import User from "../../pages/user";
 
+import * as $actions from '../../redux/actions/async';
+
 const mapStateToProps = ({
-    user: {info, token}
+    user, component: {userCenter, inProcess}
 }: StoreState) => ({
-    loggedIn: !!token, info,
+    loggedIn: !!user.token, user,
+    lib: userCenter, inProcess
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
-
+    getById: $actions.fetchUserInfoStart,
 }, dispatch);
 
 type StateProps = ReturnType<typeof mapStateToProps>;

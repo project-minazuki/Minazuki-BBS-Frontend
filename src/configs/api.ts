@@ -97,8 +97,8 @@ export namespace category {
         data: param
     });
 
-    export const getManage = () => new Request({
-        method: 'GET', url: `${cateHeader}/manager`
+    export const getManage = (uid?: string) => new Request({
+        method: 'GET', url: `${cateHeader}/manage?userId=${uid??'current'}`
     });
 
     export const update = (param: {

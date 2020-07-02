@@ -13,8 +13,7 @@ const mapStateToProps = ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
-    tryRegister: $actions.waitProcess,
-    saveRegForm: actions.registerFormFilled,
+    tryRegister: $actions.registerStart,
 }, dispatch);
 
 type StateProps = ReturnType<typeof mapStateToProps>;

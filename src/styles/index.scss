@@ -33,3 +33,15 @@ code {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
 }
+
+.ant-notification-topRight {
+  .ant-notification-notice {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(15px) saturate(150%);
+  }
+}
+
+.ant-message-notice-content {
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(15px) saturate(150%);
+}

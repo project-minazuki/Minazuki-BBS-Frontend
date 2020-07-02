@@ -37,6 +37,7 @@ const Login: FC<LoginProps> = memo(({handleLogin, loggedIn, isLoading}) => {
         handleLogin(username, password);
     }
 
+    // TODO: 可能需要从 viewStore 里取出刚注册的信息
     return (
         <div id="view-login" className='bg-frame'>
             <div className='bg-shiroha' style={styles.bg} />

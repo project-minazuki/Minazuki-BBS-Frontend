@@ -83,3 +83,19 @@ export interface Report {
     checkTime: string;
 }
 
+export interface Mail {
+    _id?: number;
+    createdAt?: string;
+    checked?: boolean;
+    content: string;
+    senderId: number;
+    recipientId: number;
+}
+
+export interface RegisterForm {
+    username: string;
+    password: string;
+    nickname: string;
+    phoneNumber: string;
+    email: string;
+}

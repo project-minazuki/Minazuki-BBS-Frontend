@@ -22,3 +22,5 @@ export const user = '/user/:uid/';
 export const me = '/user/';
 
 export const $user = (uid: string, hash?: string) => `/user/${uid}/#/` + (hash ?? '');
+
+export const $404 = '/';

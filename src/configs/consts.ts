@@ -22,3 +22,7 @@ export const iconFontSrc = ['//at.alicdn.com/t/font_1917388_w7ankqb4iga.js'];
 export const developerName: string[] = ['shiroha'];
 
 export const appName = 'Minazuki BBS';
+
+export const appVersion = 'dev-ver. 0.3';
+
+export const defaultSignature = '这个人很懒，什么也没有留下。';
