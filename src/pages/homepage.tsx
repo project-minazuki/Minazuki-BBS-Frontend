@@ -2,10 +2,7 @@ import React, {FC, memo} from "react";
 
 import {HomepageProps} from "../containers/pages/homepage";
 import '../styles/homepage.scss';
-import CateIntro from "../components/CateIntro";
 import {Announcement, Category, User} from "../configs/types";
-
-
 
 // @ts-ignore
 import CategoryCard1 from "../components/CategoryCard1";
@@ -14,9 +11,6 @@ import NewestTheme1 from "../components/NewestTheme1";
 import NewestReplyTheme1 from "../components/NewestReplyTheme1";
 import { Space } from "antd";
 import AnnouncementCard1 from "../components/AnnouncementCard1";
-import CateSearch from "../components/CateSearch";
-import PostTools from "../components/PostTools";
-
 const Homepage: FC<HomepageProps> = memo(({}) => {
 
 
