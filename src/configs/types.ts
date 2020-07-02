@@ -43,6 +43,7 @@ export interface Category {
     createTime: string;
     updateTime: string;
     visits: number;
+    avatar?: string;
 }
 
 export interface HistoryViewed {

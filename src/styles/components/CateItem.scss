@@ -1,0 +1,32 @@
+#comp-cate-item {
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    $avatar-size: 48px;
+    .avatar {
+      width: $avatar-size;
+      height: $avatar-size;
+      margin: 4px;
+    }
+
+    .text-field {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0 8px;
+
+      .name {
+        font-size: 16px;
+        color: black;
+      }
+
+      .desc {
+        font-size: 14px;
+        color: #707070;
+      }
+    }
+  }
+}
