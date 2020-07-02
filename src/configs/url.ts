@@ -18,3 +18,5 @@ export const theme = '/theme/:themeId';
 export const announcement = '/announcement/:announceId';
 
 export const user = '/user/:uid';
+
+export const $user = (uid: string) => `/user/${uid}`;

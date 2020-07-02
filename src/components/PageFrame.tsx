@@ -1,11 +1,11 @@
-import React, {FC, memo} from "react";
+import React, {createContext, FC, memo} from "react";
 
 import {PageFrameProps} from "../containers/PageFrame";
 import '../styles/components/PageFrame.scss';
 import TopBar from "./TopBar";
-import BgImg from "./BgImg";
+import {RouteComponentProps} from "react-router";
 
-import atri_2 from '../images/bg-atri-2.png';
+export const RouteContext = createContext({} as RouteComponentProps<any>);
 
 const PageFrame: FC<PageFrameProps> = memo((props) => {
 
@@ -14,11 +14,18 @@ const PageFrame: FC<PageFrameProps> = memo((props) => {
         loggedIn: props.loggedIn,
     }
 
+    const route = {
+        history: props.history,
+        match: props.match,
+        location: props.location,
+    }
+
     return (
         <div id='comp-page-frame'>
-            <BgImg src={atri_2} />
             <TopBar {...toTopBar}/>
-            {props.children}
+            <RouteContext.Provider value={route}>
+                {props.children}
+            </RouteContext.Provider>
         </div>
     );
 });

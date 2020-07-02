@@ -4,6 +4,7 @@ import {bindActionCreators, Dispatch} from 'redux';
 import PageFrame from "../components/PageFrame";
 
 import {StoreState} from "../redux/reducers";
+import {RouteComponentProps} from "react-router";
 
 const mapStateToProps = ({
     user: {token, info},
@@ -21,5 +22,5 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = ReturnType<typeof mapDispatchToProps>;
 
-export type PageFrameProps = StateProps & DispatchProps;
+export type PageFrameProps = StateProps & DispatchProps & RouteComponentProps;
 export default connect(mapStateToProps, mapDispatchToProps)(PageFrame);

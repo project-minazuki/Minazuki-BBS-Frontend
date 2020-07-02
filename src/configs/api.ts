@@ -185,17 +185,16 @@ export namespace notice {
     });
 
     export const creat = (param: {
-
         categoryId: number,
         content: string,
         creatorId: number,
         title: string
-
     }) => new Request({
         method: "POST",
         url: `${noticeHeader}/create`,
         data: param
     });
+
     export const update = (param: {
         allNull: boolean,
         content: string,
@@ -270,12 +269,10 @@ export namespace theme {
     export const create = (param: {
         categoryId: number,
         creatorId: number,
-        tags: [
-            {
-                id: number,
-                name: string
-            }
-        ],
+        tags: {
+            id: number,
+            name: string,
+        }[],
         title: string
     }) => new Request({
         method: "POST",
@@ -315,7 +312,6 @@ export namespace theme {
     export const removeTag = (param: {
         tagId: number,
         themeId: number
-
     }) => new Request({
         method: "POST",
         url: `${themeHeader}/tag/remove`,
@@ -354,18 +350,18 @@ export namespace history {
         url: `${historyHeader}/${id}/getHistoryViewed`,
     })
 
-    export const _ = (param: {
-        ownerId: number,
-        viewedThemeId: number
-    }) => new Request({
-        method: "POST",
-        url: `${historyHeader}/create`,
-        data: param
-    })
+    // export const _ = (param: {
+    //     ownerId: number,
+    //     viewedThemeId: number
+    // }) => new Request({
+    //     method: "POST",
+    //     url: `${historyHeader}/create`,
+    //     data: param
+    // })
 
     export const myHistories= () => new Request({
         method: "GET",
-        url: `${historyHeader}/`,
+        url: `${historyHeader}/myHistories`,
     })
 }
 
@@ -393,7 +389,6 @@ export namespace favorite {
         method: "GET",
         url: `${favoriteHeader}/myFavorite`,
     })
-
 
 }
 
@@ -445,7 +440,7 @@ export namespace post {
     })
 
     /*
-    *获取指定主题帖下的所有帖子
+     * 获取指定主题帖下的所有帖子
      */
     export const getAllPostsUnderATheme= (id: string) => new Request({
         method: "GET",
