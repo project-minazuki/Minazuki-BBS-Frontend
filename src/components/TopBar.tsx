@@ -9,6 +9,7 @@ import {Input, message, Tooltip, Popover} from 'antd';
 import {SearchOutlined} from '@ant-design/icons';
 import IconFont from "./IconFont";
 import UserInfoCard from "./UserInfoCard";
+import {appName} from "../configs/consts";
 
 interface IProps {
     userInfo: User;
@@ -37,8 +38,12 @@ const TopBar: FC<IProps> = memo((props) => {
     return <div id='comp-top-bar'>
       <div className='container'>
         <span className='logo-title' onClick={backToHome}>
-          <img src={logo} alt='いいね！' className='favicon'/>
-          <div className='title'>Minazuki BBS</div>
+          <Tooltip placement='bottomLeft' title={appName}>
+            <img src={logo} alt='いいね！' className='favicon'/>
+          </Tooltip>
+          <Tooltip placement='bottom' title='回到首页'>
+            <div className='title'>{appName}</div>
+          </Tooltip>
         </span>
         <SearchBar className='search-bar'/>
         <div className='entry-groups'>

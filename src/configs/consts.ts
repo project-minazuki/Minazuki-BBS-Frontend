@@ -1,6 +1,6 @@
 
 
-export const ApiServer = 'https://localhost:3000';
+export const ApiServer = 'http://47.112.128.54:8080';
 
 export const MockServer = 'http://localhost:1919/api';
 
@@ -17,6 +17,8 @@ export const tokenExpireTime = 604800000;
 
 export const pwdMinLength = 6;
 
-export const iconFontSrc = ['//at.alicdn.com/t/font_1917388_8ky8070wvav.js'];
+export const iconFontSrc = ['//at.alicdn.com/t/font_1917388_w7ankqb4iga.js'];
 
 export const developerName: string[] = ['shiroha'];
+
+export const appName = 'Minazuki BBS';

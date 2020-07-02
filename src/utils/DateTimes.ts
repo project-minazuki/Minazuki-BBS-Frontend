@@ -7,3 +7,10 @@
 export function stringToDate(dateString: string) {
     return new Date(dateString.replace(/-/g, '/'))
 }
+
+export function stringToDateBackend(date: string) {
+    const s = date.replace(/-/g, '/')
+        .replace(/T/g, ' ')
+        .substr(0, 19);
+    return new Date(s);
+}

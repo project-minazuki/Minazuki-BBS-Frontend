@@ -1,0 +1,35 @@
+#comp-list-item {
+  user-select: none;
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: inherit;
+    transition: 300ms;
+    border-radius: 4px;
+  }
+
+  .container:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .size-M {
+    padding: 4px;
+    width: inherit;
+    justify-content: normal;
+
+    .icon {
+      font-size: 16px;
+      margin: 2px;
+    }
+
+    .label {
+      margin: 0 4px;
+      font-size: 15px;
+      text-align: center;
+      width: calc(100% - 20px);
+    }
+  }
+}

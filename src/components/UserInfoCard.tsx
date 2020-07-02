@@ -19,6 +19,7 @@ interface IProps {
 const UserInfoCard: FC<IProps> = memo(({className, info}) => {
 
     const history = useHistory();
+    const group = getUserGroup(info);
 
     const tags = [
         <Tag>游客</Tag>,
@@ -35,15 +36,22 @@ const UserInfoCard: FC<IProps> = memo(({className, info}) => {
                   className='avatar'/>
           <div className='nickname'>{info.nickname ?? '游客'}</div>
           <div className='username'>{`用户名： ${info.username}`}</div>
-          <div className='group'>{tags[getUserGroup(info)]}</div>
-          <div className='entries'>
+          <div className='group'>{tags[group]}</div>
+          {!!group && <div className='entries'>
             <IconItem type='if-inbox' title='私信' className='item' msg={2}
                       onClick={() => history.push('/testApp')}/>
             <IconItem type='if-todo' title='待处理' className='item'/>
-          </div>
-          <div className='menu'>
-
-          </div>
+          </div>}
+            {group ? <div className='menu'>
+              <ListItem label='个人中心' type='if-home' onClick={() => {
+              }}/>
+              <ListItem label='管理中心' type='if-center' onClick={() => {
+              }}/>
+              <ListItem label='退出登录' type='if-exit' onClick={() => {
+              }}/>
+            </div> : <div className='menu' style={{margin: '8px 0 0 0'}}>
+              <ListItem label='登录' type='if-step' onClick={() => history.push(url.login)} />
+            </div>}
         </div>
       </div>
     )
