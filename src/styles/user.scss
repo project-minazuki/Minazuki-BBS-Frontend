@@ -36,7 +36,7 @@
           left: $margin-info;
 
           .avatar {
-            margin: 4px;
+            margin: 4px 8px;
           }
 
           .text-field {
@@ -58,13 +58,14 @@
               }
 
               .tags {
-                margin: 4px 0;
+                margin: 8px 0;
               }
 
               .username {
                 font-size: 15px;
                 color: #707070;
                 margin: 4px 8px;
+                visibility: hidden;
               }
             }
 
@@ -156,6 +157,11 @@
             margin: 0 auto;
           }
         }
+      }
+
+      .edit-card {
+        width: inherit;
+        height: 500px;
       }
     }
   }

@@ -6,10 +6,10 @@ import User from "../../pages/user";
 import * as $actions from '../../redux/actions/async';
 
 const mapStateToProps = ({
-    user, component: {userCenter}
+    user, component: {userCenter, inProcess}
 }: StoreState) => ({
     loggedIn: !!user.token, user,
-    lib: userCenter,
+    lib: userCenter, inProcess
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
