@@ -1,0 +1,40 @@
+#comp-user-center-view {
+
+  width: 100%;
+
+  .card-container {
+    height: 1000px;
+
+    .nav-bar {
+
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-around;
+      align-items: center;
+      margin: 20px 28px;
+
+      .nav-item {
+        transition: 200ms;
+        font-size: 16px;
+        color: #707070;
+        display: flex;
+        width: 72px;
+        height: 30px;
+        text-align: center;
+      }
+
+      .nav-item:hover {
+        font-size: 19px;
+        color: black;
+      }
+
+      .selected {
+        color: black;
+        font-size: 17px;
+      }
+
+    }
+  }
+
+}

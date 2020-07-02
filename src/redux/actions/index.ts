@@ -130,3 +130,44 @@ export interface RegisterFormFilled {
 export function registerFormFilled(value: object): RegisterFormFilled {
     return {type: REGISTER_FORM_FILLED, value}
 }
+
+
+export const MANAGE_CATEGORIES_FETCHED = 'MANAGE_CATEGORIES_FETCHED';
+export type MANAGE_CATEGORIES_FETCHED = typeof MANAGE_CATEGORIES_FETCHED;
+
+export interface ManageCategoriesFetched {
+    type: MANAGE_CATEGORIES_FETCHED;
+    data: [],
+}
+
+export function manageCategoriesFetched(data: []): ManageCategoriesFetched {
+    return {type: MANAGE_CATEGORIES_FETCHED, data};
+}
+
+
+export const INBOX_COUNT_FETCHED = 'INBOX_COUNT_FETCHED';
+export type INBOX_COUNT_FETCHED = typeof INBOX_COUNT_FETCHED;
+
+export interface InboxCountFetched {
+    type: INBOX_COUNT_FETCHED;
+    count: number;
+}
+
+export function inboxCountFetched(cnt: number): InboxCountFetched {
+    return {type: INBOX_COUNT_FETCHED, count: cnt,}
+}
+
+export const USER_INFO_FETCHED = 'USER_INFO_FETCHED';
+export type USER_INFO_FETCHED = typeof USER_INFO_FETCHED;
+
+export interface UserInfoFetched {
+    type: USER_INFO_FETCHED;
+    id: number;
+    data: User;
+}
+
+export function userInfoFetched(id: number, data: User): UserInfoFetched {
+    return {type: USER_INFO_FETCHED, id, data};
+}
+
+

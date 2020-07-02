@@ -1,0 +1,37 @@
+#comp-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+
+  .container {
+    transition: 300ms;
+    border-radius: 4px;
+  }
+
+  .container:hover {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  $icon-color: #707070;
+
+  .size-M {
+
+    $icon-size: 28px;
+
+    width: 64px;
+    height: 80px;
+
+    .icon {
+      font-size: $icon-size;
+      margin: 2px;
+    }
+
+    .title {
+      font-size: 14px;
+      margin: 2px 0;
+    }
+  }
+}

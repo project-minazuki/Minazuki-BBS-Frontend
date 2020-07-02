@@ -37,7 +37,7 @@ const TestApp: FC<TestAppProps> = memo(({fetchInfo, loggedIn, token, userInfo, s
                         loggedIn: {loggedIn ? "true" : "false"} <br/>
                         token: {token}
                     </div>
-                    <Button title="Fetch My Info" onClick={fetchInfo}>
+                    <Button title="Fetch My Info" onClick={() => fetchInfo('./testApp')}>
                         I'm YJSNPI !!
                     </Button>
                 </Col>

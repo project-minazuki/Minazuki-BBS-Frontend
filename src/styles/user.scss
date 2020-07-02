@@ -1,0 +1,169 @@
+#page-user {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  $window-width: 1200px;
+  .container {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: calc(100% - 60px);
+    max-width: $window-width;
+
+    $button-bg: rgba(255, 255, 255, 0.4);
+
+    .upper-block {
+      width: 100%;
+      margin-bottom: 18px;
+
+      .card-container {
+        height: 200px;
+
+        $margin-info: 14px;
+        .standard-info {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          user-select: none;
+          position: fixed;
+          bottom: $margin-info;
+          left: $margin-info;
+
+          .avatar {
+            margin: 4px 8px;
+          }
+
+          .text-field {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .main-text {
+              display: flex;
+              flex-direction: row;
+              align-items: flex-end;
+              justify-content: center;
+              margin: 4px;
+
+              .nickname {
+                font-size: 28px;
+                color: black;
+                margin: 2px 8px;
+              }
+
+              .tags {
+                margin: 8px 0;
+              }
+
+              .username {
+                font-size: 15px;
+                color: #707070;
+                margin: 4px 8px;
+                visibility: hidden;
+              }
+            }
+
+            .sign-text {
+              font-size: 16px;
+              margin: 4px 8px;
+            }
+          }
+        }
+
+        $margin-button: 32px;
+        .buttons-group {
+
+          position: fixed;
+          right: 1.2 * $margin-button;
+          bottom: $margin-button;
+
+          .button {
+            background-color: $button-bg;
+          }
+
+        }
+
+      }
+
+    }
+
+    .lower-block {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      .center-view {
+        width: calc(100% - 340px);
+      }
+
+      .standard-info {
+        width: 320px;
+        height: 360px;
+        margin-left: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        $title-fix: 18px;
+        .main-title {
+          font-size: 22px;
+          color: black;
+          position: fixed;
+          top: $title-fix;
+          left: $title-fix;
+        }
+
+        .list-content {
+
+          width: 250px;
+          margin: 15px 0 35px 0;
+
+          .inner-item {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            margin: 16px 0;
+
+            .inner-title {
+              font-size: 16px;
+              color: black;
+            }
+
+            .inner-content {
+              font-size: 16px;
+              color: #707070;
+            }
+          }
+        }
+
+        .wrapper {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+
+          .goto-manage {
+            background-color: $button-bg;
+            position: fixed;
+            bottom: 1.5 * $title-fix;
+            margin: 0 auto;
+          }
+        }
+      }
+
+      .edit-card {
+        width: inherit;
+        height: 500px;
+      }
+    }
+  }
+
+}

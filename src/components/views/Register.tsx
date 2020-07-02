@@ -16,6 +16,7 @@ import * as url from '../../configs/url';
 import SignCard from "../SignCard";
 import {checkPassWord} from "../../utils/tools";
 import {pwdMinLength} from "../../configs/consts";
+import {RegisterForm} from "../../configs/types";
 
 const regSteps: number = 3;
 
@@ -64,7 +65,7 @@ const NowForm: FC<{step: number, alia?: string}> = memo(({step, alia}) => {
                       }} strokeColor={color[strength]} size={'small'}/></div>
         </Form.Item>
     </>;
-    else if (step == 1) return <>
+    else if (step === 1) return <>
         <Form.Item name='phone' className='input-item'
                    rules={[{required: true, message: '电话号码不能为空！'}]}>
             <Input placeholder='移动电话号码' />
@@ -94,7 +95,7 @@ const Register: FC<RegisterProps> = memo(({
     const history = useHistory();
 
     const guides = ['首先，请设置您的账户的基本信息~', '现在，再添加一些联系方式~', ''];
-    const isLastStep = () => step + 1 == regSteps;
+    const isLastStep = () => step + 1 === regSteps;
 
     const stepForward = () => {
         if (step <= 0) history.push(url.login);
@@ -105,16 +106,22 @@ const Register: FC<RegisterProps> = memo(({
         if (isLastStep()) history.push(url.login);
         else switch (step) {
             case regSteps - 2:
-                handleSubmit(values);
+                const data = {
+                    username: form.getFieldValue('username'),
+                    password: form.getFieldValue('password'),
+                    phoneNumber: form.getFieldValue('phone'),
+                    email: form.getFieldValue('email'),
+                    nickname: form.getFieldValue('username'), // TODO: 注册什么时候需要 nickname 的？
+                };
+                handleSubmit(data);
                 break;
             default: setStep(step + 1);
         }
-
     }
 
-    const handleSubmit = (values: {}) => {
-        console.log(values);
-        tryRegister(2000, () => setStep(step + 1));
+    const handleSubmit = (values: RegisterForm) => {
+        console.log('本次的注册信息', values);
+        tryRegister(values, () => setStep(step + 1));
     }
 
     return (
