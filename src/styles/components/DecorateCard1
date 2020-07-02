@@ -1,0 +1,18 @@
+#comp-decorate-card{
+
+  .container {
+
+
+    .icon {
+
+    }
+
+    .para1 {
+
+    }
+
+    .para2 {
+
+    }
+  }
+}

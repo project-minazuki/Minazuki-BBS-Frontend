@@ -1,0 +1,99 @@
+#comp-theme-item {
+
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  height: 70px;
+
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(15px) saturate(150%);
+  border-radius: 6px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+
+  .comp-theme-head {
+    display: flex;
+    justify-content: space-between;
+    .comp-theme-head-left {
+      display: flex;
+      $pinned-favicon-size: 28px;
+      .pinned-favicon {
+        width: $pinned-favicon-size;
+        height: $pinned-favicon-size;
+      }
+      $high-Quality-favicon-size: 28px;
+      .high-Quality-favicon {
+        width: $pinned-favicon-size;
+        height: $pinned-favicon-size;
+      }
+      .comp-theme-name {
+        font-size: 20px;
+        color: black;
+      }
+    }
+    .latest-Reply-Time {
+      justify-content: flex-end;
+      font-size: 20px;
+      color: #ACACAC;
+      margin: 0px 3px 0px 0px;
+    }
+  }
+
+  .comp-theme-tail {
+    display: flex;
+    justify-content: space-between;
+
+    .comp-theme-tail-left {
+      display: flex;
+      align-items: flex-start;
+      $cate-avatar-size: 30px;
+
+      .cate-avatar {
+        width: $cate-avatar-size;
+        height: $cate-avatar-size;
+      }
+
+      .comp-cate-name {
+        font-size: 20px;
+        color: #ACACAC;
+        margin: 0 8px;
+      }
+
+      $author-avatar-size: 30px;
+
+      .author-avatar {
+        width: $author-avatar-size;
+        height: $author-avatar-size;
+      }
+
+      .theme-author-name {
+        font-size: 20px;
+        color: #ACACAC;
+        margin: 0 8px;
+      }
+
+      .theme-created-Time {
+        font-size: 20px;
+        color: #ACACAC;
+      }
+    }
+    .comp-theme-tail-right {
+
+      display: flex;
+      justify-content: flex-end;
+      $replier-avatar-size: 30px;
+
+      .replier-avatar {
+        width: $replier-avatar-size;
+        height: $replier-avatar-size;
+
+      }
+
+
+      .latest-Reply-name {
+        font-size: 20px;
+        color: #ACACAC;
+        margin: 0px 3px 0px 0px;
+      }
+    }
+  }
+}

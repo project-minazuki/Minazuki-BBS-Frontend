@@ -17,8 +17,10 @@ interface IProps {
     info: User;
 }
 
-const UserInfoCard: FC<IProps> = memo(({className, info}) => {
+const UserInfoCard: FC<IProps> = memo((props) => {
 
+    const info = props.info;
+    const className = props.className;
     const history = useHistory();
 
     const tags = [

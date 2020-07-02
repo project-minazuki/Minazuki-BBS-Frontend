@@ -10,6 +10,7 @@ import {Announcement, Category, User} from "../configs/types";
 
 // @ts-ignore
 import CategoryCard1 from "../components/CategoryCard1";
+import DecorateCard1 from "../components/DecorateCard1";
 
 const Homepage: FC<HomepageProps> = memo(({}) => {
 
@@ -18,9 +19,9 @@ const Homepage: FC<HomepageProps> = memo(({}) => {
           <Card style={{width: '600px', height: '1800px'}}>
             <div className='card-container'>
                 <div className = 'Test' /* 待删除*/>
-                    <CategoryCard1 >
+                    <DecorateCard1>
 
-                    </CategoryCard1>
+                    </DecorateCard1>
                 </div>
             </div>
 
