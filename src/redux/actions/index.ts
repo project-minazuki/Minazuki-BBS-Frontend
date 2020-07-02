@@ -156,3 +156,18 @@ export interface InboxCountFetched {
 export function inboxCountFetched(cnt: number): InboxCountFetched {
     return {type: INBOX_COUNT_FETCHED, count: cnt,}
 }
+
+export const USER_INFO_FETCHED = 'USER_INFO_FETCHED';
+export type USER_INFO_FETCHED = typeof USER_INFO_FETCHED;
+
+export interface UserInfoFetched {
+    type: USER_INFO_FETCHED;
+    id: number;
+    data: User;
+}
+
+export function userInfoFetched(id: number, data: User): UserInfoFetched {
+    return {type: USER_INFO_FETCHED, id, data};
+}
+
+

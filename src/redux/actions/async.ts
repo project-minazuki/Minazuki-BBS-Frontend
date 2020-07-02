@@ -5,11 +5,21 @@ export type FETCH_MY_INFO_START = typeof FETCH_MY_INFO_START;
 
 export interface FetchMyInfoStart {
     type: FETCH_MY_INFO_START;
-    isFirstTime: boolean;
+    redirect: string;
+    isFirstTime?: boolean;
+    title?: string
 }
 
-export function fetchMyInfoStart(isFirstTime: boolean): FetchMyInfoStart {
-    return {type: FETCH_MY_INFO_START, isFirstTime}
+export function fetchMyInfoStart(
+    to: string,
+    isFirstTime?: boolean,
+    title?: string
+): FetchMyInfoStart {
+    return {
+        type: FETCH_MY_INFO_START,
+        redirect: to,
+        isFirstTime, title
+    }
 }
 
 export const LOGIN_START = 'LOGIN_START';
@@ -52,4 +62,17 @@ export interface RegisterStart {
 
 export function registerStart(form: RegisterForm, cb?: () => void): RegisterStart {
     return {type: REGISTER_START, form, cb};
+}
+
+
+export const FETCH_USER_INFO_START = 'FETCH_USER_INFO_START';
+export type FETCH_USER_INFO_START = typeof FETCH_USER_INFO_START;
+
+export interface FetchUserInfoStart {
+    type: FETCH_USER_INFO_START;
+    uid: number;
+}
+
+export function fetchUserInfoStart(uid: number): FetchUserInfoStart {
+    return {type: FETCH_USER_INFO_START, uid};
 }

@@ -62,6 +62,14 @@ export function getUserGroup(user: User, cate?: Category[]): UserType {
     else return 2;
 }
 
+export function _getUserGroup(user: User, cnt?: number): UserType {
+    const $cnt = cnt ?? user.manageCateId ?? 0;
+    if (user._id === undefined) return 0;
+    if (!!developerName.find(value => value === user.username)) return 4;
+    if (user.isAdmin) return 3;
+    return !!$cnt ? 2 : 1;
+}
+
 export function cateToCate(obj: any): Category {
     return {
         avatar: obj.coverUrl,
@@ -74,3 +82,13 @@ export function cateToCate(obj: any): Category {
         visits: obj.visitsCount,
     }
 }
+
+export function userToUser(body: any): User {
+    return {
+        ...body, _id: body.id,
+        createdAt: stringConvert(body.createdAt),
+        lastSignIn: stringConvert(body.lastSignIn),
+        avatar: body.avatarUrl,
+    }
+}
+

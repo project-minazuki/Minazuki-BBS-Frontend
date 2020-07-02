@@ -2,6 +2,7 @@ import * as $actions from '../../redux/actions/async';
 import {put, takeLatest, select} from 'redux-saga/effects';
 import * as xhr from '../../utils/xhr';
 import * as actions from '../../redux/actions';
+import * as url from '../../configs/url';
 
 import {message, notification} from 'antd';
 
@@ -12,7 +13,7 @@ function* worker(action: $actions.LoginStart) {
         const body = res.data;
         if (body.code === 1) {
             yield put(actions.login(body.data));
-            yield put($actions.fetchMyInfoStart(true));
+            yield put($actions.fetchMyInfoStart(url.root, true));
         } else {
             yield message.error(`[code=${body.code}] ${body.msg}`);
         }

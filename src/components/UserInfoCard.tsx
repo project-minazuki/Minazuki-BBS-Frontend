@@ -10,6 +10,7 @@ import {useHistory} from "react-router";
 import IconItem from "./IconItem";
 import ListItem from "./ListItem";
 import {UserStore} from "../redux/reducers/user";
+import {tags} from '../utils/items';
 
 interface IProps {
     className?: string | undefined;
@@ -24,14 +25,6 @@ const UserInfoCard: FC<IProps> = memo(({className, store, cb}) => {
     const history = useHistory();
     const {info, manageCate, inbox} = store;
     const group = getUserGroup(info, manageCate);
-
-    const tags = [
-        <Tag>游客</Tag>,
-        <Tag color='green'>用户</Tag>,
-        <Tag color='red'>版主</Tag>,
-        <Tag color='geekblue'>管理员</Tag>,
-        <Tag color='gold'>开发者</Tag>,
-    ]
 
     return (
       <div id='comp-user-info-card' className={className??''}>
