@@ -9,6 +9,7 @@ import {defaultAvatar} from "../configs/consts";
 import {getUserGroup} from "../utils/tools";
 import {useHistory} from "react-router";
 import IconItem from "./IconItem";
+// @ts-ignore
 import ListItem from "./ListItem";
 
 interface IProps {
