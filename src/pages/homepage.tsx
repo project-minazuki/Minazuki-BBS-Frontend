@@ -5,7 +5,11 @@ import '../styles/homepage.scss';
 import Card from '../components/Card';
 import CateItem from "../components/CateItem";
 import {Announcement, Category, User} from "../configs/types";
-import AnnouncementCard1 from "../components/AnnouncementCard1";
+
+
+
+// @ts-ignore
+import CategoryCard1 from "../components/CategoryCard1";
 
 const Homepage: FC<HomepageProps> = memo(({}) => {
 
@@ -14,9 +18,9 @@ const Homepage: FC<HomepageProps> = memo(({}) => {
           <Card style={{width: '600px', height: '1800px'}}>
             <div className='card-container'>
                 <div className = 'Test' /* 待删除*/>
-                    <AnnouncementCard1 editor={{} as User}    info={{} as Announcement}>
+                    <CategoryCard1 >
 
-                    </AnnouncementCard1>
+                    </CategoryCard1>
                 </div>
             </div>
 

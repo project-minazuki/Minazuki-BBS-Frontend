@@ -1,0 +1,39 @@
+#comp-category-card{
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(15px) saturate(150%);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  height: 375px;
+  width: 311px;
+
+
+  $topHeight : 10%;
+  .top{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+
+    margin: 0px 10px 30px 0px;
+    height: $topHeight;
+    .text-category{
+      text-align: left;
+      font-weight: bold;
+      color: black;
+      margin: 10px;
+    }
+    .read-more{
+      text-align: right;
+      font-size: xx-small;
+      margin: 10px;
+    }
+  }
+  .categories{
+    margin: 10px ;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 1-$topHeight;
+
+  }
+}
