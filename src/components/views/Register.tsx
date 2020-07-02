@@ -16,6 +16,7 @@ import * as url from '../../configs/url';
 import SignCard from "../SignCard";
 import {checkPassWord} from "../../utils/tools";
 import {pwdMinLength} from "../../configs/consts";
+import {RegisterForm} from "../../configs/types";
 
 const regSteps: number = 3;
 
@@ -105,16 +106,22 @@ const Register: FC<RegisterProps> = memo(({
         if (isLastStep()) history.push(url.login);
         else switch (step) {
             case regSteps - 2:
-                handleSubmit(values);
+                const data = {
+                    username: form.getFieldValue('username'),
+                    password: form.getFieldValue('password'),
+                    phoneNumber: form.getFieldValue('phone'),
+                    email: form.getFieldValue('email'),
+                    nickname: form.getFieldValue('username'), // TODO: 注册什么时候需要 nickname 的？
+                };
+                handleSubmit(data);
                 break;
             default: setStep(step + 1);
         }
-
     }
 
-    const handleSubmit = (values: {}) => {
-        console.log(values);
-        tryRegister(2000, () => setStep(step + 1));
+    const handleSubmit = (values: RegisterForm) => {
+        console.log('本次的注册信息', values);
+        tryRegister(values, () => setStep(step + 1));
     }
 
     return (

@@ -1,3 +1,4 @@
+import {RegisterForm} from "../../configs/types";
 
 export const FETCH_MY_INFO_START = 'FETCH_MY_INFO_START';
 export type FETCH_MY_INFO_START = typeof FETCH_MY_INFO_START;
@@ -38,4 +39,17 @@ export function waitProcess(
     handler?: Function
 ): WaitProcess {
     return {type: WAIT_PROCESS, time, handler};
+}
+
+export const REGISTER_START = 'REGISTER_START';
+export type REGISTER_START = typeof REGISTER_START;
+
+export interface RegisterStart {
+    type: REGISTER_START;
+    form: RegisterForm;
+    cb?: () => void;
+}
+
+export function registerStart(form: RegisterForm, cb?: () => void): RegisterStart {
+    return {type: REGISTER_START, form, cb};
 }

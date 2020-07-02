@@ -83,3 +83,10 @@ export interface Report {
     checkTime: string;
 }
 
+export interface RegisterForm {
+    username: string;
+    password: string;
+    nickname: string;
+    phoneNumber: string;
+    email: string;
+}
