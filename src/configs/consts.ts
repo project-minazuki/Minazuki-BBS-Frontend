@@ -20,3 +20,5 @@ export const pwdMinLength = 6;
 export const iconFontSrc = ['//at.alicdn.com/t/font_1917388_w7ankqb4iga.js'];
 
 export const developerName: string[] = ['shiroha'];
+
+export const appName = 'Minazuki BBS';
