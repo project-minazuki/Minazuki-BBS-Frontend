@@ -1,18 +1,17 @@
 import React, {FC, memo, useEffect} from 'react';
 import {createBrowserHistory as createHistory} from 'history';
 import {composeWithDevTools} from 'redux-devtools-extension';
-import {BrowserRouter as MainRouter, Route} from "react-router-dom";
+import {Router as Router} from "react-router-dom";
 import {Provider} from "react-redux";
-import {createStore, applyMiddleware} from "redux";
+import {applyMiddleware, createStore} from "redux";
 import createSagaMiddleware from 'redux-saga';
 import axios from 'axios';
 
 import Index from './pages/index';
 import Sagas from "./sagas";
-import TestApp from './test/container';
 import {reducers} from "./redux/reducers";
 
-createHistory();
+export const $history = createHistory();
 
 const saga = createSagaMiddleware();
 const middleWares = [saga];
@@ -22,9 +21,9 @@ const enhancer = isDev ? composeWithDevTools(middlewareEnhancer) : middlewareEnh
 export const store = createStore(reducers, enhancer);
 saga.run(Sagas);
 
-store.subscribe(() => axios.interceptors.request.use((config) => {
-    const token = store.getState().user.token ?? '';
-    config.headers.Authorization = "Bearer " + token;
+store.subscribe(() => !!store.getState().user.token &&
+    axios.interceptors.request.use((config) => {
+    config.headers.Authorization = store.getState().user.token ?? undefined;
     return config;
 }, (error: any) => Promise.reject(error)))
 axios.defaults.withCredentials = true;
@@ -37,9 +36,9 @@ const App: FC = memo(() => {
 
   return (
     <Provider store={store}>
-      <MainRouter>
+      <Router history={$history}>
         <Index />
-      </MainRouter>
+      </Router>
     </Provider>
   );
 });

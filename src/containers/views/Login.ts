@@ -6,9 +6,9 @@ import Login from "../../components/views/Login";
 import * as $actions from '../../redux/actions/async';
 
 const mapStateToProps = ({
-    user: {token},
+    user: {token, isLoading},
 }: StoreState) => ({
-    loggedIn: !!token,
+    loggedIn: !!token, isLoading,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({

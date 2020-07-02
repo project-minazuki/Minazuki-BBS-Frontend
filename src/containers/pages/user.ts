@@ -4,9 +4,9 @@ import {StoreState} from "../../redux/reducers";
 import User from "../../pages/user";
 
 const mapStateToProps = ({
-
+    user: {info, token}
 }: StoreState) => ({
-
+    loggedIn: !!token, info,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({

@@ -1,4 +1,4 @@
-import React, {createContext, FC, memo} from "react";
+import React, {createContext, FC, memo, useEffect} from "react";
 
 import {PageFrameProps} from "../containers/PageFrame";
 import '../styles/components/PageFrame.scss';
@@ -19,6 +19,12 @@ const PageFrame: FC<PageFrameProps> = memo((props) => {
         match: props.match,
         location: props.location,
     }
+
+    useEffect(() => {
+        if (props.loggedIn && !props.userInfo._id) {
+            props.reloadInfo(false);
+        }
+    }, [props.loggedIn]);
 
     return (
         <div id='comp-page-frame'>

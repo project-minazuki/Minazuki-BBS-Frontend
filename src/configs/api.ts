@@ -1,7 +1,7 @@
 import {ApiServer, MockServer} from './consts';
 import axios from 'axios';
 
-const header = (!!0 ? ApiServer : MockServer);
+const header = (!!1 ? ApiServer : MockServer);
 const userHeader = `${header}/user`;
 const cateHeader = `${header}/category`;
 const inboxHeader = `${header}/inbox`;
