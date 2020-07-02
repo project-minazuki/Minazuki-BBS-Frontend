@@ -2,10 +2,8 @@ import React, {FC, memo} from "react";
 
 import {HomepageProps} from "../containers/pages/homepage";
 import '../styles/homepage.scss';
-import Card from '../components/Card';
-import CateItem from "../components/CateItem";
+import CateIntro from "../components/CateIntro";
 import {Announcement, Category, User} from "../configs/types";
-
 
 
 // @ts-ignore
@@ -16,16 +14,8 @@ const Homepage: FC<HomepageProps> = memo(({}) => {
 
     return (
         <div id='page-homepage' className='page'>
-          <Card style={{width: '600px', height: '1800px'}}>
-            <div className='card-container'>
-                <div className = 'Test' /* 待删除*/>
-                    <DecorateCard1>
+            <CateIntro info_Cate={{} as Category} info_User={{} as User}/>
 
-                    </DecorateCard1>
-                </div>
-            </div>
-
-          </Card>
         </div>
     );
 });

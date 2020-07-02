@@ -4,7 +4,6 @@ import {Category} from "../configs/types";
 import {User} from "../configs/types";
 import pin from '../images/pin.png';
 import HQuality from '../images/HQuality.png';
-import Card from "./Card";
 import '../styles/components/ThemeItem.scss';
 
 import {Avatar, message} from 'antd';
