@@ -36,7 +36,7 @@ const ThemeItem: FC<IProps> = memo(props => {
     }
 
     return (
-        <div id='comp-theme-item' className={`container ${$class}`}>
+        <div id='comp-theme-item' className={`container ${$class}`} onClick = {handleClick}>
             <div className='comp-theme-head'>
                 <div className='comp-theme-head-left'onClick={handleClick}>
                 {$Theme.pinned && <img src={pin} alt='いいね！' className='pinned-favicon'/>}

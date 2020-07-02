@@ -19,26 +19,29 @@
       flex-direction: row;
       width: 100%;
       justify-content: space-between;
+      margin-left: 4px;
+      margin-top: 4px;
       .text-announcement{
         text-align: left;
-        font-weight: bold;
+        //font-weight: bold;
         color: black;
+        font-size: 22px;
       }
       .read-more{
         text-align: right;
-        font-size: xx-small;
+        font-size: 18px;
       }
     }
     .announcement-title{
-      font-size: larger;
+      font-size: 28px;
       color: black;
-      font-weight: bold;
+      //ont-weight: bold;
       margin: 10px 21px 5px 0;
     }
     .announcement-basic-info{
       display: flex;
       flex-direction: row;
-      font-size: x-small;
+      font-size: 18px;
       width: 100%;
       text-align: left;
       margin: 0 0 5px 0;
@@ -52,7 +55,8 @@
       }
     }
     .announcement-content{
-
+      color: black;
+      font-size: 20px;
     }
   }
 }

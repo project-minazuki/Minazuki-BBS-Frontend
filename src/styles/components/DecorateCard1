@@ -1,18 +1,4 @@
-#comp-decorate-card{
-
-  .container {
+#comp-decorate-card {
 
 
-    .icon {
-
-    }
-
-    .para1 {
-
-    }
-
-    .para2 {
-
-    }
-  }
 }

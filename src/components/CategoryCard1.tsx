@@ -1,7 +1,7 @@
 import React, {CSSProperties, FC, memo} from "react";
 import CateItem from "./CateItem";
 import {Category} from "../configs/types";
-import {message} from "antd";
+import {message, Space} from "antd";
 
 import '../styles/components/CategoryCard1.scss'
 
@@ -28,10 +28,13 @@ const CategoryCard1: FC<IProps> = memo(props => {
                 </div>
             </div>
             <div className="categories">
-                <CateItem info={{} as Category}></CateItem>
-                <CateItem info={{} as Category}></CateItem>
-                <CateItem info={{} as Category}></CateItem>
-                <CateItem info={{} as Category}></CateItem>
+                <Space direction='vertical' size = {20}>
+                    <CateItem info={{} as Category}></CateItem>
+                    <CateItem info={{} as Category}></CateItem>
+                    <CateItem info={{} as Category}></CateItem>
+                    <CateItem info={{} as Category}></CateItem>
+                </Space>
+
             </div>
         </div>
     )
