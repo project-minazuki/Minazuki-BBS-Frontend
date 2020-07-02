@@ -14,9 +14,12 @@ import {UserStore} from "../redux/reducers/user";
 interface IProps {
     className?: string | undefined;
     store: UserStore;
+    cb: {
+        logout: () => void;
+    };
 }
 
-const UserInfoCard: FC<IProps> = memo(({className, store}) => {
+const UserInfoCard: FC<IProps> = memo(({className, store, cb}) => {
 
     const history = useHistory();
     const {info, manageCate, inbox} = store;
@@ -48,8 +51,7 @@ const UserInfoCard: FC<IProps> = memo(({className, store}) => {
               }}/>
               <ListItem label='管理中心' type='if-center' onClick={() => {
               }}/>
-              <ListItem label='退出登录' type='if-exit' onClick={() => {
-              }}/>
+              <ListItem label='退出登录' type='if-exit' onClick={cb.logout}/>
             </div> : <div className='menu' style={{margin: '8px 0 0 0'}}>
               <ListItem label='登录' type='if-step' onClick={() => history.push(url.login)} />
             </div>}

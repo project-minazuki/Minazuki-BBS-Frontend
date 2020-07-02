@@ -3,8 +3,9 @@ import {useHistory} from "react-router";
 
 import '../styles/components/TopBar.scss';
 import logo from '../images/favicon.svg';
+import * as url from '../configs/url';
 
-import {Input, message, Tooltip, Popover} from 'antd';
+import {Input, message, Tooltip, Popover, notification} from 'antd';
 import {LoadingOutlined} from '@ant-design/icons';
 import IconFont from "./IconFont";
 import UserInfoCard from "./UserInfoCard";
@@ -14,6 +15,7 @@ import {UserStore} from "../redux/reducers/user";
 interface IProps {
     store: UserStore;
     loggedIn: boolean;
+    logout: any;
 }
 
 const SearchBar: FC<{} & HTMLProps<any>> = memo((props) => {
@@ -37,6 +39,17 @@ const TopBar: FC<IProps> = memo((props) => {
 
     const backToHome = () => history.push('/')
 
+    const infoCardCB = {
+        logout: () => {
+            notification.info({
+                message: '已退出登录',
+                description: `${store.info.nickname} 已经成功退出登录，返回登陆页面`,
+            });
+            props.logout();
+            history.push(url.login);
+        },
+    }
+
     return <div id='comp-top-bar'>
       <div className='container'>
         <span className='logo-title' onClick={backToHome}>
@@ -50,7 +63,7 @@ const TopBar: FC<IProps> = memo((props) => {
         <SearchBar className='search-bar'/>
         <div className='entry-groups'>
           <Popover trigger='click' placement="bottomRight" className='user-card'
-                   content={<UserInfoCard store={store} />}>
+                   content={<UserInfoCard store={store} cb={infoCardCB} />}>
             <IconFont type='if-user' className='user-entry' />
           </Popover>
           <div className='loading'>{store.isLoading && <LoadingOutlined />}</div>

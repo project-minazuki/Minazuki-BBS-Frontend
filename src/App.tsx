@@ -25,7 +25,7 @@ store.subscribe(() => !!store.getState().user.token &&
     axios.interceptors.request.use((config) => {
     config.headers.Authorization = store.getState().user.token ?? undefined;
     return config;
-}, (error: any) => Promise.reject(error)))
+}, (error: any) => Promise.reject(error)));
 axios.defaults.withCredentials = true;
 
 const App: FC = memo(() => {

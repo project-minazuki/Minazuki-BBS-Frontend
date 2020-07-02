@@ -12,6 +12,7 @@ const PageFrame: FC<PageFrameProps> = memo((props) => {
     const toTopBar = {
         loggedIn: props.loggedIn,
         store: props.userInfo,
+        logout: props.logout,
     }
 
     const route = {

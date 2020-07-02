@@ -6,6 +6,7 @@ import {RouteComponentProps} from "react-router";
 import PageFrame from "../components/PageFrame";
 
 import * as $actions from '../redux/actions/async';
+import * as actions from '../redux/actions/';
 
 const mapStateToProps = ({
     user,
@@ -17,6 +18,7 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
     reloadInfo: $actions.fetchMyInfoStart,
+    logout: actions.logout,
 }, dispatch)
 
 type StateProps = ReturnType<typeof mapStateToProps>;

@@ -39,7 +39,7 @@ export function userReducer(state = userInit, action: Action): UserStore {
             return {...state, token};
         case actions.LOGOUT:
             removeToken();
-            return {...state, token: ''};
+            return {...userInit, token: ''};
         case actions.MY_INFO_FETCHED:
             const info = action.data;
             return {...state, info};
