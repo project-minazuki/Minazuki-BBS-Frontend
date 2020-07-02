@@ -8,12 +8,11 @@ import PageFrame from "../components/PageFrame";
 import * as $actions from '../redux/actions/async';
 
 const mapStateToProps = ({
-    user: {token, info},
+    user,
     component: {inProcess}
 }: StoreState) => ({
-    loggedIn: !!token,
-    userInfo: info,
-
+    loggedIn: !!user.token,
+    userInfo: user,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({

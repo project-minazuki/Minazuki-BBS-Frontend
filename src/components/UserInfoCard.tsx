@@ -1,7 +1,6 @@
 import React, {FC, memo} from "react";
 
 import '../styles/components/UserInfoCard.scss';
-import {User} from "../configs/types";
 import * as url from '../configs/url';
 
 import {Avatar, Tag} from 'antd';
@@ -10,16 +9,18 @@ import {getUserGroup} from "../utils/tools";
 import {useHistory} from "react-router";
 import IconItem from "./IconItem";
 import ListItem from "./ListItem";
+import {UserStore} from "../redux/reducers/user";
 
 interface IProps {
     className?: string | undefined;
-    info: User;
+    store: UserStore;
 }
 
-const UserInfoCard: FC<IProps> = memo(({className, info}) => {
+const UserInfoCard: FC<IProps> = memo(({className, store}) => {
 
     const history = useHistory();
-    const group = getUserGroup(info);
+    const {info, manageCate, inbox} = store;
+    const group = getUserGroup(info, manageCate);
 
     const tags = [
         <Tag>游客</Tag>,
@@ -38,7 +39,7 @@ const UserInfoCard: FC<IProps> = memo(({className, info}) => {
           <div className='username'>{`用户名： ${info.username}`}</div>
           <div className='group'>{tags[group]}</div>
           {!!group && <div className='entries'>
-            <IconItem type='if-inbox' title='私信' className='item' msg={2}
+            <IconItem type='if-inbox' title='私信' className='item' msg={inbox}
                       onClick={() => history.push('/testApp')}/>
             <IconItem type='if-todo' title='待处理' className='item'/>
           </div>}

@@ -1,18 +1,18 @@
 import React, {FC, HTMLProps, memo} from "react";
-import {User} from "../configs/types";
 import {useHistory} from "react-router";
 
 import '../styles/components/TopBar.scss';
 import logo from '../images/favicon.svg';
 
 import {Input, message, Tooltip, Popover} from 'antd';
-import {SearchOutlined} from '@ant-design/icons';
+import {LoadingOutlined} from '@ant-design/icons';
 import IconFont from "./IconFont";
 import UserInfoCard from "./UserInfoCard";
 import {appName} from "../configs/consts";
+import {UserStore} from "../redux/reducers/user";
 
 interface IProps {
-    userInfo: User;
+    store: UserStore;
     loggedIn: boolean;
 }
 
@@ -23,14 +23,16 @@ const SearchBar: FC<{} & HTMLProps<any>> = memo((props) => {
         if (value !== '') message.info(`将要搜索 "${value}"`)
     }
 
-    return <div className={`comp-search-bar ${props.className}`}>
-        <Input.Search placeholder='全局搜索……' className='input-search' onSearch={trySearch}/>
-    </div>
+    return (
+        <div className={`comp-search-bar ${props.className}`}>
+            <Input.Search placeholder='全局搜索……' className='input-search' onSearch={trySearch}/>
+        </div>
+    )
 })
 
 const TopBar: FC<IProps> = memo((props) => {
 
-    const {loggedIn, userInfo} = props;
+    const {loggedIn, store} = props;
     const history = useHistory();
 
     const backToHome = () => history.push('/')
@@ -48,9 +50,10 @@ const TopBar: FC<IProps> = memo((props) => {
         <SearchBar className='search-bar'/>
         <div className='entry-groups'>
           <Popover trigger='click' placement="bottomRight" className='user-card'
-                   content={<UserInfoCard info={userInfo} />}>
+                   content={<UserInfoCard store={store} />}>
             <IconFont type='if-user' className='user-entry' />
           </Popover>
+          <div className='loading'>{store.isLoading && <LoadingOutlined />}</div>
         </div>
       </div>
     </div>;

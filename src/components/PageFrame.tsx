@@ -10,8 +10,8 @@ export const RouteContext = createContext({} as RouteComponentProps<any>);
 const PageFrame: FC<PageFrameProps> = memo((props) => {
 
     const toTopBar = {
-        userInfo: props.userInfo,
         loggedIn: props.loggedIn,
+        store: props.userInfo,
     }
 
     const route = {
@@ -21,7 +21,7 @@ const PageFrame: FC<PageFrameProps> = memo((props) => {
     }
 
     useEffect(() => {
-        if (props.loggedIn && !props.userInfo._id) {
+        if (props.loggedIn && !props.userInfo.info._id) {
             props.reloadInfo(false);
         }
     }, [props.loggedIn]);
