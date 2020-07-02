@@ -8,8 +8,8 @@ export interface User {
     isAdmin: boolean;
     avatar: string;
     nickname: string;
-    createTime: string;
-    lastSignInTime: string;
+    createdAt: string;
+    lastSignIn: string;
     email: string;
     phone: string;
     signature: string;

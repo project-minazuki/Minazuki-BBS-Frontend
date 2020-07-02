@@ -64,7 +64,7 @@ const NowForm: FC<{step: number, alia?: string}> = memo(({step, alia}) => {
                       }} strokeColor={color[strength]} size={'small'}/></div>
         </Form.Item>
     </>;
-    else if (step == 1) return <>
+    else if (step === 1) return <>
         <Form.Item name='phone' className='input-item'
                    rules={[{required: true, message: '电话号码不能为空！'}]}>
             <Input placeholder='移动电话号码' />
@@ -94,7 +94,7 @@ const Register: FC<RegisterProps> = memo(({
     const history = useHistory();
 
     const guides = ['首先，请设置您的账户的基本信息~', '现在，再添加一些联系方式~', ''];
-    const isLastStep = () => step + 1 == regSteps;
+    const isLastStep = () => step + 1 === regSteps;
 
     const stepForward = () => {
         if (step <= 0) history.push(url.login);

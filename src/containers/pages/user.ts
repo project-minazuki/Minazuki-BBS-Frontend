@@ -1,22 +1,20 @@
 import {connect} from "react-redux";
 import {bindActionCreators, Dispatch} from 'redux';
 import {StoreState} from "../../redux/reducers";
-import Login from "../../components/views/Login";
-
-import * as $actions from '../../redux/actions/async';
+import User from "../../pages/user";
 
 const mapStateToProps = ({
-    user: {token, isLoading},
+    user: {info, token}
 }: StoreState) => ({
-    loggedIn: !!token, isLoading,
+    loggedIn: !!token, info,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
-    handleLogin: $actions.loginStart,
+
 }, dispatch);
 
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = ReturnType<typeof mapDispatchToProps>;
 
-export type LoginProps = StateProps & DispatchProps;
-export default connect<StateProps, DispatchProps, {}, StoreState>(mapStateToProps, mapDispatchToProps)(Login);
+export type UserProps = StateProps & DispatchProps;
+export default connect(mapStateToProps, mapDispatchToProps)(User);

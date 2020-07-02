@@ -8,6 +8,12 @@ export function stringToDate(dateString: string) {
     return new Date(dateString.replace(/-/g, '/'))
 }
 
+export function stringConvert(date: string) {
+    return date.replace(/-/g, '/')
+        .replace(/T/g, ' ')
+        .substr(0, 19);
+}
+
 export function stringToDateBackend(date: string) {
     const s = date.replace(/-/g, '/')
         .replace(/T/g, ' ')

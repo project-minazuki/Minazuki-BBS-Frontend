@@ -4,10 +4,11 @@ export type FETCH_MY_INFO_START = typeof FETCH_MY_INFO_START;
 
 export interface FetchMyInfoStart {
     type: FETCH_MY_INFO_START;
+    isFirstTime: boolean;
 }
 
-export function fetchMyInfoStart(): FetchMyInfoStart {
-    return {type: FETCH_MY_INFO_START}
+export function fetchMyInfoStart(isFirstTime: boolean): FetchMyInfoStart {
+    return {type: FETCH_MY_INFO_START, isFirstTime}
 }
 
 export const LOGIN_START = 'LOGIN_START';
