@@ -5,16 +5,14 @@ import '../styles/homepage.scss';
 import CateIntro from "../components/CateIntro";
 import {Announcement, Category, User} from "../configs/types";
 
-
-// @ts-ignore
-import CategoryCard1 from "../components/CategoryCard1";
-import DecorateCard1 from "../components/DecorateCard1";
+import CateSearch from "../components/CateSearch";
+import PostTools from "../components/PostTools";
 
 const Homepage: FC<HomepageProps> = memo(({}) => {
 
     return (
         <div id='page-homepage' className='page'>
-            <CateIntro info_Cate={{} as Category} info_User={{} as User}/>
+            <PostTools></PostTools>
 
         </div>
     );
