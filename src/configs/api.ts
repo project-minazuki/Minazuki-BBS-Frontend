@@ -38,11 +38,11 @@ export namespace test {
     });
 
     export const fetchMyInfo = () => new Request({
-        method: 'GET', url: `${header}/user/me`
+        method: 'GET', url: `${MockServer}/user/me`
     });
 
     export const login = () => new Request({
-        method: 'GET', url: `${header}/user/login`
+        method: 'GET', url: `${MockServer}/user/login`
     });
 
     export const getUserInfo = (uid: string) => new Request({

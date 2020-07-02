@@ -1,6 +1,6 @@
 
 
-export const ApiServer = 'https://localhost:3000';
+export const ApiServer = 'http://47.112.128.54:8080';
 
 export const MockServer = 'http://localhost:1919/api';
 
