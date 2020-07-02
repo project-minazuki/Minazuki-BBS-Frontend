@@ -29,7 +29,7 @@ const AnnouncementCard1: FC<IProps> = memo(props => {
             <div className={`container ${$class}`}>
                 <div className = "announcement">
                     <div className='text-announcement'>
-                        
+
                         论坛公告
                     </div>
                     <div className="read-more" onClick = {readMore}>

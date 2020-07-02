@@ -1,0 +1,17 @@
+@import '~antd/dist/antd.css';
+.c-tag {
+  border-radius: 3px;
+  background: white;
+  color: black;
+  margin:2px 2px;
+}
+.c-tag-checked {
+  border-radius: 3px;
+  background: #ACACAC;
+  color: white;
+}
+.c-tag-checkbox {
+  border-radius: 3px;
+  background: transparent;
+  color: inherit;
+}
