@@ -42,7 +42,9 @@ const UserInfoCard: FC<IProps> = memo(({className, info}) => {
             <IconItem type='if-todo' title='待处理' className='item'/>
           </div>
           <div className='menu'>
-
+            <ListItem label='个人中心' type='if-home' onClick={() => {}} />
+            <ListItem label='管理中心' type='if-center' onClick={() => {}} />
+            <ListItem label='退出登录' type='if-exit' onClick={() => {}} />
           </div>
         </div>
       </div>
