@@ -1,0 +1,42 @@
+#comp-user-info-card {
+
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 240px;
+
+    .avatar {
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+
+    .nickname {
+      font-size: 22px;
+      margin: 4px 0;
+      color: black;
+    }
+
+    .username {
+      margin: 2px;
+      color: #707070;
+    }
+  }
+
+  .entries {
+    flex-direction: row;
+    display: flex;
+
+    .item {
+      margin: 20px 10px;
+    }
+  }
+
+  .group {
+    opacity: 55%;
+    margin: 4px 0 4px 8px;
+  }
+
+}

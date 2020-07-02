@@ -38,8 +38,7 @@ const App: FC = memo(() => {
   return (
     <Provider store={store}>
       <MainRouter>
-        <Route path="/" component={Index} />
-        <Route path="/testApp" component={TestApp} />
+        <Index />
       </MainRouter>
     </Provider>
   );

@@ -1,25 +1,21 @@
 import {connect} from "react-redux";
 import {bindActionCreators, Dispatch} from 'redux';
+import {StoreState} from "../../redux/reducers";
 
-import PageFrame from "../components/PageFrame";
-
-import {StoreState} from "../redux/reducers";
+import Homepage from "../../pages/homepage";
 
 const mapStateToProps = ({
-    user: {token, info},
-    component: {inProcess}
+
 }: StoreState) => ({
-    loggedIn: !!token,
-    userInfo: info,
 
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
 
-}, dispatch)
+}, dispatch);
 
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = ReturnType<typeof mapDispatchToProps>;
 
-export type PageFrameProps = StateProps & DispatchProps;
-export default connect(mapStateToProps, mapDispatchToProps)(PageFrame);
+export type HomepageProps = StateProps & DispatchProps;
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage);

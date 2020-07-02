@@ -1,4 +1,4 @@
-import React, {FC, memo} from "react";
+import React, {FC, HTMLProps, memo} from "react";
 
 import '../styles/components/BgImg.scss';
 
@@ -7,11 +7,12 @@ interface IProps {
     zIndex?: number;
 }
 
-const BgImg: FC<IProps> = memo((props) => {
+const BgImg: FC<IProps & HTMLProps<any>> = memo((props) => {
     return (
-        <div id='comp-bg-img' style={{
-            backgroundImage: `url(${props.src})`,
-            zIndex: props.zIndex ?? 0,}} />
+        <div id='comp-bg-img' className={`${props.className}`}
+             style={{
+             backgroundImage: `url(${props.src})`,
+             zIndex: props.zIndex ?? 0,}} />
     );
 });
 
