@@ -1,7 +1,7 @@
 import React, {CSSProperties, FC, HTMLProps, memo} from "react";
 import '../styles/components/ThemeItem.scss';
 
-import {Pagination, Radio} from 'antd';
+import {message, Pagination, Radio} from 'antd';
 import {useHistory} from "react-router";
 import '../styles/components/PostTools.scss'
 import returnIcon from "../images/returnIcon.png";
@@ -16,7 +16,12 @@ const PostTools: FC<IProps> = memo((props) => {
 
     const history = useHistory();
     const backToHome = () => history.push('/')
-
+    const handleClickTipOff = () => {
+        message.info('你正在尝试举报')
+    }
+    const handleClicketurn = () => {
+        message.info('你正在尝试回复')
+    }
 
     //TODO:事件监听
     return <div id='comp-post-tools' className='container'>
@@ -33,16 +38,15 @@ const PostTools: FC<IProps> = memo((props) => {
         </div>
         <div className='operate'>
             <div className='operate-word'>操作</div>
-            <div className='tip-off'>
+            <div className='tip-off' onClick={handleClickTipOff}>
                 <div className='tip-off-word'>举报</div>
-                <img src={tipOff} alt='いいね！'  className='tip-off-Icon'/>
+                <img src={tipOff} alt='いいね！' className='tip-off-Icon'/>
             </div>
-            <div className='return'>
+            <div className='return' onClick={handleClicketurn}>
                 <div className='return-word'>回复</div>
                 <img src={returnIcon} alt='いいね！' className='return-Icon'/>
             </div>
         </div>
-
     </div>;
 })
 export default PostTools;

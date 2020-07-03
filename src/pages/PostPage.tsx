@@ -5,6 +5,7 @@ import '../styles/Categorypage.scss';
 import {Announcement, Category, User} from "../configs/types";
 import PostTools from "../components/PostTools";
 import CateCard from "../components/CateCard";
+import NewReply from "../components/NewReply";
 
 
 const PostPage: FC<PostPageProps> = memo(({}) => {
@@ -12,8 +13,9 @@ const PostPage: FC<PostPageProps> = memo(({}) => {
 
     return (
         <div id='page-Post' className='page'>
-            <PostTools/>
-            <CateCard info={{}as Category}/>
+            <NewReply/>
+            {/*<PostTools/>
+            <CateCard info={{}as Category}/>*/}
         </div>
 
     )
