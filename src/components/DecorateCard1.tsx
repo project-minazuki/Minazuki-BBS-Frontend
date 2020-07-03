@@ -6,6 +6,7 @@ import Card from "./Card";
 
 interface IProps {
     className?: string|undefined;
+
 }
 
 const DecorateCard1: FC<IProps> = memo((props) => {
@@ -25,8 +26,7 @@ const DecorateCard1: FC<IProps> = memo((props) => {
 
                         <Space className='center'>
                             <div className='para1' style={{padding: "16px",fontSize:"20px"}}>
-                                <p>并不是恋上了，只是，   </p>
-                                <p style ={ { lineHeight: '2px'}}>&nbsp;&nbsp;&nbsp;&nbsp;不可抗拒地，被吸引了。</p>
+
 
                             </div>
                         </Space>

@@ -4,7 +4,6 @@ import {CategoryPageProps} from "../containers/pages/CategoryPage";
 import '../styles/Categorypage.scss';
 import {Announcement, Category, User} from "../configs/types";
 
-// @ts-ignore
 import CateIntro from '../components/CateIntro'
 import NewestTheme1 from "../components/NewestTheme1";
 import NewestReplyTheme1 from "../components/NewestReplyTheme1";
