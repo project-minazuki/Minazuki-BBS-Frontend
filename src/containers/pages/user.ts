@@ -14,7 +14,10 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
     getById: $actions.fetchUserInfoStart,
-    updateInfo: $actions.waitProcess,
+    updateInfo: $actions.updateUserInfoStart,
+    fetchInbox: $actions.fetchMyInboxStart,
+    fetchFavorite: $actions.fetchMyFavoriteStart,
+    deleteFavorite: $actions.deleteFavoriteStart,
 }, dispatch);
 
 type StateProps = ReturnType<typeof mapStateToProps>;
