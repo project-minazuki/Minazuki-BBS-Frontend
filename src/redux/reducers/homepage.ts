@@ -4,6 +4,9 @@ import {defaultFavicon} from "../../configs/consts";
 
 type Action =
     | actions.RecommendFetched
+    | actions.HomePageFetched
+    | actions.CategoriesFetched
+    | actions.HomepageIsLoaded
 
 export interface HomepageStore {
     favicon: string;
@@ -17,6 +20,7 @@ export interface HomepageStore {
     newReply: Theme[];
     announcement: Announcement[];
     lastUpdate: number;
+    hasLoaded: boolean,
 }
 
 export const homepageInit: HomepageStore = {
@@ -31,6 +35,7 @@ export const homepageInit: HomepageStore = {
     newReply: [] as Theme[],
     announcement: [] as Announcement[],
     lastUpdate: Date.now(),
+    hasLoaded: false,
 };
 
 export function homepageReducer(state = homepageInit, action: Action): HomepageStore {
@@ -38,6 +43,12 @@ export function homepageReducer(state = homepageInit, action: Action): HomepageS
         case actions.RECOMMEND_FETCHED:
             const {newTheme, newReply} = action;
             return {...state, newTheme, newReply};
+        case actions.HOME_PAGE_FETCHED:
+            return {...state, newTheme: action.newTheme, newReply: action.newReply};
+        case actions.CATEGORIES_FETCHED:
+            return {...state, categories: action.data};
+        case actions.HOMEPAGE_IS_LOADED:
+            return {...state, hasLoaded: action.on};
     }
     return state;
 }

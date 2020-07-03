@@ -1,4 +1,4 @@
-import {Favorite, Mail, Theme, User, Notification} from "../../configs/types";
+import {Favorite, Mail, Theme, User, Notification, Category, Announcement, Tag} from "../../configs/types";
 import {defaultAvatar} from "../../configs/consts";
 
 
@@ -194,4 +194,75 @@ export interface MyFavoriteFetched {
 
 export function myFavoriteFetched(data: Favorite[]): MyFavoriteFetched {
     return {type: MY_FAVORITE_FETCHED, data}
+}
+
+
+export const HOME_PAGE_FETCHED = 'HOME_PAGE_FETCHED';
+export type HOME_PAGE_FETCHED = typeof HOME_PAGE_FETCHED;
+
+export interface HomePageFetched {
+    type: HOME_PAGE_FETCHED;
+    newTheme: Theme[];
+    newReply: Theme[];
+}
+
+export function homePageFetched(
+    newTheme: Theme[],
+    newReply: Theme[],
+): HomePageFetched {
+    return {type: HOME_PAGE_FETCHED, newReply, newTheme}
+}
+
+
+export const CATEGORIES_FETCHED = 'CATEGORIES_FETCHED';
+export type CATEGORIES_FETCHED = typeof CATEGORIES_FETCHED;
+
+export interface CategoriesFetched {
+    type: CATEGORIES_FETCHED;
+    data: Category[];
+};
+
+export function categoriesFetched(data: Category[]): CategoriesFetched {
+    return {type: CATEGORIES_FETCHED, data};
+}
+
+
+export const CATEGORY_DETAILS_FETCHED = 'CATEGORY_DETAILS_FETCHED';
+export type CATEGORY_DETAILS_FETCHED = typeof CATEGORY_DETAILS_FETCHED;
+
+export interface CategoryDetailsFetched {
+    type: CATEGORY_DETAILS_FETCHED;
+    info: Category;
+    highQuality: Theme[];
+    pinned: Theme[];
+    all: Theme[];
+    announce: Announcement[];
+    tags: Tag[];
+}
+
+export function categoryDetailsFetched(
+    info: Category,
+    highQuality: Theme[],
+    pinned: Theme[],
+    all: Theme[],
+    announce: Announcement[],
+    tags: Tag[],
+): CategoryDetailsFetched {
+    return {
+        type: CATEGORY_DETAILS_FETCHED,
+        info, highQuality, pinned,
+        all, announce, tags
+    }
+}
+
+export const HOMEPAGE_IS_LOADED = 'HOMEPAGE_IS_LOADED';
+export type HOMEPAGE_IS_LOADED  = typeof HOMEPAGE_IS_LOADED;
+
+export interface HomepageIsLoaded {
+    type: HOMEPAGE_IS_LOADED;
+    on: boolean;
+}
+
+export function homepageIsLoaded(on: boolean): HomepageIsLoaded {
+    return {type: HOMEPAGE_IS_LOADED, on};
 }

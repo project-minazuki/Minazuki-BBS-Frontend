@@ -73,7 +73,7 @@ const Reply: FC<IProps> = memo(props => {
 
 
 
-);
+    );
 })
 
 export default Reply;

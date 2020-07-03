@@ -1,5 +1,5 @@
 import React, {CSSProperties, FC, memo} from "react";
-import {message, Space} from "antd";
+import {message, Space,Empty} from "antd";
 import CateItem from "./CateItem";
 import {Category, User, Theme} from "../configs/types";
 import {RedoOutlined} from '@ant-design/icons';
@@ -11,11 +11,24 @@ import '../styles/components/NewestTheme1.scss'
 interface IProps {
     classname?: string | undefined;
     style?: Partial<CSSProperties>
+    newThemes: Theme[]
 }
 
 const NewestTheme1: FC<IProps> = memo(props => {
     const $class = props.classname ?? '';
     const $style = props.style;
+    const $newThemes = props.newThemes;
+    let links = [];
+
+    if($newThemes.length ===0){
+        links.push(<Empty></Empty>)
+    }
+    else {
+        for (let i = 0; i < $newThemes.length; i++) {
+            links.push(<ThemeItem info_Theme={$newThemes[i]} info_Cate={{} as Category}
+                                  info_User={{} as User}></ThemeItem>)
+        }
+    }
 
     const refresh = () => {message.info("你试图刷新最新主题")}
 
@@ -23,7 +36,7 @@ const NewestTheme1: FC<IProps> = memo(props => {
         <div id = 'comp-newest-theme' style ={$style}>
             <div className = {`container ${$class}`}>
                 <Card style={{  width: '720px', height: '500px'}}>
-                    <div>
+                    <div className='card-container'>
                         <div className="top">
                             <div className='text-newest'>
                                 最新主题
@@ -31,12 +44,8 @@ const NewestTheme1: FC<IProps> = memo(props => {
                             <RedoOutlined className='refresh' onClick = {refresh}/>
                         </div>
                         <div className="new-themes">
-                            <Space direction="vertical">
-                                <ThemeItem info_Theme={{} as Theme} info_Cate={{} as Category} info_User={{} as User}></ThemeItem>
-                                <ThemeItem info_Theme={{} as Theme} info_Cate={{} as Category} info_User={{} as User}></ThemeItem>
-                                <ThemeItem info_Theme={{} as Theme} info_Cate={{} as Category} info_User={{} as User}></ThemeItem>
-                                <ThemeItem info_Theme={{} as Theme} info_Cate={{} as Category} info_User={{} as User}></ThemeItem>
-                                <ThemeItem info_Theme={{} as Theme} info_Cate={{} as Category} info_User={{} as User}></ThemeItem>
+                            <Space direction="vertical" style = {{display: "flex",alignItems: "center",justifyContent: "center"}}>
+                                {links}
                             </Space>
                         </div>
                     </div>
