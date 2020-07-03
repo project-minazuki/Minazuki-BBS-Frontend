@@ -5,9 +5,9 @@ import {StoreState} from "../../redux/reducers";
 import CategoryPage from "../../pages/CategoryPage";
 
 const mapStateToProps = ({
-
+    category : {tags ,announce,info,highQuality,pinned}
 }: StoreState) => ({
-
+    tags,announce,info,highQuality,pinned
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
