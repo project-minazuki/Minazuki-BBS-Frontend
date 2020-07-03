@@ -26,11 +26,11 @@ const CateIntro: FC<IProps> = memo((props) => {
             </div>
             <div className='cate-intro-tail'>
                 <div className='theme'>
-                <div className='theme-number'>{$Cate.themeNumber ?? '56'}</div>
+                <div className='theme-number'>{'56'}</div>
                     <div className='theme-word'>{'主题'}</div>
                 </div>
                 <div className='post'>
-                    <div className='post-number'>{$Cate.themeNumber ?? '108'}</div>
+                    <div className='post-number'>{'108'}</div>
                     <div className='post-word'>{'帖子'}</div>
                 </div>
                 <div className='visits'>
