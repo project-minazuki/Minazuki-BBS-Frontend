@@ -1,8 +1,5 @@
 import {Favorite, Mail, Theme, User, Notification, Category, Announcement, Tag} from "../../configs/types";
 import {defaultAvatar} from "../../configs/consts";
-import {tags} from "../../utils/items";
-import {notice} from "../../configs/api";
-import all = notice.all;
 
 
 export const LOGIN = 'LOGIN';
