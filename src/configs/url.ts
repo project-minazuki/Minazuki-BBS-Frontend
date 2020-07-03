@@ -1,28 +1,30 @@
 
-export const root = '/';
+const header = '';
 
-export const login = '/login';
+export const root = `${header}/`;
 
-export const register = '/register';
+export const login = `${header}/login`;
 
-export const search = '/search';
+export const register = `${header}/register`;
 
-export const manager = '/manager';
+export const search = `${header}/search`;
 
-export const report = '/report';
+export const manager = `${header}/manager`;
 
-export const category = '/category/:cateId';
+export const report = `${header}/report`;
 
-export const theme = '/theme/:themeId';
+export const category = `${header}/category/:cateId`;
 
-export const announcement = '/announcement/:announceId';
+export const theme = `${header}/theme/:themeId`;
 
-export const user = '/user/:uid/';
+export const announcement = `${header}/announcement/:announceId`;
 
-export const me = '/user/';
+export const user = `${header}/user/:uid/`;
 
-export const $user = (uid: string, hash?: string) => `/user/${uid}/#/` + (hash ?? '');
+export const me = `${header}/user/`;
 
-export const $category = (cid: number) => `/category/${cid}`;
+export const $user = (uid: string, hash?: string) => `${header}/user/${uid}/#/` + (hash ?? '');
 
-export const $404 = '/';
+export const $category = (cid: number) => `${header}/category/${cid}`;
+
+export const $404 = `${header}/`;
