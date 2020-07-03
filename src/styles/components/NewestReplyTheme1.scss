@@ -1,28 +1,35 @@
 #comp-newest-reply-theme{
   .container{
 
-    .top{
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 5px;
-      padding: 14px;
-      .text-newest-reply{
-        font-size: 22px;
-        color: black;
-        //font-weight: bold;
+    .card-container{
+      width: 100%;
+      align-content: center;
+      justify-content: center;
+      .top{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 5px;
+        padding: 14px;
+        height: 10%;
+        .text-newest-reply{
+          font-size: 22px;
+          color: black;
+          //font-weight: bold;
+        }
+        .refresh{
+          font-size: 24px;
+          font-weight: bold;
+        }
       }
-      .refresh{
-        font-size: 24px;
-        font-weight: bold;
-      }
-    }
-    .new-themes-reply{
-      height: 500px;
-      padding: 10px;
-      justify-content: space-between;
+      .new-themes-reply{
+        height: 90%;
+        padding: 10px;
+        justify-content: space-between;
 
+      }
     }
+
   }
 }

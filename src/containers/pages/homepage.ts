@@ -5,9 +5,9 @@ import {StoreState} from "../../redux/reducers";
 import Homepage from "../../pages/homepage";
 
 const mapStateToProps = ({
-
+    homepage: {newTheme, newReply, categories,announcement}
 }: StoreState) => ({
-
+    newTheme, newReply, categories,announcement
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({

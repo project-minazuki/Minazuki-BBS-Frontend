@@ -1,3 +1,11 @@
 #page-homepage {
 
+  $window-width: 1200px;
+
+  .container {
+    display: flex;
+    flex-direction: row;;
+    align-items: center;
+    justify-content: center;
+  }
 }
