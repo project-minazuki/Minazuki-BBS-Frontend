@@ -17,8 +17,9 @@ function* worker(action: $actions.FetchUserInfoStart) {
         const cnt = (res1.data.data ?? []).length;
         console.log(body)
         if (body.code >= 0) {
-            const data = userToUser(body.data);
-            yield actions.userInfoFetched(action.uid, {...data, manageCateId: cnt});
+            const data = yield userToUser(body.data);
+            console.log(data);
+            yield put(actions.userInfoFetched(action.uid, {...data, manageCateId: cnt}));
         } else {
             yield message.warn(body.msg);
             $history.push(url.$404);
