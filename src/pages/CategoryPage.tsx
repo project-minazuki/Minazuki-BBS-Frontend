@@ -36,7 +36,7 @@ const CategoryPage: FC<CategoryPageProps> = memo(({}) => {
                 </div>
             </div>
             <div className='right'>
-            <CateSearch></CateSearch>
+                <CateSearch></CateSearch>
             </div>
 
         </div>
