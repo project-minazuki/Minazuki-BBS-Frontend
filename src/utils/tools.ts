@@ -1,6 +1,8 @@
 import {store} from "../App";
 import {developerName, pwdMinLength} from "../configs/consts";
-import {User} from "../configs/types";
+import {Category, User} from "../configs/types";
+import {stringConvert} from "./DateTimes";
+import md5 from 'js-md5';
 
 /**
  *
@@ -52,10 +54,48 @@ export const checkPassWord = (pwd: string) =>
 
 type UserType = 0 | 1 | 2 | 3 | 4;
 
-export function getUserGroup(user: User): UserType {
+export function getUserGroup(user: User, cate?: Category[]): UserType {
     if (user._id === undefined) return 0;
     if (!!developerName.find(value => value === user.username)) return 4;
     if (user.isAdmin) return 3;
+    if (!!cate) return cate.length ? 2 : 1;
     if (user.manageCateId === null) return 1;
     else return 2;
 }
+
+export function _getUserGroup(user: User, cnt?: number): UserType {
+    const $cnt = cnt ?? user.manageCateId ?? 0;
+    if (user._id === undefined) return 0;
+    if (!!developerName.find(value => value === user.username)) return 4;
+    if (user.isAdmin) return 3;
+    return !!$cnt ? 2 : 1;
+}
+
+export function cateToCate(obj: any): Category {
+    return {
+        avatar: obj.coverUrl,
+        createTime: stringConvert(obj.createdAt),
+        desc: obj.description,
+        _id: obj.id,
+        name: obj.name,
+        status: obj.status,
+        updateTime: stringConvert(obj.updatedAt),
+        visits: obj.visitsCount,
+    }
+}
+
+export function userToUser(body: any): User {
+    return {
+        ...body, _id: body.id,
+        createdAt: stringConvert(body.createdAt),
+        lastSignIn: stringConvert(body.lastSignIn),
+        avatar: body.avatarUrl,
+    }
+}
+
+export function convertGravatar(email: string): string {
+    const mailto = email.trim().toLowerCase();
+    const hash = md5(mailto);
+    return `https://www.gravatar.com/avatar/${hash}`;
+}
+

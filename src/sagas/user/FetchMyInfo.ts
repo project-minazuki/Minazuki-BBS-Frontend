@@ -1,19 +1,38 @@
 import * as $actions from '../../redux/actions/async';
 import {put, takeLatest, select} from 'redux-saga/effects';
-import * as xhr from '../../utils/xhr';
+import * as api from '../../configs/api';
 import * as actions from '../../redux/actions';
 
-function* worker() {
+import {$history} from "../../App";
+import {notification} from "antd";
+import {stringConvert} from "../../utils/DateTimes";
+import {cateToCate, userToUser} from "../../utils/tools";
+
+function* worker(action: $actions.FetchMyInfoStart) {
     try {
-        const res = yield xhr.$fetchMyInfo();
+        yield put(actions.toggleUserLoading(true));
+        const res = yield api.user.getMyInfo().exec();
+        const res2 = yield api.category.getManage().exec();
         const body = res.data.data;
-        console.log(body);
-        const act = actions.myInfoFetched({...body, _id: body.uid});
+        const body2 = res2.data.data;
+        const act = actions.myInfoFetched(userToUser(body));
+        const res3 = yield api.inbox.countAllUnchecked(body.id).exec();
+        const arr = body2.map((obj: any) => cateToCate(obj));
+        const act2 = actions.manageCategoriesFetched(arr);
         yield put(act);
+        yield put(act2);
+        yield (!!action.isFirstTime || !!action.title) &&
+            notification.success({
+            message: action.title ?? '登陆成功',
+            description: `${body.username}，欢迎回来！`,
+        });
+        yield put(actions.inboxCountFetched(res3.data.data));
+        yield put(actions.userInfoFetched(body.id, userToUser(body)));
+        yield $history.push(action.redirect);
     } catch (err) {
         console.log(err);
     } finally {
-        put(actions.toggleUserLoading(false));
+        yield put(actions.toggleUserLoading(false));
     }
 }
 

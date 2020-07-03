@@ -8,8 +8,8 @@ export interface User {
     isAdmin: boolean;
     avatar: string;
     nickname: string;
-    createTime: string;
-    lastSignInTime: string;
+    createdAt: string;
+    lastSignIn: string;
     email: string;
     phone: string;
     signature: string;
@@ -85,3 +85,19 @@ export interface Report {
     checkTime: string;
 }
 
+export interface Mail {
+    _id?: number;
+    createdAt?: string;
+    checked?: boolean;
+    content: string;
+    senderId: number;
+    recipientId: number;
+}
+
+export interface RegisterForm {
+    username: string;
+    password: string;
+    nickname: string;
+    phoneNumber: string;
+    email: string;
+}

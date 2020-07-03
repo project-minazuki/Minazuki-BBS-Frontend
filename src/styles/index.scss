@@ -13,9 +13,10 @@ code {
 }
 
 #root {
+
   .page {
     margin-top: 64px;
-
+    margin-bottom: 40px;
   }
 }
 
@@ -32,3 +33,56 @@ code {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
 }
+
+.ant-notification-topRight {
+  .ant-notification-notice {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(15px) saturate(150%);
+  }
+}
+
+.ant-message-notice-content {
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(15px) saturate(150%);
+}
+
+.ant-modal-root {
+
+  .ant-modal-mask {
+    backdrop-filter: blur(15px) saturate(150%);
+  }
+
+  .ant-modal-content {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(15px) saturate(150%);
+
+    .ant-modal-header {
+      background-color: transparent;
+      border-bottom: none;
+    }
+
+    .ant-modal-footer {
+      border-top: none;
+
+      .ant-btn {
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+
+      .ant-btn-primary {
+        background-color: #1890ff
+      }
+    }
+
+    .ant-modal-body {
+
+      .ant-checkbox-checked {
+        background-color: #1890ff
+      }
+
+      .ant-checkbox-inner {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+}
+

@@ -29,12 +29,14 @@
         width: $favicon-size;
         height: $favicon-size;
         margin: 6px;
+        user-select: none;
       }
 
       .title {
         font-size: 20px;
         color: black;
         margin: 0 10px;
+        user-select: none;
       }
     }
 
@@ -48,6 +50,10 @@
         font-size: 28px;
         color: #707070;
         margin-right: 20px;
+      }
+
+      .loading {
+        margin: 4px;
       }
     }
   }

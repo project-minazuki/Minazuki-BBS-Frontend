@@ -4,17 +4,20 @@ type Action =
     | actions.RegisterFormFilled
 
 export interface ViewStore {
-    regForm: object;
+    regForm: {
+        username: string;
+        password: string;
+    };
 }
 
 export const viewInit: ViewStore = {
-    regForm: {},
+    regForm: {} as any,
 }
 
 export function viewReducer(state = viewInit, action: Action): ViewStore {
     switch (action.type) {
         case actions.REGISTER_FORM_FILLED:
-            return {...state, regForm: action.value};
+            return {...state, regForm: action.value as any};
     }
     return state;
 }

@@ -4,8 +4,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    transition: 300ms;
+    border-radius: 4px;
+    padding: 4px;
 
-    $avatar-size: 48px;
+    $avatar-size: 42px;
     .avatar {
       width: $avatar-size;
       height: $avatar-size;
@@ -19,7 +22,7 @@
       margin: 0 8px;
 
       .name {
-        font-size: 16px;
+        font-size: 15px;
         color: black;
       }
 
@@ -28,5 +31,9 @@
         color: #707070;
       }
     }
+  }
+
+  .container:hover {
+    background-color: rgba(0, 0, 0, 0.1);
   }
 }

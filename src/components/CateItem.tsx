@@ -31,7 +31,7 @@ const CateItem: FC<IProps> = memo(props => {
         <div id='comp-cate-item' style={$style} onClick={handleClick}>
           <div className={`container ${$class}`}>
             <div className='avatar'>
-              <Avatar src={$cate.avatar ?? defaultAvatar} size={48}/>
+              <Avatar src={$cate.avatar ?? defaultAvatar} size={42}/>
             </div>
             <div className='text-field'>
               <div className='name'>{$cate.name ?? '板块名称'}</div>
