@@ -1,77 +1,41 @@
-#comp-new-reply{
+#comp-new-reply {
 
   display: flex;
   flex-direction: column;
   width: 800px;
   height: 1080px;
 
+
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(15px) saturate(150%);
-  border-radius: 6px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 
-  .page{
-    display: flex;
-    margin:15px;
-    align-items: center;
-    .page-word{
-      font-size: 18px;
+  .new-reply-post-word {
+    font-size: 28px;
+    color: black;
+    margin: 10px 15px 20px 15px;
+  }
+  .new-will-reply-post-word {
+    font-size: 24px;
+    color: black;
+    margin: 15px 15px 10px 15px;
+  }
+  .new-reply-post {
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #ACACAC;
+    margin: 15px 15px 10px 15px;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(15px) saturate(150%);
+    .new-will-reply-post {
+      margin: 5px;
+    }
+  }
+    .new-will-reply-post-word {
+      font-size: 24px;
       color: black;
+      margin: 15px 15px 10px 15px;
+    }
 
-    }
-    .Pagination{
-      margin:0px 15px;
-    }
-  }
-  .post{
-    display: flex;
-    margin:15px;
-    align-items: center;
-    .post-word{
-      font-size: 18px;
-      color: black;
-    }
-    .Radio-Group{
-      color: #707070;
-      margin:0px 20px;
-    }
-  }
-  .operate{
-    display: flex;
-    margin:15px;
-    align-items: center;
-    .operate-word{
-      font-size: 18px;
-      color: black;
-    }
-    .tip-off{
-      display: flex;
-      align-items: center;
-      margin:0px 15px;
-      .tip-off-word{
-        font-size: 16px;
-        color: black;
-        margin:0px 5px;
-      }
 
-      .tip-off-Icon {
-        width: 20px;
-        height: 20px;
-      }
-    }
-    .return{
-      display: flex;
-      align-items: center;
-      margin:0px 15px;
-      .return-word{
-        font-size: 16px;
-        color: black;
-        margin:0px 5px;
-      }
-      .return-Icon {
-        width: 20px;
-        height: 20px;
-      }
-    }
-  }
 }

@@ -7,6 +7,9 @@ import '../styles/components/PostTools.scss'
 import returnIcon from "../images/returnIcon.png";
 import tipOff from "../images/tip-off.png";
 
+import {
+    WarningOutlined,CommentOutlined
+} from '@ant-design/icons';
 interface IProps {
 
 }
@@ -39,12 +42,14 @@ const PostTools: FC<IProps> = memo((props) => {
         <div className='operate'>
             <div className='operate-word'>操作</div>
             <div className='tip-off' onClick={handleClickTipOff}>
+                <WarningOutlined />
                 <div className='tip-off-word'>举报</div>
-                <img src={tipOff} alt='いいね！' className='tip-off-Icon'/>
+
             </div>
             <div className='return' onClick={handleClicketurn}>
+                <CommentOutlined />
                 <div className='return-word'>回复</div>
-                <img src={returnIcon} alt='いいね！' className='return-Icon'/>
+
             </div>
         </div>
     </div>;
