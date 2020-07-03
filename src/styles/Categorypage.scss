@@ -1,0 +1,22 @@
+#page-Category{
+  display: flex;
+  justify-content: center;
+  .left{
+    margin: 10px;
+    .cate-intro{
+      margin: 10px 0px;
+    }
+  }
+  .mid{
+    margin: 10px;
+    .up{
+      margin: 10px 0px;
+    }
+    .buttom{
+      margin: 10px 0px;
+    }
+  }
+  .right{
+    margin: 20px 10px 10px 10px;
+  }
+}

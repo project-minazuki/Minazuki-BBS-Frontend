@@ -1,0 +1,28 @@
+#comp-newest-theme{
+  .container{
+
+    .top{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      padding: 14px;
+      .text-newest{
+        font-size: 22px;
+        color: black;
+        //font-weight: bold;
+      }
+      .refresh{
+        font-size: 24px;
+        font-weight: bold;
+      }
+    }
+    .new-themes{
+      height: 500px;
+      padding: 10px;
+      justify-content: space-between;
+
+    }
+  }
+}
