@@ -2,9 +2,16 @@ import React, {FC, memo, useContext, useEffect, useState} from "react";
 import {UserProps} from '../containers/pages/user';
 import '../styles/user.scss';
 import * as url from '../configs/url';
+import {User as $User} from '../configs/types';
 
-import {message, Avatar, Button} from 'antd';
-import {ArrowRightOutlined, EditOutlined, SaveOutlined} from '@ant-design/icons';
+import {
+    message, Avatar, Button, Form,
+    Input, Switch, Modal, Checkbox,
+} from 'antd';
+import {
+    ArrowRightOutlined, EditOutlined,
+    SaveOutlined, LoadingOutlined,
+} from '@ant-design/icons';
 import ayane from '../images/bg-ayane.png';
 import BgImg from "../components/BgImg";
 import {RouteContext} from "../components/PageFrame";
@@ -12,25 +19,93 @@ import {useHistory} from "react-router-dom";
 import Card from "../components/Card";
 import {defaultAvatar, defaultSignature} from "../configs/consts";
 import {loading$1, tags} from "../utils/items";
-import {_getUserGroup} from "../utils/tools";
+import {_getUserGroup, convertGravatar} from "../utils/tools";
 import UserCenterView from "../components/UserCenterView"
 
-const Item: FC<{title: string; content: string}> =memo(({title, content}) => (
+const Item: FC<{title: string; content: string}> = memo(({title, content}) => (
     <div className='inner-item'>
        <div className='inner-title'>{title}</div>
        <div className='inner-content'>{content}</div>
     </div>
 ))
 
-const EditCard: FC<{}> = memo(props => {
+const EditCard: FC<{
+    form: ReturnType<Form["useForm"]>
+    cb: (value: object) => void;
+    user: $User;
+}> = memo(props => {
+
+    const [form] = props.form;
+    const {cb, user} = props;
+    const {username, nickname, signature, privacyShow} = user;
+    const _avatar = user.avatar ?? defaultAvatar;
+    const [view, setView] = useState(false);
+    const [avatar,setAvatar] = useState(_avatar);
+    const [gravatar, setGravatar] = useState(false);
+    const $avatar = () => gravatar ? convertGravatar(avatar) : avatar;
+
+    const callback = (value: object) => cb({...value, avatar: $avatar()});
+
+    const layout = {
+        labelCol: { span: 6 },
+        wrapperCol: { span: 16 },
+    };
 
     return (
     <Card className='edit-card'>
-
+      <div className='card-container'>
+        <div className='form-container'>
+          <Form form={form} onFinish={callback} className='form' {...layout} size='large'
+                initialValues={{username, nickname, signature, privacyShow}}
+                onFinishFailed={() => message.info('表单信息验证失败，请重试！')}>
+            <Form.Item name='username' label='用户名'>
+              <Input disabled/>
+            </Form.Item>
+            <Form.Item name='nickname' label='昵称'>
+              <Input />
+            </Form.Item>
+            <Form.Item name='signature' label='个性签名'>
+              <Input />
+            </Form.Item>
+            <Form.Item name='privacyShow' label='显示资料' valuePropName='checked'>
+              <Switch />
+            </Form.Item>
+            <Form.Item name='avatar'>
+              <Modal title='更换头像' visible={view}
+                     onCancel={() => {
+                         setView(false);
+                         setAvatar(_avatar);
+                         setGravatar(false);
+                     }}
+                     onOk={() => setView(false)}
+                     okText='暂存修改' cancelText='取消并还原修改'>
+                <div style={{margin: '10px 0'}}>请输入头像的 URL 地址，它需要允许本站的访问：</div>
+                <Input onChange={e => setAvatar(e.target.value)} value={avatar}/>
+                <Checkbox checked={gravatar}
+                          style={{margin: '10px 0'}}
+                          onChange={e => setGravatar(!gravatar)}>
+                  使用 Gravatar （需要提供电子邮件地址）
+                </Checkbox>
+                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                  <div style={{width: '100%', margin: '10px 0'}}>预览图：</div>
+                  <Avatar src={$avatar()} shape='square' size={180}/>
+                </div>
+              </Modal>
+            </Form.Item>
+          </Form>
+        </div>
+        <div className='avatar-container'>
+          <Avatar src={$avatar()} shape='square' size={240}/>
+          <Button shape='round' onClick={() => setView(true)} size='large'
+                  className='edit-avatar' >
+            编辑
+          </Button>
+        </div>
+      </div>
     </Card>)
 })
 
-const User: FC<UserProps> = memo(({user, loggedIn, getById, lib, inProcess}) => {
+const User: FC<UserProps> = memo(({user, loggedIn, getById, lib, updateInfo, inProcess}) => {
 
     const route = useContext(RouteContext);
     const history = useHistory();
@@ -38,6 +113,7 @@ const User: FC<UserProps> = memo(({user, loggedIn, getById, lib, inProcess}) => 
     const uid = route.match.params.uid ?? user.info._id;
 
     const [edit, setEdit] = useState(false);
+    const [form] = Form.useForm();
 
     useEffect(() => {
         // if (loggedIn && !user.info._id) return;
@@ -71,10 +147,20 @@ const User: FC<UserProps> = memo(({user, loggedIn, getById, lib, inProcess}) => 
         }
     }
 
+    const handleEdit = (values: object) => {
+        console.log(values);
+        updateInfo(2000, () => setEdit(false));
+    }
+
+    const handleClick = () => {
+        if (!edit) setEdit(!edit);
+        else form.submit();
+    }
+
     return (
       <div id='page-user' className='page'>
         <BgImg src={ayane} />
-        {!inProcess ? loading$1 :
+        {// TODO: 除了初始值之外还有更好的办法吗？
         <div className='container'>
           <div className='upper-block'>
             <Card><div className='card-container'>
@@ -90,14 +176,15 @@ const User: FC<UserProps> = memo(({user, loggedIn, getById, lib, inProcess}) => 
                 </div>
               </div>
               <div className='buttons-group'>
-                <Button className='button' shape='round' onClick={()=>setEdit(!edit)}>
-                  {edit ? <SaveOutlined /> : <EditOutlined/>}
+                <Button className='button' shape='round' onClick={handleClick}>
+                  {edit ? (inProcess ? <LoadingOutlined /> :<SaveOutlined />) : <EditOutlined/>}
                   {edit ? '保存修改' : '编辑信息'}
                 </Button>
               </div>
             </div></Card>
           </div>
-          <div className='lower-block'>{edit ? <EditCard /> :
+          <div className='lower-block'>{edit ?
+            <EditCard form={[form]} cb={handleEdit} user={user.info}/> :
             <><UserCenterView className='center-view'/>
             <Card className='standard-info'><div>
               <div className='main-title'>个人基本信息</div>
