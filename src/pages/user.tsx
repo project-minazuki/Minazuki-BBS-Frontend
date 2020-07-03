@@ -105,7 +105,10 @@ const EditCard: FC<{
     </Card>)
 })
 
-const User: FC<UserProps> = memo(({user, loggedIn, getById, lib, updateInfo, inProcess}) => {
+const User: FC<UserProps> = memo(({
+    user, loggedIn, getById, lib, updateInfo, inProcess, fetchInbox,
+    fetchFavorite, deleteFavorite,
+}) => {
 
     const route = useContext(RouteContext);
     const history = useHistory();
@@ -114,6 +117,11 @@ const User: FC<UserProps> = memo(({user, loggedIn, getById, lib, updateInfo, inP
 
     const [edit, setEdit] = useState(false);
     const [form] = Form.useForm();
+    const cb = {
+        inbox: () => {fetchInbox(user.info._id); return},
+        favorite: () => {fetchFavorite(); return},
+        delFav: (id: number) => {deleteFavorite(id); return},
+    }
 
     useEffect(() => {
         // if (loggedIn && !user.info._id) return;
@@ -202,7 +210,7 @@ const User: FC<UserProps> = memo(({user, loggedIn, getById, lib, updateInfo, inP
           </div>
           <div className='lower-block'>{edit ?
             <EditCard form={[form]} cb={handleEdit} user={user.info}/> :
-            <><UserCenterView className='center-view'/>
+            <><UserCenterView className='center-view' user={user} callbacks={cb} inProcess={inProcess}/>
             <Card className='standard-info'><div>
               <div className='main-title'>个人基本信息</div>
               <div className='list-content'>

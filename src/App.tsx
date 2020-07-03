@@ -43,7 +43,7 @@ const App: FC = memo(() => {
 
     useEffect(() => {
         import('./utils/statement').then(({statement}) => statement());
-    }, [])
+    }, []);
 
   return (
     <Provider store={store}>

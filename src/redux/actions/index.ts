@@ -1,4 +1,4 @@
-import {Theme, User} from "../../configs/types";
+import {Favorite, Mail, Theme, User, Notification} from "../../configs/types";
 import {defaultAvatar} from "../../configs/consts";
 
 
@@ -171,3 +171,27 @@ export function userInfoFetched(id: number, data: User): UserInfoFetched {
 }
 
 
+export const MY_INBOX_FETCHED = 'MY_INBOX_FETCHED';
+export type MY_INBOX_FETCHED = typeof MY_INBOX_FETCHED;
+
+export interface MyInboxFetched {
+    type: MY_INBOX_FETCHED;
+    data: Mail[];
+}
+
+export function myInboxFetched(data: Mail[]) {
+    return {type: MY_INBOX_FETCHED, data};
+}
+
+
+export const MY_FAVORITE_FETCHED = 'MY_FAVORITE_FETCHED';
+export type MY_FAVORITE_FETCHED = typeof MY_FAVORITE_FETCHED;
+
+export interface MyFavoriteFetched {
+    type: MY_FAVORITE_FETCHED;
+    data: Favorite[];
+}
+
+export function myFavoriteFetched(data: Favorite[]): MyFavoriteFetched {
+    return {type: MY_FAVORITE_FETCHED, data}
+}

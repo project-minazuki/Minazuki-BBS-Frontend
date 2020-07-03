@@ -90,3 +90,41 @@ export interface UpdateUserInfoStart {
 export function updateUserInfoStart(data: UpdateUserInfoForm, cb?: () => void): UpdateUserInfoStart {
     return {type: UPDATE_USER_INFO_START, data, cb};
 }
+
+
+export const FETCH_MY_INBOX_START = 'FETCH_MY_INBOX_START';
+export type FETCH_MY_INBOX_START  = typeof FETCH_MY_INBOX_START;
+
+export interface FetchMyInboxStart {
+    type: FETCH_MY_INBOX_START;
+    uid: number;
+}
+
+export function fetchMyInboxStart(uid: number): FetchMyInboxStart {
+    return {type: FETCH_MY_INBOX_START, uid};
+}
+
+
+export const FETCH_MY_FAVORITE_START = 'FETCH_MY_FAVORITE_START';
+export type FETCH_MY_FAVORITE_START  = typeof FETCH_MY_FAVORITE_START;
+
+export interface FetchMyFavoriteStart {
+    type: FETCH_MY_FAVORITE_START;
+}
+
+export function fetchMyFavoriteStart(): FetchMyFavoriteStart {
+    return {type: FETCH_MY_FAVORITE_START};
+}
+
+
+export const DELETE_FAVORITE_START = 'DELETE_FAVORITE_START';
+export type DELETE_FAVORITE_START  = typeof DELETE_FAVORITE_START;
+
+export interface DeleteFavoriteStart {
+    type: DELETE_FAVORITE_START;
+    fid: number;
+}
+
+export function deleteFavoriteStart(fid: number): DeleteFavoriteStart {
+    return {type: DELETE_FAVORITE_START, fid};
+}

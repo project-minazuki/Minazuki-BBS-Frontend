@@ -108,3 +108,12 @@ export interface UpdateUserInfoForm {
     privacyShow?: boolean;
     signature?: string;
 }
+
+export interface Favorite {
+    id: number;
+    createdAt: string;
+    lastViewwdAt: string;
+    ownerId: number;
+    themeId: number;
+    $theme: Theme;
+}
