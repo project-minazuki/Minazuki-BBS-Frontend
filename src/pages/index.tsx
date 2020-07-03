@@ -13,6 +13,7 @@ import Register from "../containers/views/Register";
 
 const Homepage = lazy(() => import("../containers/pages/homepage"));
 const CategoryPage = lazy(() => import("../containers/pages/CategoryPage"));
+const PostPage = lazy(() => import("../containers/pages/PostPage"));
 
 const Index: FC = memo(() => {
 
@@ -31,6 +32,7 @@ const Index: FC = memo(() => {
           <Route path={url.register} component={Register} />
           <Route path={url.root} exact render={routerRender(<Homepage />)} />
           <Route path="/CategoryPage" exact render={routerRender(<CategoryPage />)}/>
+            <Route path="/PostPage" exact render={routerRender(<PostPage />)}/>
         </Switch>
       </>
     );

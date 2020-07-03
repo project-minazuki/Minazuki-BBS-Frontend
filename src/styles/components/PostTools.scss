@@ -2,38 +2,78 @@
 
   display: flex;
   flex-direction: column;
-  width: 411px;
-  height: 484px;
+  width: 300px;
+  height: 200px;
 
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(15px) saturate(150%);
   border-radius: 6px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  .search-bar {
+
+  .page{
     display: flex;
+    margin:15px;
     align-items: center;
-    justify-content: center;
-    margin:0px 15px;
-    .input-search {
-      border-radius: 6px;
+    .page-word{
+      font-size: 18px;
+      color: black;
+
+    }
+    .Pagination{
+      margin:0px 15px;
     }
   }
-  .Dynamic-Tag-radio-Group{
-    margin:5px 15px;
+  .post{
+    display: flex;
+    margin:15px;
+    align-items: center;
+    .post-word{
+      font-size: 18px;
+      color: black;
+    }
+    .Radio-Group{
+      color: #707070;
+      margin:0px 20px;
+    }
   }
-  .title{
-    margin:15px 15px 5px 15px;
-    font-size: 24px;
-    color: black;
-  }
-  .related-tag-radio-Group{
-    font-size: 20px;
-    color: black;
-    margin:15px 15px 0px 15px;
-  }
-  .senior-search{
-    text-align :center;
-    font-size: 20px;
-    color: #CECECE;
+  .operate{
+    display: flex;
+    margin:15px;
+    align-items: center;
+    .operate-word{
+      font-size: 18px;
+      color: black;
+    }
+    .tip-off{
+      display: flex;
+      align-items: center;
+      margin:0px 15px;
+      .tip-off-word{
+        font-size: 16px;
+        color: black;
+        margin:0px 5px;
+      }
+
+      .tip-off-Icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .return{
+      display: flex;
+      align-items: center;
+      margin:0px 15px;
+      .return-word{
+        font-size: 16px;
+        color: black;
+        margin:0px 5px;
+      }
+      .return-Icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+
   }
 }
