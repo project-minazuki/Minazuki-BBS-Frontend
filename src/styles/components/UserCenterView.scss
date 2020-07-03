@@ -4,15 +4,16 @@
 
   .card-container {
     height: 1000px;
+    width: 100%;
 
     .nav-bar {
 
       display: flex;
       flex-direction: row;
-      width: 100%;
+      width: 420px;
       justify-content: space-around;
       align-items: center;
-      margin: 20px 28px;
+      margin: 30px 28px;
 
       .nav-item {
         transition: 200ms;
@@ -35,6 +36,22 @@
       }
 
     }
+  }
+
+  .tab-message {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tab-favorite {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
 }

@@ -1,17 +1,17 @@
-import {RegisterForm} from "../../configs/types";
+import {RegisterForm, UpdateUserInfoForm} from "../../configs/types";
 
 export const FETCH_MY_INFO_START = 'FETCH_MY_INFO_START';
 export type FETCH_MY_INFO_START = typeof FETCH_MY_INFO_START;
 
 export interface FetchMyInfoStart {
     type: FETCH_MY_INFO_START;
-    redirect: string;
+    redirect?: string;
     isFirstTime?: boolean;
     title?: string
 }
 
 export function fetchMyInfoStart(
-    to: string,
+    to?: string,
     isFirstTime?: boolean,
     title?: string
 ): FetchMyInfoStart {
@@ -75,4 +75,56 @@ export interface FetchUserInfoStart {
 
 export function fetchUserInfoStart(uid: number): FetchUserInfoStart {
     return {type: FETCH_USER_INFO_START, uid};
+}
+
+
+export const UPDATE_USER_INFO_START = 'UPDATE_USER_INFO_START'
+export type UPDATE_USER_INFO_START = typeof UPDATE_USER_INFO_START;
+
+export interface UpdateUserInfoStart {
+    type: UPDATE_USER_INFO_START;
+    data: UpdateUserInfoForm;
+    cb?: () => void;
+}
+
+export function updateUserInfoStart(data: UpdateUserInfoForm, cb?: () => void): UpdateUserInfoStart {
+    return {type: UPDATE_USER_INFO_START, data, cb};
+}
+
+
+export const FETCH_MY_INBOX_START = 'FETCH_MY_INBOX_START';
+export type FETCH_MY_INBOX_START  = typeof FETCH_MY_INBOX_START;
+
+export interface FetchMyInboxStart {
+    type: FETCH_MY_INBOX_START;
+    uid: number;
+}
+
+export function fetchMyInboxStart(uid: number): FetchMyInboxStart {
+    return {type: FETCH_MY_INBOX_START, uid};
+}
+
+
+export const FETCH_MY_FAVORITE_START = 'FETCH_MY_FAVORITE_START';
+export type FETCH_MY_FAVORITE_START  = typeof FETCH_MY_FAVORITE_START;
+
+export interface FetchMyFavoriteStart {
+    type: FETCH_MY_FAVORITE_START;
+}
+
+export function fetchMyFavoriteStart(): FetchMyFavoriteStart {
+    return {type: FETCH_MY_FAVORITE_START};
+}
+
+
+export const DELETE_FAVORITE_START = 'DELETE_FAVORITE_START';
+export type DELETE_FAVORITE_START  = typeof DELETE_FAVORITE_START;
+
+export interface DeleteFavoriteStart {
+    type: DELETE_FAVORITE_START;
+    fid: number;
+}
+
+export function deleteFavoriteStart(fid: number): DeleteFavoriteStart {
+    return {type: DELETE_FAVORITE_START, fid};
 }

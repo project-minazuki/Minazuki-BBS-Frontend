@@ -15,7 +15,9 @@ const Homepage = lazy(() => import("../containers/pages/homepage"));
 const CategoryPage = lazy(() => import("../containers/pages/CategoryPage"));
 const PostPage = lazy(() => import("../containers/pages/PostPage"));
 
-const Index: FC = memo(() => {
+const Index: FC = memo(props => {
+
+    useEffect(() => window.scrollTo(0, 0));
 
     const routerRender = (Component: JSX.Element) => (props: RouteComponentProps) => (
         <PageFrame {...props}>
