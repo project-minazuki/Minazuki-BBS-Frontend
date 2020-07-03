@@ -325,7 +325,7 @@ export namespace theme {
 
     export const top10ByVisitsCount = () => new Request({
         method: "GET",
-        url: `${themeHeader}/top10/top10ByVisitsCount`,
+        url: `${themeHeader}/top10/byThemeVisitsCount`,
     })
 
     export const update = (param: {

@@ -1,6 +1,7 @@
 import React, {CSSProperties, FC, memo} from "react";
 import {Category} from "../configs/types";
 import '../styles/components/CateItem.scss';
+import * as url from '../configs/url';
 
 import {Avatar, message} from 'antd';
 import {defaultAvatar} from "../configs/consts";
@@ -23,8 +24,8 @@ const CateItem: FC<IProps> = memo(props => {
     const handleClick = () => {
         const cateId = $cate._id ?? 0;
         // TODO: 修改成对应版块的路由
-        message.info(`即将前往 ${cateId} 版块`)
-        setTimeout(() => history.push('/testApp'), 2000)
+        message.info(`前往 ${cateId} 版块`)
+        history.push(url.$category(cateId));
     }
 
     return (

@@ -124,3 +124,11 @@ export function noticeToAnnouncement(body: any): Announcement {
     }
 }
 
+export function uniqueArray<T>(arr: T[]): T[] {
+    let $$: T[] = [];
+    for (const ii of arr)
+        if ($$.indexOf(ii) == -1)
+            $$.push(ii);
+    return $$;
+}
+

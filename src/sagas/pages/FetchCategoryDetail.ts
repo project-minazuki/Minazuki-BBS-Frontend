@@ -5,7 +5,7 @@ import * as url from '../../configs/url';
 import * as actions from '../../redux/actions';
 
 import {message} from 'antd';
-import {cateToCate, noticeToAnnouncement, themeToTheme} from "../../utils/tools";
+import {cateToCate, noticeToAnnouncement, themeToTheme, uniqueArray} from "../../utils/tools";
 import {$history} from "../../App";
 import {Announcement, Theme} from "../../configs/types";
 
@@ -49,6 +49,9 @@ function* worker(action: $actions.FetchCategoryDetail) {
             const highQuality = processTheme(res[3].data, $action);
             const announce = processAnnounce(res[4].data, $action);
             const tags = res[5].data.data;
+            const hash = uniqueArray($action);
+            console.log($action, hash, res);
+            for (const ii of hash) yield put(ii);
             yield put(actions.categoryDetailsFetched(info, highQuality, pin, all, announce, tags));
         }
     } catch (e) {

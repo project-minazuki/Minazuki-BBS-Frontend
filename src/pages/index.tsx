@@ -1,5 +1,5 @@
 import React, {FC, lazy, memo, useEffect} from 'react';
-import {Route, RouteComponentProps, Switch, withRouter} from "react-router";
+import {Redirect, Route, RouteComponentProps, Switch, withRouter} from "react-router";
 import {Suspense} from 'react';
 
 import PageFrame from "../containers/PageFrame";
@@ -38,9 +38,9 @@ const Index: FC = memo(() => {
           <Route path={url.user} exact render={routerRender(<User />)} />
           <Route path={url.me} exact render={routerRender(<User />)} />
           <Route path="/PostPage" exact render={routerRender(<PostPage />)} />
-          <Route path="/CategoryPage" exact render={routerRender(<CategoryPage />)} />
-          <Route path="/testApp" component={TestApp} />
-
+          <Route path={url.category} exact render={routerRender(<CategoryPage />)} />
+          <Route path="/testApp" exact component={TestApp} />
+          <Redirect to={url.$404}/>
         </Switch>
       </>
     );

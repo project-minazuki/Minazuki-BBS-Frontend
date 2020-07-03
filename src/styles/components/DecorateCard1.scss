@@ -1,0 +1,26 @@
+#comp-decorate-card {
+
+  .card-container {
+    width: 300px;
+    height: 420px;
+
+    .icon {
+      padding: 30px;
+    }
+
+    .center .para1 {
+      padding: 16px;
+      font-size: 18px;
+      word-wrap:break-word;
+      word-break:break-all;
+      text-align: center;
+    }
+
+    .bottom .para2 {
+      padding: 16px;
+      font-size: 17px;
+      word-wrap:break-word;
+      word-break:break-all;
+    }
+  }
+}

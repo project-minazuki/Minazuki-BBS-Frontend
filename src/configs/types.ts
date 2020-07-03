@@ -121,7 +121,7 @@ export interface UpdateUserInfoForm {
 export interface Favorite {
     id: number;
     createdAt: string;
-    lastViewwdAt: string;
+    lastViewedAt: string;
     ownerId: number;
     themeId: number;
     $theme: Theme;

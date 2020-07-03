@@ -17,11 +17,11 @@ const CategoryCard1: FC<IProps> = memo(props => {
     let links = [];
 
     if($cates.length === 0){
-        links.push(<Empty></Empty>)
+        links.push(<Empty key={0}/>)
     }
     else{
-        for(let i = 0 ; i< $cates.length ;i++){
-            links.push(<CateItem info={$cates[i]}> </CateItem>)
+        for(let i = 0; i < $cates.length; i ++){
+            links.push(<CateItem info={$cates[i]} key={i}/>)
         }
     }
 

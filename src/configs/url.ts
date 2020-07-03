@@ -23,4 +23,6 @@ export const me = '/user/';
 
 export const $user = (uid: string, hash?: string) => `/user/${uid}/#/` + (hash ?? '');
 
+export const $category = (cid: number) => `/category/${cid}`;
+
 export const $404 = '/';
