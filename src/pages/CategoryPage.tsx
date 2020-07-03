@@ -70,11 +70,10 @@ const CategoryPage: FC<CategoryPageProps> = memo(({store, loadData, userDB}) => 
 
     return (
         <div id='page-Category' className='page'>
-            {unload ? LoadingIcon : <div className='container'>
+            {
+                unload ? LoadingIcon : <div className='container'>
                 <div className='left'>
-                    <CateIntro
-                        info_Cate={{} as Category} info_User={{} as User} className={'cate-intro'}/>
-
+                    <CateIntro info_Cate={{} as Category} info_User={{} as User} className={'cate-intro'} />
                 <AnnouncementCard1
                     info={nextAnnouncement} editor={{} as User} className={'cate-intro'}/>
                 </div>
@@ -89,7 +88,8 @@ const CategoryPage: FC<CategoryPageProps> = memo(({store, loadData, userDB}) => 
                     <div className='right'>
                         <CateSearch />
                     </div>
-                </div>}
+                </div>
+            }
         </div>
 
     )
