@@ -44,6 +44,8 @@ export interface Category {
     updateTime: string;
     visits: number;
     avatar?: string;
+    themeNumber?:number;
+    postNumber?:number;
 }
 
 export interface HistoryViewed {

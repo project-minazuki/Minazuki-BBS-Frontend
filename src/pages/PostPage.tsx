@@ -14,9 +14,11 @@ const PostPage: FC<PostPageProps> = memo(({}) => {
 
 
     return (
-        <div id='page-Post' className='page'>
+        <div id='page-Post' className='container'>
             <BgImg src={atri} />
-            <NewReply/>
+            <div className='left'>
+
+            </div>
             <PostTools/>
             <CateCard info={{}as Category}/>
         </div>

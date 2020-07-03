@@ -1,5 +1,17 @@
 #page-Post{
   display: flex;
+  align-items: center;
   justify-content: center;
 
+  $window-width: 1200px;
+  .container {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: calc(100% - 60px);
+    max-width: $window-width;
+  }
 }

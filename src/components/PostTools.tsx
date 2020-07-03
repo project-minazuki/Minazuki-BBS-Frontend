@@ -1,15 +1,18 @@
-import React, {CSSProperties, FC, HTMLProps, memo} from "react";
+import React, {CSSProperties, FC, HTMLProps, memo, useState} from "react";
 import '../styles/components/ThemeItem.scss';
 
-import {message, Pagination, Radio} from 'antd';
+import {message, Pagination, Radio, Drawer, Button} from 'antd';
 import {useHistory} from "react-router";
 import '../styles/components/PostTools.scss'
 import returnIcon from "../images/returnIcon.png";
 import tipOff from "../images/tip-off.png";
 
 import {
-    WarningOutlined,CommentOutlined
+    WarningOutlined, CommentOutlined
 } from '@ant-design/icons';
+import ThemeItem from "./ThemeItem";
+import {Category, Theme, User} from "../configs/types";
+
 interface IProps {
 
 }
@@ -17,13 +20,17 @@ interface IProps {
 
 const PostTools: FC<IProps> = memo((props) => {
 
+    const [visible, setVisible] = useState(false);//todo：无作用
     const history = useHistory();
     const backToHome = () => history.push('/')
     const handleClickTipOff = () => {
         message.info('你正在尝试举报')
     }
     const handleClicketurn = () => {
-        message.info('你正在尝试回复')
+        setVisible(true);
+    }
+    const onClose = () => {
+        setVisible(false);
     }
 
     //TODO:事件监听
@@ -42,14 +49,30 @@ const PostTools: FC<IProps> = memo((props) => {
         <div className='operate'>
             <div className='operate-word'>操作</div>
             <div className='tip-off' onClick={handleClickTipOff}>
-                <WarningOutlined />
+                <WarningOutlined/>
                 <div className='tip-off-word'>举报</div>
 
             </div>
             <div className='return' onClick={handleClicketurn}>
-                <CommentOutlined />
+                <CommentOutlined/>
                 <div className='return-word'>回复</div>
-
+                <Drawer//todo：这个抽屉的样式需要更改
+                    className='Drawer'
+                    placement="right"
+                    closable={false}
+                    onClose={onClose}
+                    visible={visible}//todo:这个visible不起作用
+                >
+                    <div className='new-reply-post-word'>新建回复贴</div>
+                    <div className='new-will-reply-post-word'>您要回复的主题帖</div>
+                    <div className='new-reply-post'>
+                        <ThemeItem
+                            info_Theme={{} as Theme}info_Cate={{}as Category} info_User={{}as User}
+                            className='new-will-reply-post'>
+                        </ThemeItem>
+                    </div>
+                    <div className='new-will-reply-post-word'>您要回复的内容</div>
+                </Drawer>
             </div>
         </div>
     </div>;
