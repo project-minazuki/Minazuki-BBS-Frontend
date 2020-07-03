@@ -1,4 +1,4 @@
-import React, {FC, lazy, memo, useState} from 'react';
+import React, {FC, lazy, memo, useEffect} from 'react';
 import {Route, RouteComponentProps, Switch, withRouter} from "react-router";
 import {Suspense} from 'react';
 
@@ -9,13 +9,15 @@ import * as url from '../configs/url';
 
 import Login from "../containers/views/Login";
 import Register from "../containers/views/Register";
-
+import TestApp from "../test/container";
 
 const Homepage = lazy(() => import("../containers/pages/homepage"));
-const CategoryPage = lazy(() => import("../containers/pages/CategoryPage"));
+const User = lazy(() => import("../containers/pages/user"));
 const PostPage = lazy(() => import("../containers/pages/PostPage"));
+const CategoryPage = lazy(() => import("../containers/pages/CategoryPage"));
 
-const Index: FC = memo(props => {
+
+const Index: FC = memo(() => {
 
     useEffect(() => window.scrollTo(0, 0));
 
@@ -30,11 +32,15 @@ const Index: FC = memo(props => {
     return (
       <>
         <Switch>
-          <Route path={url.login} component={Login} />
-          <Route path={url.register} component={Register} />
+          <Route path={url.login} exact component={Login} />
+          <Route path={url.register} exact component={Register} />
           <Route path={url.root} exact render={routerRender(<Homepage />)} />
-          <Route path="/CategoryPage" exact render={routerRender(<CategoryPage />)}/>
-            <Route path="/PostPage" exact render={routerRender(<PostPage />)}/>
+          <Route path={url.user} exact render={routerRender(<User />)} />
+          <Route path={url.me} exact render={routerRender(<User />)} />
+          <Route path="/PostPage" exact render={routerRender(<PostPage />)} />
+          <Route path="/CategoryPage" exact render={routerRender(<CategoryPage />)} />
+          <Route path="/testApp" component={TestApp} />
+
         </Switch>
       </>
     );
