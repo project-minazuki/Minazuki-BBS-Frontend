@@ -161,7 +161,47 @@
 
       .edit-card {
         width: inherit;
-        height: 500px;
+        height: 400px;
+
+        .card-container {
+
+          display: flex;
+          width: 100%;
+          height: calc(100% - 40px);
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+
+          .form-container {
+
+            display: flex;
+            width: calc(100% - 360px);
+            justify-content: flex-start;
+
+            .form {
+              display: flex;
+              flex-direction: column;
+              width: 100%
+            }
+
+          }
+
+          .avatar-container {
+
+            width: 320px;
+            margin: 0 20px;
+            display: flex;
+            flex-direction: column;
+
+            .edit-avatar {
+              margin:24px 0;
+              width: 120px;
+            }
+
+          }
+
+        }
+
       }
     }
   }

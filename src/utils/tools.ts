@@ -2,6 +2,7 @@ import {store} from "../App";
 import {developerName, pwdMinLength} from "../configs/consts";
 import {Category, User} from "../configs/types";
 import {stringConvert} from "./DateTimes";
+import md5 from 'js-md5';
 
 /**
  *
@@ -90,5 +91,11 @@ export function userToUser(body: any): User {
         lastSignIn: stringConvert(body.lastSignIn),
         avatar: body.avatarUrl,
     }
+}
+
+export function convertGravatar(email: string): string {
+    const mailto = email.trim().toLowerCase();
+    const hash = md5(mailto);
+    return `https://www.gravatar.com/avatar/${hash}`;
 }
 

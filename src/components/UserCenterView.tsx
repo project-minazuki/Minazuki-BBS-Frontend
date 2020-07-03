@@ -24,7 +24,7 @@ const UserCenterView: FC<IProps> = memo(props => {
         let links = [];
 
         for (let i = 0; i < 5; ++ i) {
-            links.push(<Link to={hash[i]}
+            links.push(<Link to={hash[i]} key={i}
                 className={`nav-item` + (i === $id ? ' selected' : '')}>
                 {label[i]}
             </Link>);
