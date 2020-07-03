@@ -9,6 +9,7 @@ import * as url from '../configs/url';
 
 import Login from "../containers/views/Login";
 import Register from "../containers/views/Register";
+import TestPage from "./testPage";
 
 
 const Homepage = lazy(() => import("../containers/pages/homepage"));
@@ -31,6 +32,7 @@ const Index: FC = memo(() => {
           <Route path={url.register} component={Register} />
           <Route path={url.root} exact render={routerRender(<Homepage />)} />
           <Route path="/CategoryPage" exact render={routerRender(<CategoryPage />)}/>
+            <Route path="/TestPage" exact render={routerRender(<TestPage />)}/>
         </Switch>
       </>
     );
