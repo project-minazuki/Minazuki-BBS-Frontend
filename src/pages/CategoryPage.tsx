@@ -40,6 +40,8 @@ const CategoryPage: FC<CategoryPageProps> = memo(({store, loadData, userDB}) => 
         }
     }
 
+    const {announce, highQuality, pinned, info} = store;
+
     useEffect(() => {
         if (cid === undefined) {
             message.info('查看所有版块的页面正在开发中，即将回到首页');
@@ -49,6 +51,21 @@ const CategoryPage: FC<CategoryPageProps> = memo(({store, loadData, userDB}) => 
             loadData(cid);
         } else message.success('加载成功');
     }, [])
+    let nextAnnouncement : Announcement;
+    nextAnnouncement = {} as Announcement;
+    let i =0;
+    const setNextAnnouncement = (i: number) => {
+        if(announce.length !== 0 ){
+            if(i >= announce.length ) i=0
+            nextAnnouncement = announce[i];
+            i++;
+        }
+
+        //message.info(i++ +"");
+        return i;
+    }
+    setInterval(() =>{i = setNextAnnouncement(i)},10000)//10秒切一个公告
+
 
 
     return (
@@ -58,25 +75,21 @@ const CategoryPage: FC<CategoryPageProps> = memo(({store, loadData, userDB}) => 
                     <CateIntro
                         info_Cate={{} as Category} info_User={{} as User} className={'cate-intro'}/>
 
-                    <AnnouncementCard1
-                        info={{} as Announcement} editor={{} as User} className={'cate-intro'}/>
+                <AnnouncementCard1
+                    info={nextAnnouncement} editor={{} as User} className={'cate-intro'}/>
                 </div>
                 <div className='mid'>
                     <div className='up'>
-                        <NewestReplyTheme1 newReplies={{} as Theme[]}>
-
-                        </NewestReplyTheme1>
+                        <NewestReplyTheme1 newReplies={highQuality} />
                     </div>
-                    <div className='buttom'>
-                        <NewestTheme1 newThemes={{} as Theme[]}>
-
-                        </NewestTheme1>
+                    <div className='bottom'>
+                        <NewestTheme1 newThemes={pinned} />
                     </div>
                 </div>
-                <div className='right'>
-                    <CateSearch />
-                </div>
-            </div>}
+                    <div className='right'>
+                        <CateSearch />
+                    </div>
+                </div>}
         </div>
 
     )
