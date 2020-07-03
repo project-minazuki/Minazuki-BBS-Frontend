@@ -44,7 +44,7 @@ const NewestTheme1: FC<IProps> = memo(props => {
                             <RedoOutlined className='refresh' onClick = {refresh}/>
                         </div>
                         <div className="new-themes">
-                            <Space direction="vertical">
+                            <Space direction="vertical" style = {{display: "flex",alignItems: "center",justifyContent: "center"}}>
                                 {links}
                             </Space>
                         </div>
