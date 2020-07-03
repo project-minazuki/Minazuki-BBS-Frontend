@@ -1,17 +1,29 @@
 import React, {CSSProperties, FC, memo} from "react";
 import CateItem from "./CateItem";
 import {Category} from "../configs/types";
-import {message, Space} from "antd";
+import {message, Space,Empty} from "antd";
 
 import '../styles/components/CategoryCard1.scss'
 
 interface IProps {
     classname?: string | undefined;
-    style?: Partial<CSSProperties>
+    style?: Partial<CSSProperties>;
+    cates: Category[]
 }
 
 const CategoryCard1: FC<IProps> = memo(props => {
     const $style = props.style;
+    const $cates = props.cates;
+    let links = [];
+
+    if($cates.length === 0){
+        links.push(<Empty></Empty>)
+    }
+    else{
+        for(let i = 0 ; i< $cates.length ;i++){
+            links.push(<CateItem info={$cates[i]}> </CateItem>)
+        }
+    }
 
     const readMore = () => {
         message.info(`即将 查看更多内容`)
@@ -29,10 +41,7 @@ const CategoryCard1: FC<IProps> = memo(props => {
             </div>
             <div className="categories">
                 <Space direction='vertical' size = {20}>
-                    <CateItem info={{} as Category}></CateItem>
-                    <CateItem info={{} as Category}></CateItem>
-                    <CateItem info={{} as Category}></CateItem>
-                    <CateItem info={{} as Category}></CateItem>
+                    {links}
                 </Space>
 
             </div>

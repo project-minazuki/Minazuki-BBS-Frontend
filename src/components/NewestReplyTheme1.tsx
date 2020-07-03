@@ -1,47 +1,59 @@
 import React, {CSSProperties, FC, memo} from "react";
-import {message, Space} from "antd";
+import {message, Space, Empty} from "antd";
 import CateItem from "./CateItem";
 import {Category, Theme, User} from "../configs/types";
 import Card from "./Card";
 import ThemeItem from "./ThemeItem";
 import {RedoOutlined} from '@ant-design/icons';
 import '../styles/components/NewestReplyTheme1.scss'
+import {category} from "../configs/api";
 
 interface IProps {
     classname?: string | undefined;
     style?: Partial<CSSProperties>
+    newReplies: Theme[]
 }
 
 const NewestReplyTheme1: FC<IProps> = memo(props => {
     const $class = props.classname ?? '';
     const $style = props.style;
+    const newReplies = props.newReplies;
+    let links = [];
+
+    if(links.length === 0){
+        links.push(<Empty></Empty>)
+    }
+    else{
+        for(let i =0; i<newReplies.length;i++){
+            //TODO info_Cate 和 info_User 将来需要使用正确的值
+            links.push(<ThemeItem info_Theme={newReplies[i]} info_Cate={{} as Category} info_User={{} as User}></ThemeItem>)
+        }
+
+
+    }
 
     const refresh = () => {message.info("你试图刷新最新回复")}
 
 
     return(
         <div id = 'comp-newest-reply-theme' style ={$style}>
-            <div className = {`container ${$class}`}>
-                <Card style={{  width: '720px', height: '500px'}}>
-                    <div>
-                        <div className="top">
-                            <div className='text-newest-reply'>
-                                最新回复
+                <div className = {`container ${$class}`}>
+                    <Card style={{  width: '720px', height: '500px'}}>
+                        <div className = 'card-container'>
+                            <div className="top">
+                                <div className='text-newest-reply'>
+                                    最新回复
+                                </div>
+                                <RedoOutlined className='refresh' onClick = {refresh}/>
                             </div>
-                            <RedoOutlined className='refresh' onClick = {refresh}/>
+                            <div className="new-themes-reply">
+                                <Space direction="vertical">
+                                    {links}
+                                </Space>
+                            </div>
                         </div>
-                        <div className="new-themes-reply">
-                            <Space direction="vertical">
-                                <ThemeItem info_Theme={{} as Theme} info_Cate={{} as Category} info_User={{} as User}></ThemeItem>
-                                <ThemeItem info_Theme={{} as Theme} info_Cate={{} as Category} info_User={{} as User}></ThemeItem>
-                                <ThemeItem info_Theme={{} as Theme} info_Cate={{} as Category} info_User={{} as User}></ThemeItem>
-                                <ThemeItem info_Theme={{} as Theme} info_Cate={{} as Category} info_User={{} as User}></ThemeItem>
-                                <ThemeItem info_Theme={{} as Theme} info_Cate={{} as Category} info_User={{} as User}></ThemeItem>
-                            </Space>
-                        </div>
-                    </div>
-                </Card>
-            </div>
+                    </Card>
+                </div>
         </div>
     )
 })
