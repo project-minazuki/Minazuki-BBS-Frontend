@@ -11,7 +11,18 @@ import Index from './pages/index';
 import Sagas from "./sagas";
 import {reducers} from "./redux/reducers";
 
-export const $history = createHistory();
+type Object = null | undefined | object;
+export const $history: any = {
+    push: (to: string) => {
+        _history.push(to);
+        console.log(_history)
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        window.scrollTo(0, 0);
+    },
+    $push: (path: string, state?: Object) => _history.push(path, state),
+};
+const _history = createHistory();
 
 const saga = createSagaMiddleware();
 const middleWares = [saga];
@@ -36,7 +47,7 @@ const App: FC = memo(() => {
 
   return (
     <Provider store={store}>
-      <Router history={$history}>
+      <Router history={_history}>
         <Index />
       </Router>
     </Provider>

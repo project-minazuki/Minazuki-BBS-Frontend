@@ -99,3 +99,12 @@ export interface RegisterForm {
     phoneNumber: string;
     email: string;
 }
+
+
+export interface UpdateUserInfoForm {
+    id: number;
+    avatarUrl?: string;
+    nickname?: string;
+    privacyShow?: boolean;
+    signature?: string;
+}

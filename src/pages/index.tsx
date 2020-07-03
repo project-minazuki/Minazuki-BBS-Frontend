@@ -14,7 +14,9 @@ import TestApp from "../test/container";
 const Homepage = lazy(() => import("../containers/pages/homepage"));
 const User = lazy(() => import("../containers/pages/user"));
 
-const Index: FC = memo(() => {
+const Index: FC = memo(props => {
+
+    useEffect(() => window.scrollTo(0, 0));
 
     const routerRender = (Component: JSX.Element) => (props: RouteComponentProps) => (
         <PageFrame {...props}>

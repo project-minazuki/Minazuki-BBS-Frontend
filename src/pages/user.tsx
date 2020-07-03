@@ -2,7 +2,7 @@ import React, {FC, memo, useContext, useEffect, useState} from "react";
 import {UserProps} from '../containers/pages/user';
 import '../styles/user.scss';
 import * as url from '../configs/url';
-import {User as $User} from '../configs/types';
+import {UpdateUserInfoForm, User as $User} from '../configs/types';
 
 import {
     message, Avatar, Button, Form,
@@ -10,7 +10,7 @@ import {
 } from 'antd';
 import {
     ArrowRightOutlined, EditOutlined,
-    SaveOutlined, LoadingOutlined,
+    SaveOutlined, LoadingOutlined, PlusOutlined
 } from '@ant-design/icons';
 import ayane from '../images/bg-ayane.png';
 import BgImg from "../components/BgImg";
@@ -44,7 +44,7 @@ const EditCard: FC<{
     const [gravatar, setGravatar] = useState(false);
     const $avatar = () => gravatar ? convertGravatar(avatar) : avatar;
 
-    const callback = (value: object) => cb({...value, avatar: $avatar()});
+    const callback = (value: object) => cb({...value, avatarUrl: $avatar()});
 
     const layout = {
         labelCol: { span: 6 },
@@ -61,7 +61,7 @@ const EditCard: FC<{
             <Form.Item name='username' label='用户名'>
               <Input disabled/>
             </Form.Item>
-            <Form.Item name='nickname' label='昵称'>
+            <Form.Item name='nickname' label='昵称' rules={[{required: true, message: '昵称不能为空'}]}>
               <Input />
             </Form.Item>
             <Form.Item name='signature' label='个性签名'>
@@ -147,15 +147,33 @@ const User: FC<UserProps> = memo(({user, loggedIn, getById, lib, updateInfo, inP
         }
     }
 
-    const handleEdit = (values: object) => {
-        console.log(values);
-        updateInfo(2000, () => setEdit(false));
+    const handleEdit = (values: any) => {
+        const data = {...values, id: uid};
+        if (values.nickname === $lib(uid).nickname)     // TODO: 也许可以对象 differ？
+            data.nickname = null;
+        updateInfo(data, () => setEdit(false));
     }
 
     const handleClick = () => {
         if (!edit) setEdit(!edit);
         else form.submit();
     }
+
+    const handleSend = () => {
+
+    }
+
+    const button = isMe || user.info.isAdmin ? (
+        <Button className='button' shape='round' onClick={handleClick}>
+            {edit ? (inProcess ? <LoadingOutlined /> :<SaveOutlined />) : <EditOutlined/>}
+            {edit ? '保存修改' : '编辑信息'}
+        </Button>
+    ) : (
+        <Button className='button' shape='round' onClick={handleSend}
+                disabled title='功能开发中'>
+            <PlusOutlined /> 发送私信
+        </Button>
+    )
 
     return (
       <div id='page-user' className='page'>
@@ -172,14 +190,13 @@ const User: FC<UserProps> = memo(({user, loggedIn, getById, lib, updateInfo, inP
                     <div className='tags'>{tags[_getUserGroup($lib(uid))]}</div>
                     <div className='username'>用户名： {$lib(uid).username}</div>
                   </div>
-                  <div className='sign-text'>{$lib(uid).signature ?? defaultSignature}</div>
+                  <div className='sign-text'>
+                    {!$lib(uid).signature ? defaultSignature : $lib(uid).signature}
+                  </div>
                 </div>
               </div>
               <div className='buttons-group'>
-                <Button className='button' shape='round' onClick={handleClick}>
-                  {edit ? (inProcess ? <LoadingOutlined /> :<SaveOutlined />) : <EditOutlined/>}
-                  {edit ? '保存修改' : '编辑信息'}
-                </Button>
+                {button}
               </div>
             </div></Card>
           </div>

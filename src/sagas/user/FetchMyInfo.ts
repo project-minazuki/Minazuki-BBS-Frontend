@@ -35,7 +35,7 @@ function* worker(action: $actions.FetchMyInfoStart) {
             });
             yield put(actions.inboxCountFetched(res3.data.data));
             yield put(actions.userInfoFetched(body.id, userToUser(body)));
-            yield $history.push(action.redirect);
+            yield !!action.redirect && $history.push(action.redirect);
         }
     } catch (err) {
         console.log(err);
