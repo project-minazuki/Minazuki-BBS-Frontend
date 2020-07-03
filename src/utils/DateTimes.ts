@@ -9,6 +9,7 @@ export function stringToDate(dateString: string) {
 }
 
 export function stringConvert(date: string) {
+    if (date === undefined) return '';
     return date.replace(/-/g, '/')
         .replace(/T/g, ' ')
         .substr(0, 19);

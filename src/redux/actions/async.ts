@@ -128,3 +128,51 @@ export interface DeleteFavoriteStart {
 export function deleteFavoriteStart(fid: number): DeleteFavoriteStart {
     return {type: DELETE_FAVORITE_START, fid};
 }
+
+
+export const FETCH_CATEGORIES_START = 'FETCH_CATEGORIES_START';
+export type FETCH_CATEGORIES_START  = typeof FETCH_CATEGORIES_START ;
+
+export interface FetchCategoriesStart {
+    type: FETCH_CATEGORIES_START;
+}
+
+export function fetchCategoriesStart(): FetchCategoriesStart {
+    return {type: FETCH_CATEGORIES_START };
+}
+
+
+export const FETCH_ALL_THEMES_START = 'FETCH_ALL_THEMES_START';
+export type FETCH_ALL_THEMES_START = typeof FETCH_ALL_THEMES_START;
+
+export interface FetchAllThemesStart {
+    type: FETCH_ALL_THEMES_START;
+    cid: number;
+}
+
+export function fetchAllThemesStart(cid: number): FetchAllThemesStart {
+    return {type: FETCH_ALL_THEMES_START, cid};
+}
+
+export const FETCH_CATEGORY_DETAIL = 'FETCH_CATEGORY_DETAIL';
+export type FETCH_CATEGORY_DETAIL = typeof FETCH_CATEGORY_DETAIL;
+
+export interface FetchCategoryDetail {
+    type: FETCH_CATEGORY_DETAIL;
+    cateId: number;
+}
+
+export function fetchCategoryDetail(cid: number): FetchCategoryDetail {
+    return {type: FETCH_CATEGORY_DETAIL, cateId: cid};
+}
+
+export const FETCH_HOME_PAGE_START = 'FETCH_HOME_PAGE_START';
+export type FETCH_HOME_PAGE_START = typeof FETCH_HOME_PAGE_START;
+
+export interface FetchHomePageStart {
+    type: FETCH_HOME_PAGE_START;
+}
+
+export function fetchHomePageStart(): FetchHomePageStart {
+    return {type: FETCH_HOME_PAGE_START};
+}

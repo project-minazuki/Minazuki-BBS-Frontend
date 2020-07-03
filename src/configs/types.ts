@@ -33,6 +33,7 @@ export interface Announcement {
     content: string;
     createTime: string;
     updateTime: string;
+    title?: string;
 }
 
 export interface Category {
@@ -66,6 +67,12 @@ export interface Theme {
     updateTime: string;
     latestReplyTime: string;
     createdTime: string;
+    tags: Tag[];
+}
+
+export interface Tag {
+    id: number;
+    name: string;
 }
 
 export interface Post {
