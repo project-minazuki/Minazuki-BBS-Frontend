@@ -10,7 +10,7 @@ import {$history} from "../../App";
 
 function* worker() {
     try {
-        const res = yield api.category.getAll().exec();
+        const res = yield api.category.getOpening().exec();
         if (res.data.code < 0) {
             yield message.warn(res.data.msg);
         } else {

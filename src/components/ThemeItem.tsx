@@ -5,6 +5,7 @@ import {User} from "../configs/types";
 import pin from '../images/pin.png';
 import HQuality from '../images/HQuality.png';
 import '../styles/components/ThemeItem.scss';
+import * as url from '../configs/url';
 
 import {Avatar, message} from 'antd';
 import {defaultAvatar} from "../configs/consts";
@@ -31,7 +32,7 @@ const ThemeItem: FC<IProps> = memo(props => {
         const ThemeId = $Theme._id ?? 0;
         // TODO: 修改成对应版块的路由
         message.info(`即将前往 ${ThemeId} 帖子`)
-        setTimeout(() => history.push('/testApp'), 2000)
+        setTimeout(() => history.push(url.$theme(ThemeId)), 2000)
     }
 
     return (

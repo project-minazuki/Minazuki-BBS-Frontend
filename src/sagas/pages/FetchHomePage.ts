@@ -26,6 +26,7 @@ function* worker() {
                 $rep.push(themeToTheme(ii));
                 yield put($actions.fetchUserInfoStart(ii.creatorId));
             }
+            yield put(actions.recommendFetched($new, $rep));
         }
     } catch (e) {
         yield message.error(e.toString());
