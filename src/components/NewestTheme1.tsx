@@ -10,14 +10,16 @@ import '../styles/components/NewestTheme1.scss'
 
 interface IProps {
     classname?: string | undefined;
-    style?: Partial<CSSProperties>
-    newThemes: Theme[]
+    style?: Partial<CSSProperties>;
+    newThemes: Theme[];
+    describe: string;
 }
 
 const NewestTheme1: FC<IProps> = memo(props => {
     const $class = props.classname ?? '';
     const $style = props.style;
     const $newThemes = props.newThemes;
+    const $describe = props.describe;
     let links = [];
 
     if($newThemes.length ===0){
@@ -39,7 +41,7 @@ const NewestTheme1: FC<IProps> = memo(props => {
                     <div className='card-container'>
                         <div className="top">
                             <div className='text-newest'>
-                                最新主题
+                                {$describe ?? '最新主题'}
                             </div>
                             <RedoOutlined className='refresh' onClick = {refresh}/>
                         </div>

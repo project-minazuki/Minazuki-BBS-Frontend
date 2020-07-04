@@ -42,7 +42,7 @@ const CategoryPage: FC<CategoryPageProps> = memo(({store, loadData, userDB, user
         }
     }
 
-    const {announce, highQuality, pinned, info} = store;
+    const {announce, highQuality, all,pinned, info} = store;
 
     useEffect(() => {
         if (cid === undefined) {
@@ -82,10 +82,10 @@ const CategoryPage: FC<CategoryPageProps> = memo(({store, loadData, userDB, user
                 </div>
                 <div className='mid'>
                     <div className='up'>
-                        <NewestReplyTheme1 newReplies={highQuality} />
+                        <NewestReplyTheme1 newReplies={highQuality.concat(all)} describe='全部主题帖'/>
                     </div>
                     <div className='bottom'>
-                        <NewestTheme1 newThemes={pinned} />
+                        <NewestTheme1 newThemes={pinned} describe='置顶帖'/>
                     </div>
                 </div>
                     <div className='right'>

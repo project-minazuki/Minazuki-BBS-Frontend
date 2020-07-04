@@ -33,14 +33,14 @@ const Homepage: FC<HomepageProps> = memo(props => {
                         <DecorateCard1  text={text}/>
                     </Space>
                     <Space direction="vertical" align="start" size = {'large'}>
-                        <NewestReplyTheme1 newReplies={newReply}>
+                        <NewestReplyTheme1 newReplies={newReply} describe='最新回复'>
 
                         </NewestReplyTheme1>
-                        <NewestTheme1 newThemes={newTheme}>
+                        <NewestTheme1 newThemes={newTheme} describe={'最新主题'}>
 
                         </NewestTheme1>
                     </Space>
-                    <Space direction="vertical" align="start" size = {'large'}>
+                    <Space direction="vertical" align="start" size = {'large'} >
                         <CategoryCard1 cates={categories} />
                     </Space>
                 </Space>
