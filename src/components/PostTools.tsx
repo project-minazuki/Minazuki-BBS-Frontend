@@ -56,7 +56,7 @@ const PostTools: FC<IProps> = memo((props) => {
             <div className='return' onClick={handleClicketurn}>
                 <CommentOutlined/>
                 <div className='return-word'>回复</div>
-                <Drawer//todo：这个抽屉的样式需要更改
+                <Drawer width={480}
                     className='Drawer'
                     placement="right"
                     closable={false}

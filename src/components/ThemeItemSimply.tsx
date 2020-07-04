@@ -6,6 +6,7 @@ import '../styles/components/ThemeItemSimply.scss';
 import {Theme} from "../configs/types";
 import {useHistory} from "react-router";
 import {$theme} from "../configs/url";
+import {$history} from "../App";
 
 interface IProps {
     className?: string | undefined;
@@ -16,10 +17,9 @@ interface IProps {
 const ThemeItemSimply: FC<IProps> = memo(props => {
 
     const {title, pinned, highQuality, createdTime, _id} = props.item;
-    const history = useHistory();
     console.log(props.item)
 
-    const handleClick = () => history.push($theme(_id));
+    const handleClick = () => $history.push($theme(_id));
 
     return (
         <div id='comp-theme-item-simply' className={props.className}
