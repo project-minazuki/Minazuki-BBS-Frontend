@@ -1,0 +1,48 @@
+#comp-cate-Card {
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  width: 300px;
+  height: 150px;
+  margin: 10px 0px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(15px) saturate(150%);
+  border-radius: 6px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+
+  .container {
+    margin: 10px;
+    .title {
+      font-size: 18px;
+      color: black;
+      margin: 8px;
+    }
+
+    .content {
+      display: flex;
+
+      .avatar {
+        margin: 10px 15px;
+      }
+
+      .text-field {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 8px;
+
+        .name {
+          font-size: 24px;
+          color: black;
+        }
+
+        .desc {
+          font-size: 16px;
+          color: #707070;
+        }
+      }
+    }
+  }
+}

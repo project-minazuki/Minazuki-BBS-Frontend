@@ -1,0 +1,44 @@
+#comp-favorite-item {
+
+  width: 100%;
+  margin: 10px;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    transition: 200ms;
+    padding: 4px;
+
+    .text-field {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      color: black;
+      user-select: none;
+      width: 100%;
+
+      .desc {
+        font-size: 17px;
+        margin: 4px 12px
+      }
+
+      .button {
+        position: relative;
+        right: 12px;
+        top: 4px;
+      }
+    }
+
+    .theme-detail {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+    }
+  }
+
+  .container:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+
+}

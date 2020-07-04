@@ -33,6 +33,7 @@ export interface Announcement {
     content: string;
     createTime: string;
     updateTime: string;
+    title?: string;
 }
 
 export interface Category {
@@ -44,6 +45,8 @@ export interface Category {
     updateTime: string;
     visits: number;
     avatar?: string;
+    themeNumber?:number;
+    postNumber?:number;
 }
 
 export interface HistoryViewed {
@@ -66,6 +69,12 @@ export interface Theme {
     updateTime: string;
     latestReplyTime: string;
     createdTime: string;
+    tags: Tag[];
+}
+
+export interface Tag {
+    id: number;
+    name: string;
 }
 
 export interface Post {
@@ -98,4 +107,22 @@ export interface RegisterForm {
     nickname: string;
     phoneNumber: string;
     email: string;
+}
+
+
+export interface UpdateUserInfoForm {
+    id: number;
+    avatarUrl?: string;
+    nickname?: string;
+    privacyShow?: boolean;
+    signature?: string;
+}
+
+export interface Favorite {
+    id: number;
+    createdAt: string;
+    lastViewedAt: string;
+    ownerId: number;
+    themeId: number;
+    $theme: Theme;
 }

@@ -1,4 +1,4 @@
-import {Tag} from "antd";
+import {Spin, Tag} from "antd";
 import React from "react";
 import Card from "../components/Card";
 
@@ -17,3 +17,14 @@ export const loading$1 = <div style={{
     justifyContent: 'center'}}><Card style={{
     width: '300px', height: '300px', fontSize: '120px',
 }}><LoadingOutlined /></Card></div>
+
+const $style = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: '100vh',
+}
+
+const icon = <LoadingOutlined style={{ fontSize: '72px'}} spin />;
+export const LoadingIcon = <div style={$style}><Spin indicator={icon}/></div>;

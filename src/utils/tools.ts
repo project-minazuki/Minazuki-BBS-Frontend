@@ -1,7 +1,8 @@
 import {store} from "../App";
 import {developerName, pwdMinLength} from "../configs/consts";
-import {Category, User} from "../configs/types";
+import {Announcement, Category, Theme, User} from "../configs/types";
 import {stringConvert} from "./DateTimes";
+import md5 from 'js-md5';
 
 /**
  *
@@ -90,5 +91,52 @@ export function userToUser(body: any): User {
         lastSignIn: stringConvert(body.lastSignIn),
         avatar: body.avatarUrl,
     }
+}
+
+export function convertGravatar(email: string): string {
+    const mailto = email.trim().toLowerCase();
+    const hash = md5(mailto);
+    return `https://www.gravatar.com/avatar/${hash}`;
+}
+
+export function themeToTheme(body: any): Theme {
+    return {
+        ...body,
+        cateId: body?.categoryId,
+        createdTime: stringConvert(body?.createdAt),
+        authorId: body?.creatorId,
+        _id: body?.id,
+        latestReplyTime: stringConvert(body?.latestReplyAt),
+        replies: body?.replyCount,
+        pinned: body?.top,
+        visits: body?.visitsCount,
+    }
+}
+
+export function noticeToAnnouncement(body: any): Announcement {
+    return {
+        ...body,
+        _id: body?.id,
+        cateId: body?.categoryId,
+        authorId: body?.creatorId,
+        createTime: stringConvert(body?.createdAt),
+        updateTime: stringConvert(body?.updatedAt),
+    }
+}
+
+export function uniqueArray<T>(arr: T[]): T[] {
+    let $$: T[] = [];
+    for (const ii of arr)
+        if ($$.indexOf(ii) == -1)
+            $$.push(ii);
+    return $$;
+}
+
+export function mailToMail(body: any[]) {
+    let arr: any = [];
+    for (const ii of body) {
+        arr.push({...ii, _id: ii.id, createdAt: stringConvert(ii.createdAt ?? '')})
+    }
+    return arr;
 }
 

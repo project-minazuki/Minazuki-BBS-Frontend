@@ -3,12 +3,14 @@ import {userReducer, UserStore} from "./user";
 import {homepageReducer, HomepageStore} from "./homepage";
 import {componentReducer, ComponentStore} from "./component";
 import {viewReducer, ViewStore} from "./view";
+import {categoryReducer, CategoryStore} from "./category";
 
 export interface StoreState {
     user: UserStore;
     homepage: HomepageStore;
     component: ComponentStore;
     view: ViewStore;
+    category: CategoryStore;
 };
 
 export const reducers = combineReducers({
@@ -16,4 +18,5 @@ export const reducers = combineReducers({
     homepage: homepageReducer,
     component: componentReducer,
     view: viewReducer,
+    category: categoryReducer,
 });
