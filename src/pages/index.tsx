@@ -37,7 +37,7 @@ const Index: FC = memo(() => {
           <Route path={url.root} exact render={routerRender(<Homepage />)} />
           <Route path={url.user} exact render={routerRender(<User />)} />
           <Route path={url.me} exact render={routerRender(<User />)} />
-          <Route path="/PostPage" exact render={routerRender(<PostPage />)} />
+          <Route path={url.theme} exact render={routerRender(<PostPage />)} />
           <Route path={url.category} exact render={routerRender(<CategoryPage />)} />
           <Route path="/testApp" exact component={TestApp} />
           <Redirect to={url.$404}/>

@@ -27,4 +27,6 @@ export const $user = (uid: string, hash?: string) => `${header}/user/${uid}/#/` 
 
 export const $category = (cid: number) => `${header}/category/${cid}`;
 
+export const $theme = (tid: number) => `${header}/theme/${tid}`;
+
 export const $404 = `${header}/`;

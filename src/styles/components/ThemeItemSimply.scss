@@ -1,0 +1,35 @@
+#comp-theme-item-simply {
+
+  width: 100%;
+
+  .container {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    padding: 10px;
+    transition: 200ms;
+
+    .icons {
+      margin: 4px;
+    }
+
+    .title {
+      color: black;
+      font-size: 17px;
+      margin: 0 16px;
+      user-select: none;
+    }
+
+    .theme-info {
+      color: #707070;
+      font-size: 17px;
+    }
+  }
+
+  .container:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+  }
+
+}

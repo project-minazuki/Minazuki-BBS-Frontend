@@ -1,0 +1,47 @@
+#comp-mail-item {
+
+  width: 100%;
+  margin: 10px;
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    transition: 200ms;
+    padding: 4px;
+
+    .icon {
+      font-size: 40px;
+      color: black;
+      margin: 8px;
+    }
+
+    .text-field {
+
+      .content {
+        font-size: 16px;
+        color: black;
+        word-break: break-all;
+        overflow: hidden;
+        margin: 4px 0;
+      }
+
+      .information {
+        font-size: 15px;
+        color: #707070;
+        word-break: break-all;
+        overflow: hidden;
+        margin: 4px 0;
+      }
+
+    }
+
+  }
+
+  .container:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+
+}
