@@ -1,4 +1,4 @@
-import React, {FC, memo} from "react";
+import React, {FC, memo, useContext, useEffect} from "react";
 
 import {PostPageProps} from "../containers/pages/PostPage";
 import '../styles/PostPage.scss';
@@ -9,10 +9,17 @@ import atri from "../images/bg-atri.png";
 import BgImg from "../components/BgImg";
 import Reply from "../components/Reply";
 import ThemeContentCard from "../components/ThemeContentCard";
+import {RouteContext} from "../components/PageFrame";
 
 
 const PostPage: FC<PostPageProps> = memo(({}) => {
 
+    const route = useContext(RouteContext);
+    const id = route.match.params.themeId;
+
+    useEffect(() => {
+
+    }, [])
 
     return (
         <div id='page-Post' className='page container'>

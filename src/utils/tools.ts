@@ -124,3 +124,19 @@ export function noticeToAnnouncement(body: any): Announcement {
     }
 }
 
+export function uniqueArray<T>(arr: T[]): T[] {
+    let $$: T[] = [];
+    for (const ii of arr)
+        if ($$.indexOf(ii) == -1)
+            $$.push(ii);
+    return $$;
+}
+
+export function mailToMail(body: any[]) {
+    let arr: any = [];
+    for (const ii of body) {
+        arr.push({...ii, _id: ii.id, createdAt: stringConvert(ii.createdAt ?? '')})
+    }
+    return arr;
+}
+

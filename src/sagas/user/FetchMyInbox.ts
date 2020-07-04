@@ -7,6 +7,7 @@ import * as url from '../../configs/url';
 import {$history} from "../../App";
 import {notification} from "antd";
 import {message} from 'antd';
+import {mailToMail} from "../../utils/tools";
 
 function* worker(action: $actions.FetchMyInboxStart) {
     try {
@@ -14,7 +15,8 @@ function* worker(action: $actions.FetchMyInboxStart) {
         const res = yield api.inbox.myInbox(action.uid.toString()).exec();
         console.log(res);
         if (res.data.code >= 0) {
-            yield put(actions.myInboxFetched(res.data.data));
+            const arr = mailToMail(res.data.data);
+            yield put(actions.myInboxFetched(arr));
             for (const ii of res.data.data) {
                 yield ii?.senderId && put($actions.fetchUserInfoStart(ii.senderId));
             }

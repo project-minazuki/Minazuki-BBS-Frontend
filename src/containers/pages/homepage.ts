@@ -3,15 +3,17 @@ import {bindActionCreators, Dispatch} from 'redux';
 import {StoreState} from "../../redux/reducers";
 
 import Homepage from "../../pages/homepage";
+import * as $actions from '../../redux/actions/async';
 
 const mapStateToProps = ({
-    homepage: {newTheme, newReply, categories,announcement}
+    homepage: {newTheme, newReply, categories, text, hasLoaded}
 }: StoreState) => ({
-    newTheme, newReply, categories,announcement
+    newTheme, newReply, categories, text,
+    load: hasLoaded,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
-
+    loadInfo: $actions.fetchHomePageStart,
 }, dispatch);
 
 type StateProps = ReturnType<typeof mapStateToProps>;

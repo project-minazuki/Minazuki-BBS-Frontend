@@ -1,4 +1,5 @@
 import * as $actions from '../../redux/actions/async';
+import * as actions from '../../redux/actions/';
 import {put, takeLatest} from 'redux-saga/effects';
 import * as api from '../../configs/api';
 import * as url from '../../configs/url';
@@ -9,6 +10,7 @@ import {$history} from "../../App";
 
 function* worker() {
     try {
+        yield put($actions.fetchCategoriesStart());
         const res_new = yield api.theme.top10ByVisitsCount().exec();
         const res_rep = yield api.theme.top10ByReplyCount().exec();
         if (res_new.data.code < 0 || res_rep.data.code < 0) {
@@ -29,7 +31,7 @@ function* worker() {
         yield message.error(e.toString());
         $history.push(url.$404);
     } finally {
-
+        yield put(actions.homepageIsLoaded(true));
     }
 }
 

@@ -6,8 +6,11 @@ import '../styles/components/UserCenterView.scss';
 
 import Card from "./Card";
 import {UserStore} from "../redux/reducers/user";
-import {Badge} from 'antd';
+import {Badge, Empty} from 'antd';
 import {Favorite, Mail} from "../configs/types";
+import {inbox} from "../configs/api";
+import MailItem from "./MailItem";
+import FavoriteItem from "./FavoriteItem";
 
 interface IProps {
     className?: string;
@@ -34,9 +37,16 @@ const TabMessage: FC<{
         props.refresh(); return;
     }, []);
 
+    let el: any = [], $i = 0;
+
+    if (props.inbox.length === 0) el.push(<Empty />);
+    else for (const ii of props.inbox) {
+        el.push(<MailItem content={ii} key={$i ++} />);
+    }
+
     return (
         <div className='tab-message' style={props.style ?? {}}>
-            {JSON.stringify(props.inbox)}
+            {el}
         </div>
     )
 });
@@ -50,9 +60,21 @@ const TabFavorite: FC<{
     style?: Partial<CSSProperties>;
 }> = memo(props => {
 
+    useEffect(() => {
+        props.refresh(); return;
+    }, []);
+
+    let el: any = [], $i = 0;
+    const {$delete} = props;
+
+    if (props.fav.length === 0) el.push(<Empty />);
+    else for (const ii of props.fav) {
+        el.push(<FavoriteItem content={ii} key={$i ++} del={$delete}/>);
+    }
+
     return (
         <div className='tab-favorite'>
-
+            {el}
         </div>
     )
 })
@@ -62,7 +84,12 @@ const UserCenterView: FC<IProps> = memo(props => {
 
     const {className, user, callbacks, inProcess} = props;
 
-    const $hidden = {visibility: 'hidden'} as Partial<CSSProperties>;
+    const $el = [<></>,
+        <TabMessage refresh={callbacks.inbox} inbox={user.mails} inProcess={inProcess}/>,
+        <></>,
+        <></>,
+        <TabFavorite refresh={callbacks.favorite} fav={user.favorites} inProcess={inProcess} $delete={callbacks.delFav}/>
+    ]
 
     const render = (props: RouteComponentProps) => {
 
@@ -89,10 +116,7 @@ const UserCenterView: FC<IProps> = memo(props => {
                 <div className='nav-bar'>
                     {links}
                 </div>
-                <TabMessage refresh={callbacks.inbox} style={1 === $id ? {} : $hidden}
-                            inbox={user.mails} inProcess={inProcess}/>
-                <TabFavorite refresh={callbacks.favorite} style={4 === $id ? {} : $hidden}
-                             fav={user.favorites} inProcess={inProcess} $delete={callbacks.delFav}/>
+                {$el[$id]}
             </div></Card>
         )
     }

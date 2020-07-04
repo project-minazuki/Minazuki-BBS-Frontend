@@ -101,4 +101,50 @@
 
 
   }
+
+}
+
+.drawer-container {
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  .drawer-title {
+    font-size: 24px;
+    color: black;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    margin: 12px 4px;
+  }
+
+  .desc-content {
+    margin: 20px 0;
+    color: #707070;
+    font-size: 18px;
+  }
+
+  .new-form {
+    width: 100%;
+    margin: 16px 0 0 0;
+
+    .content {
+
+    }
+
+    .buttons {
+
+      display: flex;
+      flex-direction: row;
+      align-items: end;
+      justify-content: flex-end;
+
+      .button {
+        margin: 20px;
+      }
+    }
+  }
 }

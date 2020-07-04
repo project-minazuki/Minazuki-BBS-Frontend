@@ -21,12 +21,12 @@ const NewestReplyTheme1: FC<IProps> = memo(props => {
     let links = [];
 
     if(links.length === 0){
-        links.push(<Empty></Empty>)
+        links.push(<Empty />)
     }
     else{
         for(let i =0; i<newReplies.length;i++){
             //TODO info_Cate 和 info_User 将来需要使用正确的值
-            links.push(<ThemeItem info_Theme={newReplies[i]} info_Cate={{} as Category} info_User={{} as User}></ThemeItem>)
+            links.push(<ThemeItem info_Theme={newReplies[i]} info_Cate={{} as Category} info_User={{} as User} />)
         }
 
 
