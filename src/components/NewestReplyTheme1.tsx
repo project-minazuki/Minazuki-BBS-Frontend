@@ -20,7 +20,7 @@ const NewestReplyTheme1: FC<IProps> = memo(props => {
     const newReplies = props.newReplies;
     let links = [];
 
-    if(links.length === 0){
+    if(newReplies.length === 0){
         links.push(<Empty />)
     }
     else{
