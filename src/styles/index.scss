@@ -28,36 +28,36 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(15px) saturate(150%);
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(15px) saturate(150%) !important;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
 }
 
 .ant-notification-topRight {
   .ant-notification-notice {
-    background-color: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(15px) saturate(150%);
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(15px) saturate(150%) !important;
   }
 }
 
 .ant-message-notice-content {
-  background-color: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(15px) saturate(150%);
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(15px) saturate(150%) !important;
 }
 
 .ant-modal-root {
 
   .ant-modal-mask {
-    backdrop-filter: blur(15px) saturate(150%);
+    backdrop-filter: blur(15px) saturate(150%) !important;
   }
 
   .ant-modal-content {
-    background-color: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(15px) saturate(150%);
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(15px) saturate(150%) !important;
 
     .ant-modal-header {
-      background-color: transparent;
+      background-color: transparent !important;
       border-bottom: none;
     }
 
@@ -65,7 +65,7 @@ code {
       border-top: none;
 
       .ant-btn {
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: rgba(255, 255, 255, 0.5) !important;
       }
 
       .ant-btn-primary {

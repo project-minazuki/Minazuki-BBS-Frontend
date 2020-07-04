@@ -2,7 +2,8 @@ import React, {FC, memo, useContext, useEffect} from "react";
 
 import {CategoryPageProps} from "../containers/pages/CategoryPage";
 import '../styles/Categorypage.scss';
-import {Announcement, Category, Theme, User} from "../configs/types";
+import {Announcement, Category, User} from "../configs/types";
+import atri from "../images/bg-atri.png";
 
 import CateIntro from '../components/CateIntro'
 import NewestTheme1 from "../components/NewestTheme1";
@@ -16,9 +17,10 @@ import {message} from 'antd';
 import * as url from '../configs/url';
 import {LoadingIcon} from "../utils/items";
 import {defaultAvatar} from "../configs/consts";
+import BgImg from "../components/BgImg";
 
 
-const CategoryPage: FC<CategoryPageProps> = memo(({store, loadData, userDB}) => {
+const CategoryPage: FC<CategoryPageProps> = memo(({store, loadData, userDB, userInfo}) => {
 
     const route = useContext(RouteContext);
     const cid = route.match.params.cateId;
@@ -70,6 +72,7 @@ const CategoryPage: FC<CategoryPageProps> = memo(({store, loadData, userDB}) => 
 
     return (
         <div id='page-Category' className='page'>
+            <BgImg src={atri} />
             {
                 unload ? LoadingIcon : <div className='container'>
                 <div className='left'>

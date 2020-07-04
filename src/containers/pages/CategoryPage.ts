@@ -6,11 +6,12 @@ import * as $actions from '../../redux/actions/async';
 import CategoryPage from "../../pages/CategoryPage";
 
 const mapStateToProps = ({
-    category, component: {userCenter}
+    category, component: {userCenter}, user
 }: StoreState) => ({
     store: category,
     now: category.loaded,
     userDB: userCenter,
+    userInfo: user.info,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({

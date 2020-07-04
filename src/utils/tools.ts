@@ -132,3 +132,11 @@ export function uniqueArray<T>(arr: T[]): T[] {
     return $$;
 }
 
+export function mailToMail(body: any[]) {
+    let arr: any = [];
+    for (const ii of body) {
+        arr.push({...ii, _id: ii.id, createdAt: stringConvert(ii.createdAt ?? '')})
+    }
+    return arr;
+}
+

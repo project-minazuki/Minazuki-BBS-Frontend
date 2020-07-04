@@ -65,10 +65,11 @@ const TabFavorite: FC<{
     }, []);
 
     let el: any = [], $i = 0;
+    const {$delete} = props;
 
     if (props.fav.length === 0) el.push(<Empty />);
     else for (const ii of props.fav) {
-        el.push(<FavoriteItem content={ii} key={$i ++} />);
+        el.push(<FavoriteItem content={ii} key={$i ++} del={$delete}/>);
     }
 
     return (

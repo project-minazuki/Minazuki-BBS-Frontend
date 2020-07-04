@@ -1,8 +1,8 @@
 import React, {CSSProperties, FC, memo} from "react";
-import {DeleteOutlined} from '@ant-design/icons';
+import {StarOutlined} from '@ant-design/icons';
 import {Button} from 'antd';
 
-import '../styles/components/FavoriteItem.scss';
+import '../styles/components/ThemeItemSimply.scss';
 import {Theme} from "../configs/types";
 import {useHistory} from "react-router";
 import {$theme} from "../configs/url";
@@ -17,6 +17,7 @@ const ThemeItemSimply: FC<IProps> = memo(props => {
 
     const {title, pinned, highQuality, createdTime, _id} = props.item;
     const history = useHistory();
+    console.log(props.item)
 
     const handleClick = () => history.push($theme(_id));
 
@@ -24,7 +25,7 @@ const ThemeItemSimply: FC<IProps> = memo(props => {
         <div id='comp-theme-item-simply' className={props.className}
              style={props.style} onClick={handleClick}>
             <div className='container'>
-                <div className='icons'>{}</div>
+                <div className='icons'><StarOutlined /></div>
                 <div className='title'>{title}</div>
                 <div className='theme-info'>{createdTime}</div>
             </div>

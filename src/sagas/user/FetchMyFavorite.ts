@@ -12,7 +12,14 @@ function* worker() {
         if (res.data.code < 0) {
             yield message.warn(res.data.msg);
         } else {
-            yield put(actions.myFavoriteFetched(res.data.data));
+            let arr = [];
+            for (const ii of res.data.data) {
+                const res = yield api.theme.viewDetails(ii.themeId).exec()
+                if (res.data.code < 0)
+                    yield message.error(`themeId=[${ii.themeId}] ${res.data.msg}`);
+                else arr.push({...ii, $theme: res.data.data})
+            }
+            yield put(actions.myFavoriteFetched(arr));
         }
     } catch (e) {
         yield message.error(e.toString());
